@@ -1,0 +1,519 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Book Your Vehicle - AtulRide</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <!-- ================= NAVBAR ================= -->
+
+    <header>
+
+        <nav class="navbar">
+
+            <div class="logo">
+                🚗 AtulRide
+            </div>
+
+            <ul class="nav-links">
+
+                <li>
+                    <a href="index.html">
+                        Home
+                    </a>
+                </li>
+
+                <li>
+                    <a href="vehicles.html">
+                        Vehicles
+                    </a>
+                </li>
+
+                <li>
+                    <a href="booking.html" class="active">
+                        Booking
+                    </a>
+                </li>
+
+                <li>
+                    <a href="about.html">
+                        About
+                    </a>
+                </li>
+
+                <li>
+                    <a href="contact.html">
+                        Contact
+                    </a>
+                </li>
+
+            </ul>
+
+        </nav>
+
+    </header>
+
+
+    <!-- ================= HERO ================= -->
+
+    <section class="booking-hero">
+
+        <div class="booking-title">
+
+            <h1>
+                Book Your Ride 🚗
+            </h1>
+
+            <p>
+                Choose your vehicle, rental duration,
+                date and time.
+            </p>
+
+        </div>
+
+    </section>
+
+
+    <!-- ================= BOOKING SECTION ================= -->
+
+    <section class="booking-section">
+
+        <div class="booking-wrapper">
+
+
+            <!-- LEFT INFORMATION -->
+
+            <div class="booking-info">
+
+                <h2>
+                    Why Choose AtulRide?
+                </h2>
+
+                <p style="color:#666; line-height:1.7; margin-bottom:30px;">
+                    Make your vehicle reservation quickly
+                    and easily with AtulRide.
+                </p>
+
+
+                <div class="info-item">
+
+                    <span>
+                        🚗
+                    </span>
+
+                    <div>
+
+                        <h3>
+                            Wide Range of Vehicles
+                        </h3>
+
+                        <p>
+                            Cars, SUVs and bikes for
+                            different travel needs.
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <div class="info-item">
+
+                    <span>
+                        💰
+                    </span>
+
+                    <div>
+
+                        <h3>
+                            Affordable Prices
+                        </h3>
+
+                        <p>
+                            Choose hourly or full-day
+                            rental according to your needs.
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <div class="info-item">
+
+                    <span>
+                        ⏱️
+                    </span>
+
+                    <div>
+
+                        <h3>
+                            Flexible Rental
+                        </h3>
+
+                        <p>
+                            Select your preferred pickup
+                            and return time.
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <div class="info-item">
+
+                    <span>
+                        🔒
+                    </span>
+
+                    <div>
+
+                        <h3>
+                            Simple & Convenient
+                        </h3>
+
+                        <p>
+                            Easy booking process from
+                            vehicle selection to payment.
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <!-- BOOKING STEPS -->
+
+                <div style="
+                    margin-top:35px;
+                    padding:20px;
+                    background:white;
+                    border-radius:15px;
+                    box-shadow:0 5px 20px rgba(0,0,0,0.07);
+                ">
+
+                    <h3>
+                        📋 Booking Process
+                    </h3>
+
+                    <p>
+                        1️⃣ Select your vehicle
+                    </p>
+
+                    <p>
+                        2️⃣ Choose rental duration
+                    </p>
+
+                    <p>
+                        3️⃣ Select pickup & return time
+                    </p>
+
+                    <p>
+                        4️⃣ Confirm booking
+                    </p>
+
+                    <p>
+                        5️⃣ Complete payment
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <!-- ================= BOOKING FORM ================= -->
+
+            <div class="booking-card">
+
+                <h2>
+                    Booking Details
+                </h2>
+
+                <p class="form-subtitle">
+                    Enter your information to reserve
+                    your vehicle.
+                </p>
+
+
+                <form id="bookingForm">
+
+
+                    <!-- CUSTOMER NAME -->
+
+                    <div class="form-group">
+
+                        <label for="name">
+                            👤 Customer Name
+                        </label>
+
+                        <input
+                            type="text"
+                            id="name"
+                            placeholder="Enter your full name"
+                            required
+                        >
+
+                    </div>
+
+
+                    <!-- MOBILE -->
+
+                    <div class="form-group">
+
+                        <label for="mobile">
+                            📱 Mobile Number
+                        </label>
+
+                        <input
+                            type="tel"
+                            id="mobile"
+                            placeholder="Enter 10 digit mobile number"
+                            maxlength="10"
+                            pattern="[0-9]{10}"
+                            required
+                        >
+
+                    </div>
+
+
+                    <!-- VEHICLE -->
+
+                    <div class="form-group">
+
+                        <label for="vehicle">
+                            🚘 Select Vehicle
+                        </label>
+
+                        <select
+                            id="vehicle"
+                            required
+                        >
+
+                            <option value="">
+                                -- Select Vehicle --
+                            </option>
+
+                            <option
+                                value="1200"
+                                data-hourly="150"
+                            >
+                                🚗 Maruti Swift -
+                                ₹1,200/day |
+                                ₹150/hour
+                            </option>
+
+                            <option
+                                value="2000"
+                                data-hourly="250"
+                            >
+                                🚙 Hyundai Creta -
+                                ₹2,000/day |
+                                ₹250/hour
+                            </option>
+
+                            <option
+                                value="900"
+                                data-hourly="100"
+                            >
+                                🏍️ Royal Enfield -
+                                ₹900/day |
+                                ₹100/hour
+                            </option>
+
+                            <option
+                                value="500"
+                                data-hourly="60"
+                            >
+                                🛵 Honda Activa -
+                                ₹500/day |
+                                ₹60/hour
+                            </option>
+
+                        </select>
+
+                    </div>
+
+
+                    <!-- RENTAL TYPE -->
+
+                    <div class="form-group">
+
+                        <label for="rentalType">
+                            ⏱️ Rental Type
+                        </label>
+
+                        <select
+                            id="rentalType"
+                            required
+                        >
+
+                            <option value="">
+                                -- Select Rental Type --
+                            </option>
+
+                            <option value="day">
+                                🗓️ Full Day
+                            </option>
+
+                            <option value="hour">
+                                ⏱️ Hourly
+                            </option>
+
+                        </select>
+
+                    </div>
+
+
+                    <!-- PICKUP -->
+
+                    <div class="date-row">
+
+                        <div class="form-group">
+
+                            <label for="pickup">
+                                📅 Pickup Date
+                            </label>
+
+                            <input
+                                type="date"
+                                id="pickup"
+                                required
+                            >
+
+                        </div>
+
+
+                        <div class="form-group">
+
+                            <label for="pickupTime">
+                                🕐 Pickup Time
+                            </label>
+
+                            <input
+                                type="time"
+                                id="pickupTime"
+                                required
+                            >
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- RETURN -->
+
+                    <div class="date-row">
+
+                        <div class="form-group">
+
+                            <label for="return">
+                                📅 Return Date
+                            </label>
+
+                            <input
+                                type="date"
+                                id="return"
+                                required
+                            >
+
+                        </div>
+
+
+                        <div class="form-group">
+
+                            <label for="returnTime">
+                                🕐 Return Time
+                            </label>
+
+                            <input
+                                type="time"
+                                id="returnTime"
+                                required
+                            >
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- TOTAL RENT -->
+
+                    <div class="total-box">
+
+                        <div>
+
+                            <span>
+                                💰 Total Rent
+                            </span>
+
+                            <small id="daysText">
+                                Select vehicle, rental type
+                                and dates.
+                            </small>
+
+                        </div>
+
+                        <strong>
+                            ₹<span id="total">0</span>
+                        </strong>
+
+                    </div>
+
+
+                    <!-- CONFIRM -->
+
+                    <button
+                        type="submit"
+                        class="confirm-btn"
+                    >
+                        Confirm Booking 🚗
+                    </button>
+
+
+                    <p style="
+                        text-align:center;
+                        color:#777;
+                        font-size:13px;
+                        margin-top:15px;
+                    ">
+                        🔒 Your booking details are
+                        stored for this demo.
+                    </p>
+
+                </form>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- ================= FOOTER ================= -->
+
+    <footer>
+
+        <p>
+            © 2026 AtulRide. All Rights Reserved.
+        </p>
+
+        <p>
+            🚗 Your Journey, Our Responsibility
+        </p>
+
+    </footer>
+
+
+    <script src="script.js"></script>
+
+</body>
+
+</html>sss

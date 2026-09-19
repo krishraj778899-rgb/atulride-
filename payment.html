@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Payment | AtulRide</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <!-- NAVBAR -->
+    <header>
+        <nav class="navbar">
+
+            <div class="logo">
+                🚗 AtulRide
+            </div>
+
+            <div class="nav-links">
+                <a href="index.html">Home</a>
+                <a href="vehicles.html">Vehicles</a>
+                <a href="booking.html">Booking</a>
+                <a href="about.html">About</a>
+                <a href="contact.html">Contact</a>
+            </div>
+
+        </nav>
+    </header>
+
+
+    <!-- HERO -->
+    <section class="page-hero">
+
+        <div>
+            <h1>Secure Payment</h1>
+
+            <p>
+                Complete your AtulRide booking payment.
+            </p>
+        </div>
+
+    </section>
+
+
+    <!-- PAYMENT SECTION -->
+    <section class="payment-section">
+
+        <div class="payment-container">
+
+            <!-- BOOKING SUMMARY -->
+            <div class="payment-summary">
+
+                <h2>Booking Summary</h2>
+
+                <div class="summary-row">
+                    <span>Vehicle</span>
+                    <strong id="summaryVehicle">-</strong>
+                </div>
+
+                <div class="summary-row">
+                    <span>Pickup Date</span>
+                    <strong id="summaryPickup">-</strong>
+                </div>
+
+                <div class="summary-row">
+                    <span>Return Date</span>
+                    <strong id="summaryReturn">-</strong>
+                </div>
+
+                <div class="summary-total">
+
+                    <span>Total Amount</span>
+
+                    <strong>
+                        ₹<span id="summaryAmount">0</span>
+                    </strong>
+
+                </div>
+
+            </div>
+
+
+            <!-- PAYMENT CARD -->
+            <div class="payment-card">
+
+                <h2>Choose Payment Method</h2>
+
+                <p class="payment-description">
+                    Select your preferred payment method.
+                </p>
+
+
+                <!-- UPI -->
+                <label class="payment-option">
+
+                    <input
+                        type="radio"
+                        name="payment"
+                        value="UPI"
+                    >
+
+                    <span>
+                        📱 UPI
+                    </span>
+
+                </label>
+
+
+                <!-- CARD -->
+                <label class="payment-option">
+
+                    <input
+                        type="radio"
+                        name="payment"
+                        value="Card"
+                    >
+
+                    <span>
+                        💳 Debit / Credit Card
+                    </span>
+
+                </label>
+
+
+                <!-- NET BANKING -->
+                <label class="payment-option">
+
+                    <input
+                        type="radio"
+                        name="payment"
+                        value="Net Banking"
+                    >
+
+                    <span>
+                        🏦 Net Banking
+                    </span>
+
+                </label>
+
+
+                <!-- CASH -->
+                <label class="payment-option">
+
+                    <input
+                        type="radio"
+                        name="payment"
+                        value="Cash on Pickup"
+                    >
+
+                    <span>
+                        💵 Cash on Pickup
+                    </span>
+
+                </label>
+
+
+                <!-- UPI INPUT -->
+                <div
+                    id="upiBox"
+                    style="display:none;"
+                >
+
+                    <label>
+                        Enter UPI ID
+                    </label>
+
+                    <input
+                        type="text"
+                        id="upiId"
+                        placeholder="example@upi"
+                    >
+
+                </div>
+
+
+                <!-- DEMO NOTICE -->
+                <div class="secure-payment">
+
+                    🔒
+
+                    <div>
+
+                        <strong>
+                            Demo Payment System
+                        </strong>
+
+                        <p>
+                            This is a demonstration payment
+                            system for the AtulRide project.
+                            No real money will be charged.
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <!-- PAYMENT BUTTON -->
+                <button
+                    type="button"
+                    id="demoPayButton"
+                    class="primary-btn"
+                >
+
+                    Pay ₹<span id="paymentAmount">0</span>
+
+                </button>
+
+
+                <p
+                    id="paymentMessage"
+                    class="payment-message"
+                ></p>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- FOOTER -->
+    <footer>
+
+        <div class="footer-content">
+
+            <h2>🚗 AtulRide</h2>
+
+            <p>
+                Smart, simple and reliable vehicle rental.
+            </p>
+
+            <p>
+                © 2026 AtulRide. All Rights Reserved.
+            </p>
+
+        </div>
+
+    </footer>
+
+
+    <!-- EXISTING SCRIPT -->
+    <script src="script.js"></script>
+
+
+    <!-- DEMO PAYMENT SCRIPT -->
+    <script>
+
+        const demoPayButton =
+            document.getElementById("demoPayButton");
+
+        const paymentMessage =
+            document.getElementById("paymentMessage");
+
+
+        // UPI OPTION
+        const upiOption =
+            document.querySelector(
+                'input[value="UPI"]'
+            );
+
+        const upiBox =
+            document.getElementById("upiBox");
+
+
+        if (upiOption && upiBox) {
+
+            upiOption.addEventListener(
+                "change",
+                function () {
+
+                    if (upiOption.checked) {
+
+                        upiBox.style.display =
+                            "block";
+
+                    }
+
+                }
+            );
+
+        }
+
+
+        // DEMO PAYMENT
+        if (demoPayButton) {
+
+            demoPayButton.addEventListener(
+                "click",
+                function () {
+
+                    const selectedPayment =
+                        document.querySelector(
+                            'input[name="payment"]:checked'
+                        );
+
+
+                    if (!selectedPayment) {
+
+                        alert(
+                            "Please select a payment method."
+                        );
+
+                        return;
+
+                    }
+
+
+                    // UPI VALIDATION
+                    if (
+                        selectedPayment.value === "UPI"
+                    ) {
+
+                        const upiId =
+                            document.getElementById(
+                                "upiId"
+                            ).value.trim();
+
+
+                        if (upiId === "") {
+
+                            alert(
+                                "Please enter your UPI ID."
+                            );
+
+                            return;
+
+                        }
+
+                    }
+
+
+                    // SAVE PAYMENT METHOD
+                    localStorage.setItem(
+                        "paymentMethod",
+                        selectedPayment.value
+                    );
+
+
+                    // DEMO PAYMENT STATUS
+                    localStorage.setItem(
+                        "paymentStatus",
+                        "Demo Payment Successful"
+                    );
+
+
+                    // BUTTON MESSAGE
+                    demoPayButton.innerText =
+                        "Processing...";
+
+
+                    paymentMessage.innerText =
+                        "Demo payment successful!";
+
+
+                    // REDIRECT
+                    setTimeout(
+                        function () {
+
+                            window.location.href =
+                                "success.html";
+
+                        },
+                        1000
+                    );
+
+                }
+
+            );
+
+        }
+
+    </script>
+
+</body>
+
+</html>

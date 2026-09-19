@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Contact Us - AtulRide</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <!-- NAVBAR -->
+    <header>
+        <nav class="navbar">
+
+            <div class="logo">
+                🚗 AtulRide
+            </div>
+
+            <ul class="nav-links">
+
+                <li>
+                    <a href="index.html">Home</a>
+                </li>
+
+                <li>
+                    <a href="vehicles.html">Vehicles</a>
+                </li>
+
+                <li>
+                    <a href="booking.html">Booking</a>
+                </li>
+
+                <li>
+                    <a href="#">About</a>
+                </li>
+
+                <li>
+                    <a href="contact.html" class="active">Contact</a>
+                </li>
+
+            </ul>
+
+        </nav>
+    </header>
+
+
+    <!-- CONTACT SECTION -->
+    <section class="booking-section">
+
+        <div class="booking-card"
+            style="max-width:650px; margin:40px auto;">
+
+            <h2>📞 Contact AtulRide</h2>
+
+            <p class="form-subtitle">
+                Have any questions? Send us a message.
+            </p>
+
+
+            <!-- NAME -->
+            <div class="form-group">
+
+                <label for="contactName">
+                    Name
+                </label>
+
+                <input
+                    type="text"
+                    id="contactName"
+                    placeholder="Enter your name"
+                >
+
+            </div>
+
+
+            <!-- MOBILE -->
+            <div class="form-group">
+
+                <label for="contactMobile">
+                    Mobile Number
+                </label>
+
+                <input
+                    type="tel"
+                    id="contactMobile"
+                    placeholder="Enter 10 digit mobile number"
+                    maxlength="10"
+                >
+
+            </div>
+
+
+            <!-- EMAIL -->
+            <div class="form-group">
+
+                <label for="contactEmail">
+                    Email
+                </label>
+
+                <input
+                    type="text"
+                    id="contactEmail"
+                    placeholder="example@gmail.com"
+                >
+
+            </div>
+
+
+            <!-- MESSAGE -->
+            <div class="form-group">
+
+                <label for="contactMessage">
+                    Message
+                </label>
+
+                <textarea
+                    id="contactMessage"
+                    placeholder="Enter your message"
+                    rows="5"
+                    style="
+                        width:100%;
+                        padding:13px;
+                        border:1px solid #ddd;
+                        border-radius:9px;
+                        box-sizing:border-box;
+                        font-size:15px;
+                        resize:vertical;
+                    "
+                ></textarea>
+
+            </div>
+
+
+            <!-- SEND BUTTON -->
+            <button
+                type="button"
+                class="confirm-btn"
+                onclick="sendMessage()"
+            >
+                📩 Send Message
+            </button>
+
+
+            <!-- SUCCESS MESSAGE -->
+            <div
+                id="successMessage"
+                style="
+                    display:none;
+                    margin-top:20px;
+                    padding:15px;
+                    background:#e8f8ee;
+                    color:#218838;
+                    border:1px solid #b7e4c7;
+                    border-radius:10px;
+                    text-align:center;
+                    font-weight:600;
+                "
+            >
+                ✅ Message Sent Successfully!
+                <br>
+                Thank you for contacting AtulRide.
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- FOOTER -->
+    <footer>
+
+        <p>
+            © 2026 AtulRide. All Rights Reserved.
+        </p>
+
+    </footer>
+
+
+    <!-- CONTACT SCRIPT -->
+    <script>
+
+        function sendMessage() {
+
+            const name =
+                document.getElementById("contactName").value.trim();
+
+            const mobile =
+                document.getElementById("contactMobile").value.trim();
+
+            const email =
+                document.getElementById("contactEmail").value.trim();
+
+            const message =
+                document.getElementById("contactMessage").value.trim();
+
+
+            // NAME
+            if (name === "") {
+                alert("Please enter your name.");
+                return;
+            }
+
+
+            // MOBILE
+            if (mobile.length !== 10 || isNaN(mobile)) {
+                alert("Please enter a valid 10 digit mobile number.");
+                return;
+            }
+
+
+            // EMAIL
+            if (
+                email === "" ||
+                !email.includes("@") ||
+                !email.includes(".")
+            ) {
+                alert("Please enter a valid email address.");
+                return;
+            }
+
+
+            // MESSAGE
+            if (message === "") {
+                alert("Please enter your message.");
+                return;
+            }
+
+
+            // SUCCESS
+            document.getElementById("successMessage").style.display = "block";
+
+
+            // CLEAR FORM
+            document.getElementById("contactName").value = "";
+            document.getElementById("contactMobile").value = "";
+            document.getElementById("contactEmail").value = "";
+            document.getElementById("contactMessage").value = "";
+
+        }
+
+    </script>
+
+</body>
+
+</html>
