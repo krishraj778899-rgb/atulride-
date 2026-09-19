@@ -1,0 +1,462 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+        content="width=device-width, initial-scale=1.0">
+
+    <title>Booking Successful - AtulRide</title>
+
+    <link rel="stylesheet" href="style.css">
+
+</head>
+
+
+<body>
+
+
+    <!-- ================= NAVBAR ================= -->
+
+    <header>
+
+        <nav class="navbar">
+
+            <div class="logo">
+                🚗 AtulRide
+            </div>
+
+            <ul class="nav-links">
+
+                <li>
+                    <a href="index.html">
+                        Home
+                    </a>
+                </li>
+
+                <li>
+                    <a href="vehicles.html">
+                        Vehicles
+                    </a>
+                </li>
+
+                <li>
+                    <a href="booking.html">
+                        Booking
+                    </a>
+                </li>
+
+                <li>
+                    <a href="about.html">
+                        About
+                    </a>
+                </li>
+
+                <li>
+                    <a href="contact.html">
+                        Contact
+                    </a>
+                </li>
+
+            </ul>
+
+        </nav>
+
+    </header>
+
+
+    <!-- ================= SUCCESS ================= -->
+
+    <section class="success-section">
+
+        <div class="success-card">
+
+
+            <!-- SUCCESS ICON -->
+
+            <div class="success-icon">
+                ✓
+            </div>
+
+
+            <h1>
+                Booking Confirmed! 🎉
+            </h1>
+
+
+            <p class="success-message">
+                Your AtulRide vehicle booking has been
+                successfully confirmed.
+            </p>
+
+
+            <!-- BOOKING ID -->
+
+            <div style="
+                background:#f1f7ff;
+                padding:15px;
+                border-radius:10px;
+                margin-bottom:25px;
+            ">
+
+                <span style="color:#777;">
+                    Booking ID
+                </span>
+
+                <br>
+
+                <strong
+                    id="bookingId"
+                    style="
+                        font-size:20px;
+                        color:#007bff;
+                    ">
+                    AR-000000
+                </strong>
+
+            </div>
+
+
+            <!-- ================= DETAILS ================= -->
+
+            <div class="success-details">
+
+
+                <!-- CUSTOMER -->
+
+                <div>
+
+                    <span>
+                        Customer
+                    </span>
+
+                    <strong id="successName">
+                        -
+                    </strong>
+
+                </div>
+
+
+                <!-- MOBILE -->
+
+                <div>
+
+                    <span>
+                        Mobile
+                    </span>
+
+                    <strong id="successMobile">
+                        -
+                    </strong>
+
+                </div>
+
+
+                <!-- VEHICLE -->
+
+                <div>
+
+                    <span>
+                        Vehicle
+                    </span>
+
+                    <strong id="successVehicle">
+                        -
+                    </strong>
+
+                </div>
+
+
+                <!-- RC -->
+
+                <div>
+
+                    <span>
+                        RC Number
+                    </span>
+
+                    <strong id="successRC">
+                        -
+                    </strong>
+
+                </div>
+
+
+                <!-- RENTAL TYPE -->
+
+                <div>
+
+                    <span>
+                        Rental Type
+                    </span>
+
+                    <strong id="successRentalType">
+                        -
+                    </strong>
+
+                </div>
+
+
+                <!-- PICKUP -->
+
+                <div>
+
+                    <span>
+                        Pickup
+                    </span>
+
+                    <strong id="successPickup">
+                        -
+                    </strong>
+
+                </div>
+
+
+                <!-- RETURN -->
+
+                <div>
+
+                    <span>
+                        Return
+                    </span>
+
+                    <strong id="successReturn">
+                        -
+                    </strong>
+
+                </div>
+
+
+                <!-- PAYMENT -->
+
+                <div>
+
+                    <span>
+                        Payment
+                    </span>
+
+                    <strong id="successPayment">
+                        -
+                    </strong>
+
+                </div>
+
+
+            </div>
+
+
+            <!-- ================= TOTAL ================= -->
+
+            <div class="success-total">
+
+                <span>
+                    Total Amount
+                </span>
+
+                <strong>
+                    ₹<span id="successAmount">
+                        0
+                    </span>
+                </strong>
+
+            </div>
+
+
+            <!-- MESSAGE -->
+
+            <p class="thank-you">
+
+                Thank you for choosing
+                <strong>AtulRide</strong>. 🚗
+
+            </p>
+
+
+            <!-- BUTTONS -->
+
+            <button
+                class="home-btn"
+                onclick="location.href='index.html'"
+            >
+                Back to Home 🏠
+            </button>
+
+
+            <button
+                onclick="window.print()"
+                style="
+                    width:100%;
+                    margin-top:12px;
+                    padding:13px;
+                    border:1px solid #007bff;
+                    border-radius:10px;
+                    background:white;
+                    color:#007bff;
+                    font-size:15px;
+                    font-weight:bold;
+                    cursor:pointer;
+                "
+            >
+                🖨️ Print Booking Receipt
+            </button>
+
+
+        </div>
+
+    </section>
+
+
+    <!-- ================= FOOTER ================= -->
+
+    <footer>
+
+        <p>
+            © 2026 AtulRide. All Rights Reserved.
+        </p>
+
+        <p>
+            🚗 Your Journey, Our Responsibility
+        </p>
+
+    </footer>
+
+
+    <!-- ================= SUCCESS SCRIPT ================= -->
+
+    <script>
+
+        // CUSTOMER NAME
+
+        const customerName =
+            localStorage.getItem("customerName");
+
+        const mobile =
+            localStorage.getItem("mobile");
+
+
+        document.getElementById("successName")
+            .innerText =
+            customerName || "-";
+
+
+        document.getElementById("successMobile")
+            .innerText =
+            mobile || "-";
+
+
+        // VEHICLE
+
+        document.getElementById("successVehicle")
+            .innerText =
+            localStorage.getItem("bookingVehicle")
+            || "-";
+
+
+
+        // RENTAL TYPE
+
+        const rentalType =
+            localStorage.getItem("rentalType");
+
+
+        if (rentalType === "day") {
+
+            document.getElementById(
+                "successRentalType"
+            ).innerText =
+                "Full Day";
+
+        }
+
+        else if (rentalType === "hour") {
+
+            document.getElementById(
+                "successRentalType"
+            ).innerText =
+                "Hourly";
+
+        }
+
+        else {
+
+            document.getElementById(
+                "successRentalType"
+            ).innerText =
+                "-";
+
+        }
+
+
+        // PICKUP
+
+        document.getElementById("successPickup")
+            .innerText =
+            localStorage.getItem("pickupDate")
+            + " " +
+            (localStorage.getItem("pickupTime")
+            || "");
+
+
+        // RETURN
+
+        document.getElementById("successReturn")
+            .innerText =
+            localStorage.getItem("returnDate")
+            + " " +
+            (localStorage.getItem("returnTime")
+            || "");
+
+
+        // PAYMENT
+
+        document.getElementById("successPayment")
+            .innerText =
+            localStorage.getItem("paymentMethod")
+            || "-";
+
+
+        // TOTAL
+
+        document.getElementById("successAmount")
+            .innerText =
+            localStorage.getItem("bookingTotal")
+            || "0";
+
+
+        // ================= BOOKING ID =================
+
+        let bookingId =
+            localStorage.getItem("bookingId");
+
+
+        if (!bookingId) {
+
+            const randomNumber =
+                Math.floor(
+                    100000 +
+                    Math.random() * 900000
+                );
+
+            bookingId =
+                "AR-" + randomNumber;
+
+            localStorage.setItem(
+                "bookingId",
+                bookingId
+            );
+
+        }
+
+
+        document.getElementById("bookingId")
+            .innerText =
+            bookingId;
+
+    </script>
+
+
+</body>
+
+</html>
