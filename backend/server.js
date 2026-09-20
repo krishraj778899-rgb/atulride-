@@ -182,6 +182,63 @@ app.get("/api/bookings", async (req, res) => {
 });
 
 
+// ================= DEMO BOOKING =================
+
+// Saves a completed demo payment/booking directly to Neon.
+// This is used by payment.html because the current payment page is demo-only.
+app.post("/api/bookings/demo", async (req, res) => {
+    try {
+        const {
+            vehicleId,
+            customerName,
+            customerPhone,
+            customerEmail,
+            amount,
+            paymentMethod
+        } = req.body;
+
+        if (!customerName || !customerPhone || !amount) {
+            return res.status(400).json({
+                success: false,
+                message: "Customer name, phone and amount are required"
+            });
+        }
+
+        const vehicleResult = vehicleId
+            ? await pool.query("SELECT id FROM vehicles WHERE id = $1", [Number(vehicleId)])
+            : { rows: [] };
+
+        const validVehicleId = vehicleResult.rows.length
+            ? vehicleResult.rows[0].id
+            : null;
+
+        const orderId = "DEMO_" + Date.now();
+
+        const result = await pool.query(
+            `INSERT INTO bookings
+                (user_id, vehicle_id, customer_name, customer_phone, customer_email, amount, order_id, payment_status, booking_status)
+             VALUES ($1, $2, $3, $4, $5, $6, $7, 'paid', 'confirmed')
+             RETURNING id, order_id, payment_status, booking_status, created_at`,
+            [null, validVehicleId, customerName, customerPhone, customerEmail || null, Number(amount), orderId]
+        );
+
+        console.log("Demo booking saved:", result.rows[0]);
+
+        res.status(201).json({
+            success: true,
+            booking: result.rows[0],
+            paymentMethod: paymentMethod || null
+        });
+    } catch (error) {
+        console.error("Demo booking save error:", error);
+        res.status(500).json({
+            success: false,
+            message: "Could not save booking"
+        });
+    }
+});
+
+
 // ================= FRONTEND =================
 
 app.get("/", (req, res) => {
