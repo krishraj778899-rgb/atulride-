@@ -2,15 +2,708 @@
 <html lang="en">
 
 <head>
-
     <meta charset="UTF-8">
-
-    <meta name="viewport"
-        content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <title>AtulRide - Vehicle Rental</title>
 
-    <link rel="stylesheet" href="style.css">
+    <style>
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            background: #f5f7fb;
+            color: #111827;
+            line-height: 1.6;
+        }
+
+        a {
+            text-decoration: none;
+        }
+
+        button {
+            font-family: inherit;
+            cursor: pointer;
+        }
+
+        /* =========================
+           NAVBAR
+        ========================= */
+
+        .navbar {
+            min-height: 78px;
+            padding: 0 7%;
+            background: #111827;
+
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+
+            box-shadow: 0 4px 18px rgba(0, 0, 0, 0.15);
+        }
+
+        .logo {
+            color: white;
+            font-size: 30px;
+            font-weight: 800;
+            white-space: nowrap;
+        }
+
+        .nav-links {
+            list-style: none;
+            display: flex;
+            align-items: center;
+            gap: 28px;
+        }
+
+        .nav-links a {
+            color: #ffffff;
+            font-size: 16px;
+            font-weight: 600;
+            transition: 0.3s;
+        }
+
+        .nav-links a:hover,
+        .nav-links a.active {
+            color: #60a5fa;
+        }
+
+        .profile-link {
+            background: #2563eb;
+            padding: 10px 15px;
+            border-radius: 8px;
+        }
+
+        .profile-link:hover {
+            background: #1d4ed8;
+            color: white !important;
+        }
+
+
+        /* =========================
+           HERO
+        ========================= */
+
+        .hero {
+            min-height: 600px;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            text-align: center;
+
+            padding: 80px 20px;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    #dbeafe,
+                    #ffffff 50%,
+                    #eff6ff
+                );
+        }
+
+        .hero-content {
+            max-width: 850px;
+        }
+
+        .hero h1 {
+            font-size: 60px;
+            line-height: 1.15;
+            font-weight: 800;
+            color: #111827;
+            margin-bottom: 22px;
+        }
+
+        .hero-highlight {
+            color: #2563eb;
+        }
+
+        .hero p {
+            max-width: 700px;
+            margin: 0 auto 32px;
+
+            font-size: 19px;
+            color: #64748b;
+        }
+
+        .hero-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+
+        .hero-btn {
+            border: none;
+            padding: 14px 25px;
+            border-radius: 9px;
+
+            font-size: 16px;
+            font-weight: 700;
+
+            transition: 0.3s;
+        }
+
+        .primary-btn {
+            background: #2563eb;
+            color: white;
+        }
+
+        .primary-btn:hover {
+            background: #1d4ed8;
+            transform: translateY(-3px);
+        }
+
+        .secondary-btn {
+            background: white;
+            color: #2563eb;
+            border: 2px solid #2563eb;
+        }
+
+        .secondary-btn:hover {
+            background: #eff6ff;
+            transform: translateY(-3px);
+        }
+
+
+        /* =========================
+           LOCATION
+        ========================= */
+
+        .location-section {
+            background: white;
+            padding: 70px 7%;
+        }
+
+        .location-container {
+            max-width: 1100px;
+            margin: auto;
+
+            padding: 38px;
+
+            display: flex;
+            align-items: center;
+            gap: 28px;
+
+            background: linear-gradient(
+                135deg,
+                #eff6ff,
+                #ffffff
+            );
+
+            border: 1px solid #dbeafe;
+            border-radius: 20px;
+
+            box-shadow:
+                0 12px 35px rgba(15, 23, 42, 0.08);
+        }
+
+        .location-icon {
+            width: 80px;
+            height: 80px;
+
+            flex-shrink: 0;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            background: #2563eb;
+            border-radius: 18px;
+
+            font-size: 38px;
+        }
+
+        .location-content h2 {
+            font-size: 30px;
+            margin-bottom: 5px;
+        }
+
+        .location-address {
+            color: #2563eb;
+            font-size: 18px;
+            font-weight: 700;
+        }
+
+        .location-description {
+            color: #64748b;
+            margin-top: 5px;
+        }
+
+        .location-info {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin: 17px 0;
+        }
+
+        .location-info span {
+            background: white;
+            border: 1px solid #dbeafe;
+
+            padding: 7px 12px;
+            border-radius: 20px;
+
+            font-size: 13px;
+            color: #334155;
+        }
+
+        .location-btn {
+            border: none;
+            background: #2563eb;
+            color: white;
+
+            padding: 11px 19px;
+            border-radius: 8px;
+
+            font-weight: 700;
+        }
+
+        .location-btn:hover {
+            background: #1d4ed8;
+        }
+
+
+        /* =========================
+           COMMON SECTION
+        ========================= */
+
+        .section {
+            padding: 80px 7%;
+        }
+
+        .section-light {
+            background: #f8fafc;
+        }
+
+        .section-white {
+            background: white;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 38px;
+            margin-bottom: 10px;
+        }
+
+        .section-subtitle {
+            text-align: center;
+            color: #64748b;
+            margin-bottom: 42px;
+            font-size: 17px;
+        }
+
+
+        /* =========================
+           WHY CHOOSE
+        ========================= */
+
+        .why-container {
+            max-width: 1150px;
+            margin: auto;
+
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 22px;
+        }
+
+        .why-card {
+            background: white;
+
+            padding: 30px 22px;
+
+            text-align: center;
+
+            border: 1px solid #e5e7eb;
+            border-radius: 16px;
+
+            transition: 0.3s;
+        }
+
+        .why-card:hover {
+            transform: translateY(-7px);
+
+            box-shadow:
+                0 15px 30px rgba(15, 23, 42, 0.09);
+        }
+
+        .why-icon {
+            font-size: 38px;
+            margin-bottom: 12px;
+        }
+
+        .why-card h3 {
+            font-size: 19px;
+            margin-bottom: 9px;
+        }
+
+        .why-card p {
+            color: #64748b;
+            font-size: 14px;
+        }
+
+
+        /* =========================
+           HOW IT WORKS
+        ========================= */
+
+        .steps-container {
+            max-width: 1050px;
+            margin: auto;
+
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 25px;
+        }
+
+        .step-card {
+            text-align: center;
+
+            padding: 35px 25px;
+
+            background: #f8fafc;
+
+            border: 1px solid #e5e7eb;
+            border-radius: 16px;
+        }
+
+        .step-number {
+            width: 55px;
+            height: 55px;
+
+            margin: 0 auto 17px;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            background: #2563eb;
+            color: white;
+
+            border-radius: 50%;
+
+            font-size: 21px;
+            font-weight: 800;
+        }
+
+        .step-card h3 {
+            margin-bottom: 8px;
+        }
+
+        .step-card p {
+            color: #64748b;
+        }
+
+
+        /* =========================
+           CATEGORIES
+        ========================= */
+
+        .category-container {
+            max-width: 1000px;
+            margin: auto;
+
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 25px;
+        }
+
+        .category-card {
+            background: white;
+
+            padding: 35px 25px;
+
+            text-align: center;
+
+            border: 1px solid #e5e7eb;
+            border-radius: 18px;
+
+            transition: 0.3s;
+        }
+
+        .category-card:hover {
+            transform: translateY(-7px);
+
+            box-shadow:
+                0 15px 30px rgba(15, 23, 42, 0.09);
+        }
+
+        .category-icon {
+            font-size: 50px;
+            margin-bottom: 12px;
+        }
+
+        .category-card h3 {
+            font-size: 23px;
+            margin-bottom: 8px;
+        }
+
+        .category-card p {
+            color: #64748b;
+            margin-bottom: 18px;
+        }
+
+        .category-btn {
+            border: none;
+
+            background: #2563eb;
+            color: white;
+
+            padding: 10px 18px;
+            border-radius: 8px;
+
+            font-weight: 700;
+        }
+
+        .category-btn:hover {
+            background: #1d4ed8;
+        }
+
+
+        /* =========================
+           PICKUP
+        ========================= */
+
+        .pickup-section {
+            padding: 70px 7%;
+            background: white;
+        }
+
+        .pickup-box {
+            max-width: 1000px;
+            margin: auto;
+
+            display: flex;
+            align-items: center;
+            gap: 25px;
+
+            padding: 35px;
+
+            background: #111827;
+            color: white;
+
+            border-radius: 18px;
+        }
+
+        .pickup-icon {
+            width: 75px;
+            height: 75px;
+
+            flex-shrink: 0;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            background: #2563eb;
+
+            border-radius: 15px;
+
+            font-size: 38px;
+        }
+
+        .pickup-box h2 {
+            font-size: 27px;
+            margin-bottom: 7px;
+        }
+
+        .pickup-box p {
+            color: #cbd5e1;
+            margin-bottom: 8px;
+        }
+
+        .pickup-box strong {
+            color: #93c5fd;
+        }
+
+
+        /* =========================
+           CTA
+        ========================= */
+
+        .cta {
+            padding: 80px 7%;
+
+            text-align: center;
+
+            color: white;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    #2563eb,
+                    #1e40af
+                );
+        }
+
+        .cta h2 {
+            font-size: 40px;
+            margin-bottom: 10px;
+        }
+
+        .cta p {
+            color: #dbeafe;
+            margin-bottom: 25px;
+        }
+
+        .cta-btn {
+            border: none;
+
+            background: white;
+            color: #1d4ed8;
+
+            padding: 13px 24px;
+
+            border-radius: 9px;
+
+            font-weight: 700;
+            font-size: 16px;
+        }
+
+        .cta-btn:hover {
+            background: #eff6ff;
+        }
+
+
+        /* =========================
+           FOOTER
+        ========================= */
+
+        footer {
+            background: #020617;
+            color: #cbd5e1;
+
+            text-align: center;
+
+            padding: 35px 20px;
+        }
+
+        footer p {
+            margin-bottom: 7px;
+            font-size: 14px;
+        }
+
+        .footer-location {
+            color: #94a3b8;
+        }
+
+
+        /* =========================
+           RESPONSIVE
+        ========================= */
+
+        @media (max-width: 1050px) {
+
+            .why-container {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .hero h1 {
+                font-size: 52px;
+            }
+
+            .nav-links {
+                gap: 18px;
+            }
+        }
+
+
+        @media (max-width: 700px) {
+
+            .navbar {
+                padding: 18px 5%;
+                flex-direction: column;
+                gap: 17px;
+            }
+
+            .logo {
+                font-size: 27px;
+            }
+
+            .nav-links {
+                flex-wrap: wrap;
+                justify-content: center;
+                gap: 12px 16px;
+            }
+
+            .nav-links a {
+                font-size: 13px;
+            }
+
+            .hero {
+                min-height: 540px;
+                padding: 60px 20px;
+            }
+
+            .hero h1 {
+                font-size: 40px;
+            }
+
+            .hero p {
+                font-size: 17px;
+            }
+
+            .location-container {
+                flex-direction: column;
+                text-align: center;
+                padding: 30px 20px;
+            }
+
+            .location-info {
+                justify-content: center;
+            }
+
+            .section {
+                padding: 65px 6%;
+            }
+
+            .section-title {
+                font-size: 30px;
+            }
+
+            .why-container {
+                grid-template-columns: 1fr;
+            }
+
+            .steps-container {
+                grid-template-columns: 1fr;
+            }
+
+            .category-container {
+                grid-template-columns: 1fr;
+            }
+
+            .pickup-box {
+                flex-direction: column;
+                text-align: center;
+                padding: 30px 20px;
+            }
+
+            .pickup-box h2 {
+                font-size: 24px;
+            }
+
+            .cta h2 {
+                font-size: 30px;
+            }
+        }
+
+    </style>
 
 </head>
 
@@ -18,22 +711,22 @@
 <body>
 
 
-    <!-- ================= NAVBAR ================= -->
+    <!-- =========================
+         NAVBAR
+    ========================= -->
 
     <header>
 
         <nav class="navbar">
 
-            <div class="logo">
+            <a href="index.html" class="logo">
                 🚗 AtulRide
-            </div>
-
+            </a>
 
             <ul class="nav-links">
 
                 <li>
-                    <a href="index.html"
-                        class="active">
+                    <a href="index.html" class="active">
                         Home
                     </a>
                 </li>
@@ -62,10 +755,8 @@
                     </a>
                 </li>
 
-                <!-- PROFILE -->
-
                 <li>
-                    <a href="profile.html">
+                    <a href="profile.html" class="profile-link">
                         👤 Profile
                     </a>
                 </li>
@@ -77,37 +768,40 @@
     </header>
 
 
-
-    <!-- ================= HERO ================= -->
+    <!-- =========================
+         HERO
+    ========================= -->
 
     <section class="hero">
 
         <div class="hero-content">
 
             <h1>
-                Rent Your Perfect Ride 🚗
+                Rent Your Perfect
+                <span class="hero-highlight">
+                    Ride 🚗
+                </span>
             </h1>
 
             <p>
                 Cars, SUVs and bikes available at
-                affordable prices.
-                Book your vehicle quickly and easily.
+                affordable prices. Book your vehicle
+                quickly and easily with AtulRide.
             </p>
-
 
             <div class="hero-buttons">
 
                 <button
-                    onclick="location.href='vehicles.html'">
+                    class="hero-btn primary-btn"
+                    onclick="window.location.href='vehicles.html'">
 
                     Browse Vehicles 🚘
 
                 </button>
 
-
                 <button
-                    class="secondary-btn"
-                    onclick="location.href='booking.html'">
+                    class="hero-btn secondary-btn"
+                    onclick="window.location.href='booking.html'">
 
                     Book Now ⚡
 
@@ -120,12 +814,71 @@
     </section>
 
 
+    <!-- =========================
+         LOCATION
+    ========================= -->
 
-    <!-- ================= WHY CHOOSE ATULRIDE ================= -->
+    <section class="location-section">
 
-    <section class="why-section">
+        <div class="location-container">
 
-        <h2>
+            <div class="location-icon">
+                📍
+            </div>
+
+            <div class="location-content">
+
+                <h2>
+                    AtulRide Showroom
+                </h2>
+
+                <p class="location-address">
+                    Ranchi, Jharkhand - 834001
+                </p>
+
+                <p class="location-description">
+                    Your booked vehicle will be available
+                    for pickup from our showroom.
+                </p>
+
+                <div class="location-info">
+
+                    <span>
+                        🏪 Showroom Pickup
+                    </span>
+
+                    <span>
+                        🚗 Cars & SUVs
+                    </span>
+
+                    <span>
+                        🏍️ Bikes
+                    </span>
+
+                </div>
+
+                <button
+                    class="location-btn"
+                    onclick="window.location.href='contact.html'">
+
+                    📍 View Location
+
+                </button>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- =========================
+         WHY CHOOSE ATULRIDE
+    ========================= -->
+
+    <section class="section section-light">
+
+        <h2 class="section-title">
             Why Choose AtulRide?
         </h2>
 
@@ -134,9 +887,7 @@
             and convenient rental experience.
         </p>
 
-
         <div class="why-container">
-
 
             <div class="why-card">
 
@@ -154,7 +905,6 @@
                 </p>
 
             </div>
-
 
 
             <div class="why-card">
@@ -175,7 +925,6 @@
             </div>
 
 
-
             <div class="why-card">
 
                 <div class="why-icon">
@@ -192,7 +941,6 @@
                 </p>
 
             </div>
-
 
 
             <div class="why-card">
@@ -212,18 +960,18 @@
 
             </div>
 
-
         </div>
 
     </section>
 
 
+    <!-- =========================
+         HOW IT WORKS
+    ========================= -->
 
-    <!-- ================= HOW IT WORKS ================= -->
+    <section class="section section-white">
 
-    <section class="how-section">
-
-        <h2>
+        <h2 class="section-title">
             How AtulRide Works
         </h2>
 
@@ -231,11 +979,9 @@
             Book your ride in three simple steps.
         </p>
 
+        <div class="steps-container">
 
-        <div class="how-container">
-
-
-            <div class="how-card">
+            <div class="step-card">
 
                 <div class="step-number">
                     1
@@ -253,8 +999,7 @@
             </div>
 
 
-
-            <div class="how-card">
+            <div class="step-card">
 
                 <div class="step-number">
                     2
@@ -272,36 +1017,35 @@
             </div>
 
 
-
-            <div class="how-card">
+            <div class="step-card">
 
                 <div class="step-number">
                     3
                 </div>
 
                 <h3>
-                    Enjoy Your Ride
+                    Pickup From Showroom
                 </h3>
 
                 <p>
-                    Complete payment and enjoy
-                    your journey.
+                    Visit the AtulRide showroom
+                    and collect your booked vehicle.
                 </p>
 
             </div>
-
 
         </div>
 
     </section>
 
 
+    <!-- =========================
+         CATEGORIES
+    ========================= -->
 
-    <!-- ================= CATEGORIES ================= -->
+    <section class="section section-light">
 
-    <section class="categories">
-
-        <h2>
+        <h2 class="section-title">
             Choose Your Vehicle
         </h2>
 
@@ -309,15 +1053,11 @@
             Find the perfect ride for your journey.
         </p>
 
-
         <div class="category-container">
-
-
-            <!-- CARS -->
 
             <div class="category-card">
 
-                <div class="icon">
+                <div class="category-icon">
                     🚗
                 </div>
 
@@ -331,7 +1071,8 @@
                 </p>
 
                 <button
-                    onclick="location.href='vehicles.html'">
+                    class="category-btn"
+                    onclick="window.location.href='vehicles.html'">
 
                     View Cars
 
@@ -340,12 +1081,9 @@
             </div>
 
 
-
-            <!-- BIKES -->
-
             <div class="category-card">
 
-                <div class="icon">
+                <div class="category-icon">
                     🏍️
                 </div>
 
@@ -359,7 +1097,8 @@
                 </p>
 
                 <button
-                    onclick="location.href='vehicles.html'">
+                    class="category-btn"
+                    onclick="window.location.href='vehicles.html'">
 
                     View Bikes
 
@@ -368,12 +1107,9 @@
             </div>
 
 
-
-            <!-- SUVS -->
-
             <div class="category-card">
 
-                <div class="icon">
+                <div class="category-icon">
                     🚙
                 </div>
 
@@ -387,7 +1123,8 @@
                 </p>
 
                 <button
-                    onclick="location.href='vehicles.html'">
+                    class="category-btn"
+                    onclick="window.location.href='vehicles.html'">
 
                     View SUVs
 
@@ -395,16 +1132,51 @@
 
             </div>
 
+        </div>
+
+    </section>
+
+
+    <!-- =========================
+         PICKUP LOCATION
+    ========================= -->
+
+    <section class="pickup-section">
+
+        <div class="pickup-box">
+
+            <div class="pickup-icon">
+                🏪
+            </div>
+
+            <div>
+
+                <h2>
+                    Vehicle Pickup From Showroom
+                </h2>
+
+                <p>
+                    After completing your booking,
+                    visit the AtulRide showroom to
+                    collect your vehicle.
+                </p>
+
+                <strong>
+                    📍 Ranchi, Jharkhand - 834001
+                </strong>
+
+            </div>
 
         </div>
 
     </section>
 
 
+    <!-- =========================
+         CTA
+    ========================= -->
 
-    <!-- ================= CALL TO ACTION ================= -->
-
-    <section class="cta-section">
+    <section class="cta">
 
         <h2>
             Ready to Start Your Journey? 🚗
@@ -415,7 +1187,8 @@
         </p>
 
         <button
-            onclick="location.href='vehicles.html'">
+            class="cta-btn"
+            onclick="window.location.href='vehicles.html'">
 
             Explore Vehicles
 
@@ -424,8 +1197,9 @@
     </section>
 
 
-
-    <!-- ================= FOOTER ================= -->
+    <!-- =========================
+         FOOTER
+    ========================= -->
 
     <footer>
 
@@ -437,11 +1211,12 @@
             🚗 Your Journey, Our Responsibility
         </p>
 
+        <p class="footer-location">
+            📍 Ranchi, Jharkhand - 834001
+        </p>
+
     </footer>
 
-
-
-    <script src="script.js"></script>
 
 </body>
 
