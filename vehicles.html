@@ -4,205 +4,1144 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
     <title>Available Vehicles - AtulRide</title>
 
-    <link rel="stylesheet" href="style.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        body {
+            background: #f5f7fb;
+            color: #111827;
+        }
+
+        /* ================= NAVBAR ================= */
+
+        nav {
+            background: #111827;
+            padding: 15px 7%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            color: white;
+        }
+
+        .logo {
+            font-size: 25px;
+            font-weight: bold;
+            color: #00d4ff;
+        }
+
+        nav ul {
+            display: flex;
+            gap: 22px;
+            list-style: none;
+        }
+
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            font-size: 14px;
+        }
+
+        nav ul li a:hover,
+        nav ul li a.active {
+            color: #00d4ff;
+        }
+
+        /* ================= HERO ================= */
+
+        .vehicles-hero {
+            min-height: 260px;
+            background:
+                linear-gradient(
+                    rgba(5, 15, 35, 0.78),
+                    rgba(5, 15, 35, 0.78)
+                ),
+                url("https://images.unsplash.com/photo-1492144534655-ae79c964c9d7?auto=format&fit=crop&w=1600&q=85");
+
+            background-size: cover;
+            background-position: center;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            text-align: center;
+            color: white;
+            padding: 40px 20px;
+        }
+
+        .hero-content span {
+            color: #38bdf8;
+            font-size: 13px;
+            font-weight: bold;
+            letter-spacing: 1px;
+        }
+
+        .hero-content h1 {
+            font-size: 40px;
+            margin: 14px 0;
+        }
+
+        .hero-content p {
+            max-width: 650px;
+            margin: auto;
+            color: #e2e8f0;
+            line-height: 1.6;
+            font-size: 14px;
+        }
+
+        /* ================= VEHICLES ================= */
+
+        .vehicles-section {
+            width: 90%;
+            max-width: 1200px;
+            margin: 55px auto;
+        }
+
+        .section-heading {
+            text-align: center;
+            margin-bottom: 35px;
+        }
+
+        .section-heading span {
+            color: #2563eb;
+            font-size: 12px;
+            font-weight: bold;
+            letter-spacing: 1px;
+        }
+
+        .section-heading h2 {
+            font-size: 30px;
+            margin: 10px 0;
+        }
+
+        .section-heading p {
+            color: #64748b;
+            font-size: 14px;
+        }
+
+        .vehicle-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 25px;
+        }
+
+        /* ================= CARD ================= */
+
+        .vehicle-card {
+            background: white;
+            border: 1px solid #e5e7eb;
+            border-radius: 15px;
+            overflow: hidden;
+
+            box-shadow:
+                0 8px 25px rgba(0, 0, 0, 0.06);
+
+            transition: 0.3s;
+        }
+
+        .vehicle-card:hover {
+            transform: translateY(-5px);
+
+            box-shadow:
+                0 15px 35px rgba(0, 0, 0, 0.10);
+        }
+
+        /* ================= IMAGE ================= */
+
+        .vehicle-image {
+            width: 100%;
+            height: 250px;
+            overflow: hidden;
+            position: relative;
+            background: #e5e7eb;
+        }
+
+        .vehicle-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center;
+            display: block;
+            transition: transform 0.4s;
+        }
+
+        .vehicle-card:hover .vehicle-image img {
+            transform: scale(1.04);
+        }
+
+        .vehicle-badge {
+            position: absolute;
+            top: 15px;
+            left: 15px;
+
+            background: #2563eb;
+            color: white;
+
+            padding: 7px 12px;
+            border-radius: 20px;
+
+            font-size: 10px;
+            font-weight: bold;
+        }
+
+        /* ================= CONTENT ================= */
+
+        .vehicle-content {
+            padding: 22px;
+        }
+
+        .vehicle-content h3 {
+            font-size: 22px;
+            margin-bottom: 8px;
+        }
+
+        .vehicle-description {
+            color: #64748b;
+            font-size: 12px;
+            line-height: 1.6;
+            min-height: 40px;
+        }
+
+        /* ================= PRICE ================= */
+
+        .price-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 12px;
+            margin: 20px 0;
+        }
+
+        .price-row > div {
+            background: #f8fafc;
+            border: 1px solid #e2e8f0;
+            border-radius: 9px;
+            padding: 12px;
+        }
+
+        .price-row span {
+            display: block;
+            color: #64748b;
+            font-size: 10px;
+            margin-bottom: 5px;
+        }
+
+        .price-row strong {
+            color: #111827;
+            font-size: 18px;
+        }
+
+        .price-row small {
+            color: #64748b;
+            font-size: 10px;
+        }
+
+        /* ================= FEATURES ================= */
+
+        .vehicle-features {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 7px;
+            margin-bottom: 18px;
+        }
+
+        .vehicle-features span {
+            background: #eff6ff;
+            color: #1d4ed8;
+            padding: 7px 9px;
+            border-radius: 6px;
+            font-size: 10px;
+        }
+
+        /* ================= BUTTON ================= */
+
+        .rent-btn {
+            display: block;
+            width: 100%;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    #2563eb,
+                    #1d4ed8
+                );
+
+            color: white;
+            text-decoration: none;
+            text-align: center;
+
+            padding: 13px;
+            border-radius: 8px;
+
+            font-size: 13px;
+            font-weight: bold;
+
+            transition: 0.2s;
+        }
+
+        .rent-btn:hover {
+            background: #1e40af;
+        }
+
+        /* ================= PICKUP ================= */
+
+        .pickup-section {
+            width: 90%;
+            max-width: 1200px;
+            margin: 65px auto;
+        }
+
+        .location-grid {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 15px;
+        }
+
+        .location-card {
+            background: white;
+            border: 1px solid #e5e7eb;
+            border-radius: 12px;
+            padding: 20px;
+            text-align: center;
+
+            box-shadow:
+                0 5px 18px rgba(0, 0, 0, 0.05);
+        }
+
+        .location-card.unavailable {
+            opacity: 0.75;
+        }
+
+        .location-icon {
+            font-size: 25px;
+            margin-bottom: 10px;
+        }
+
+        .location-card h3 {
+            font-size: 15px;
+            margin-bottom: 8px;
+        }
+
+        .status {
+            display: block;
+            font-size: 11px;
+            font-weight: bold;
+            margin-bottom: 15px;
+        }
+
+        .available-status {
+            color: #16a34a;
+        }
+
+        .unavailable-status {
+            color: #dc2626;
+        }
+
+        .location-btn {
+            display: block;
+            width: 100%;
+            background: #2563eb;
+            color: white;
+
+            text-decoration: none;
+            border: none;
+
+            padding: 9px;
+            border-radius: 6px;
+
+            font-size: 11px;
+            cursor: pointer;
+        }
+
+        .location-btn.disabled {
+            background: #cbd5e1;
+            cursor: not-allowed;
+        }
+
+        /* ================= SHOWROOM ================= */
+
+        .showroom-section {
+            width: 90%;
+            max-width: 1200px;
+            margin: 60px auto;
+
+            background: #111827;
+            color: white;
+
+            border-radius: 15px;
+            padding: 30px;
+        }
+
+        .showroom-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 25px;
+        }
+
+        .showroom-content > div > span {
+            color: #38bdf8;
+            font-size: 11px;
+            font-weight: bold;
+        }
+
+        .showroom-content h2 {
+            font-size: 25px;
+            margin: 9px 0;
+        }
+
+        .showroom-content p {
+            max-width: 650px;
+            color: #cbd5e1;
+            font-size: 13px;
+            line-height: 1.6;
+        }
+
+        .maps-btn {
+            flex-shrink: 0;
+
+            background: #2563eb;
+            color: white;
+            text-decoration: none;
+
+            padding: 12px 18px;
+            border-radius: 8px;
+
+            font-size: 12px;
+            font-weight: bold;
+        }
+
+        .maps-btn:hover {
+            background: #1d4ed8;
+        }
+
+        /* ================= CTA ================= */
+
+        .vehicle-cta {
+            text-align: center;
+            padding: 65px 20px;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    #eff6ff,
+                    #f8fafc
+                );
+        }
+
+        .vehicle-cta h2 {
+            font-size: 30px;
+            margin-bottom: 10px;
+        }
+
+        .vehicle-cta p {
+            color: #64748b;
+            font-size: 14px;
+            margin-bottom: 22px;
+        }
+
+        .cta-btn {
+            display: inline-block;
+
+            background: #2563eb;
+            color: white;
+            text-decoration: none;
+
+            padding: 13px 25px;
+            border-radius: 8px;
+
+            font-size: 13px;
+            font-weight: bold;
+        }
+
+        /* ================= FOOTER ================= */
+
+        footer {
+            background: #111827;
+            color: white;
+
+            text-align: center;
+            padding: 30px 20px;
+        }
+
+        .footer-logo {
+            color: #00d4ff;
+            font-size: 23px;
+            font-weight: bold;
+            margin-bottom: 8px;
+        }
+
+        footer p {
+            color: #cbd5e1;
+            font-size: 12px;
+            margin: 5px;
+        }
+
+        .copyright {
+            margin-top: 15px !important;
+            color: #64748b !important;
+        }
+
+        /* ================= RESPONSIVE ================= */
+
+        @media (max-width: 1000px) {
+
+            .location-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+
+        }
+
+        @media (max-width: 800px) {
+
+            nav {
+                flex-direction: column;
+                gap: 15px;
+            }
+
+            nav ul {
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+
+            .vehicle-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .location-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .showroom-content {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .hero-content h1 {
+                font-size: 32px;
+            }
+
+        }
+
+        @media (max-width: 500px) {
+
+            .location-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .vehicle-image {
+                height: 220px;
+            }
+
+            .price-row {
+                grid-template-columns: 1fr;
+            }
+
+            .hero-content h1 {
+                font-size: 28px;
+            }
+
+            .section-heading h2 {
+                font-size: 25px;
+            }
+
+        }
+    </style>
 </head>
 
 <body>
 
-    <!-- NAVBAR -->
-    <header>
-        <nav class="navbar">
+    <!-- ================= NAVBAR ================= -->
 
-            <div class="logo">🚗 AtulRide</div>
+    <nav>
 
-            <ul class="nav-links">
+        <div class="logo">
+            AtulRide
+        </div>
 
-                <li>
-                    <a href="index.html">Home</a>
-                </li>
+        <ul>
 
-                <li>
-                    <a href="vehicles.html" class="active">Vehicles</a>
-                </li>
+            <li>
+                <a href="index.html">
+                    Home
+                </a>
+            </li>
 
-                <li>
-                    <a href="booking.html">Booking</a>
-                </li>
+            <li>
+                <a href="vehicles.html" class="active">
+                    Vehicles
+                </a>
+            </li>
 
-                <li>
-                    <a href="about.html">About</a>
-                </li>
+            <li>
+                <a href="booking.html">
+                    Booking
+                </a>
+            </li>
 
-                <li>
-                    <a href="contact.html">Contact</a>
-                </li>
+            <li>
+                <a href="about.html">
+                    About
+                </a>
+            </li>
 
-            </ul>
+            <li>
+                <a href="contact.html">
+                    Contact
+                </a>
+            </li>
 
-        </nav>
-    </header>
+            <li>
+                <a href="profile.html">
+                    Profile
+                </a>
+            </li>
 
+        </ul>
 
-    <!-- VEHICLES SECTION -->
-    <section class="vehicles-section">
-
-        <h1>Available Vehicles 🚗</h1>
-
-        <p class="subtitle">
-            Choose your vehicle and book your ride.
-        </p>
-
-
-        <div class="vehicle-container">
-
-
-            <!-- MARUTI SWIFT -->
-            <div class="vehicle-card">
-
-                <div class="vehicle-image">
-                    🚗
-                </div>
-
-                <h2>Maruti Swift</h2>
-
-                <p>
-                    Comfortable & fuel efficient car
-                </p>
-
-                <h3>
-                    ₹1,200 / day
-                </h3>
-
-                <span>
-                    ₹150 / hour
-                </span>
-
-                <br><br>
-
-                <button
-                    onclick="bookVehicle('Maruti Swift', 1200)"
-                >
-                    Rent Now
-                </button>
-
-            </div>
+    </nav>
 
 
-            <!-- HYUNDAI CRETA -->
-            <div class="vehicle-card">
+    <!-- ================= HERO ================= -->
 
-                <div class="vehicle-image">
-                    🚙
-                </div>
+    <section class="vehicles-hero">
 
-                <h2>Hyundai Creta</h2>
+        <div class="hero-content">
 
-                <p>
-                    Premium SUV for long journeys
-                </p>
+            <span>
+                🚗 ATULRIDE VEHICLES
+            </span>
 
-                <h3>
-                    ₹2,000 / day
-                </h3>
+            <h1>
+                Available Vehicles
+            </h1>
 
-                <span>
-                    ₹250 / hour
-                </span>
-
-                <br><br>
-
-                <button
-                    onclick="bookVehicle('Hyundai Creta', 2000)"
-                >
-                    Rent Now
-                </button>
-
-            </div>
-
-
-            <!-- ROYAL ENFIELD -->
-            <div class="vehicle-card">
-
-                <div class="vehicle-image">
-                    🏍️
-                </div>
-
-                <h2>Royal Enfield</h2>
-
-                <p>
-                    Powerful bike for your trip
-                </p>
-
-                <h3>
-                    ₹900 / day
-                </h3>
-
-                <span>
-                    ₹100 / hour
-                </span>
-
-                <br><br>
-
-                <button
-                    onclick="bookVehicle('Royal Enfield', 900)"
-                >
-                    Rent Now
-                </button>
-
-            </div>
-
-
-            <!-- HONDA ACTIVA -->
-            <div class="vehicle-card">
-
-                <div class="vehicle-image">
-                    🛵
-                </div>
-
-                <h2>Honda Activa</h2>
-
-                <p>
-                    Easy and affordable city ride
-                </p>
-
-                <h3>
-                    ₹500 / day
-                </h3>
-
-                <span>
-                    ₹60 / hour
-                </span>
-
-                <br><br>
-
-                <button
-                    onclick="bookVehicle('Honda Activa', 500)"
-                >
-                    Rent Now
-                </button>
-
-            </div>
-
+            <p>
+                Choose from our range of cars, SUVs and bikes
+                with flexible hourly and daily rental options.
+            </p>
 
         </div>
 
     </section>
 
 
-    <!-- FOOTER -->
-    <footer>
+    <!-- ================= VEHICLES ================= -->
+
+    <section class="vehicles-section">
+
+        <div class="section-heading">
+
+            <span>
+                OUR FLEET
+            </span>
+
+            <h2>
+                Choose Your Perfect Ride
+            </h2>
+
+            <p>
+                Select a vehicle according to your journey and budget.
+            </p>
+
+        </div>
+
+
+        <div class="vehicle-grid">
+
+
+            <!-- ================= MARUTI SWIFT ================= -->
+
+            <div class="vehicle-card">
+
+                <div class="vehicle-image">
+
+                    <img
+                        src="https://commons.wikimedia.org/wiki/Special:Redirect/file/Swift.jpg"
+                        alt="Maruti Swift"
+                        loading="lazy">
+
+                    <span class="vehicle-badge">
+                        🚗 CAR
+                    </span>
+
+                </div>
+
+                <div class="vehicle-content">
+
+                    <h3>
+                        Maruti Swift
+                    </h3>
+
+                    <p class="vehicle-description">
+                        Comfortable and economical hatchback
+                        suitable for city travel and daily trips.
+                    </p>
+
+                    <div class="price-row">
+
+                        <div>
+                            <span>Hourly Rate</span>
+                            <strong>₹150</strong>
+                            <small>/hr</small>
+                        </div>
+
+                        <div>
+                            <span>Daily Rate</span>
+                            <strong>₹1,200</strong>
+                            <small>/day</small>
+                        </div>
+
+                    </div>
+
+                    <div class="vehicle-features">
+
+                        <span>👥 5 Seats</span>
+                        <span>⚙️ Manual</span>
+                        <span>⛽ Petrol</span>
+                        <span>❄️ AC</span>
+
+                    </div>
+
+                    <a
+                        href="booking.html?vehicle=Maruti%20Swift"
+                        class="rent-btn">
+
+                        Rent Now →
+
+                    </a>
+
+                </div>
+
+            </div>
+
+
+            <!-- ================= HYUNDAI CRETA ================= -->
+
+            <div class="vehicle-card">
+
+                <div class="vehicle-image">
+
+                    <img
+                        src="https://commons.wikimedia.org/wiki/Special:Redirect/file/2021_Hyundai_Creta_SX%28O%29_CRDi_%28India%29_front_view.jpg"
+                        alt="Hyundai Creta"
+                        loading="lazy">
+
+                    <span class="vehicle-badge">
+                        🚙 SUV
+                    </span>
+
+                </div>
+
+                <div class="vehicle-content">
+
+                    <h3>
+                        Hyundai Creta
+                    </h3>
+
+                    <p class="vehicle-description">
+                        Premium SUV with spacious interiors,
+                        perfect for long journeys and family trips.
+                    </p>
+
+                    <div class="price-row">
+
+                        <div>
+                            <span>Hourly Rate</span>
+                            <strong>₹250</strong>
+                            <small>/hr</small>
+                        </div>
+
+                        <div>
+                            <span>Daily Rate</span>
+                            <strong>₹2,000</strong>
+                            <small>/day</small>
+                        </div>
+
+                    </div>
+
+                    <div class="vehicle-features">
+
+                        <span>👥 5 Seats</span>
+                        <span>⚙️ Automatic</span>
+                        <span>⛽ Petrol</span>
+                        <span>❄️ AC</span>
+
+                    </div>
+
+                    <a
+                        href="booking.html?vehicle=Hyundai%20Creta"
+                        class="rent-btn">
+
+                        Rent Now →
+
+                    </a>
+
+                </div>
+
+            </div>
+
+
+            <!-- ================= ROYAL ENFIELD ================= -->
+
+            <div class="vehicle-card">
+
+                <div class="vehicle-image">
+
+                    <img
+                        src="https://commons.wikimedia.org/wiki/Special:Redirect/file/Royal_Enfield_Classic_350.jpg"
+                        alt="Royal Enfield Classic 350"
+                        loading="lazy">
+
+                    <span class="vehicle-badge">
+                        🏍️ BIKE
+                    </span>
+
+                </div>
+
+                <div class="vehicle-content">
+
+                    <h3>
+                        Royal Enfield
+                    </h3>
+
+                    <p class="vehicle-description">
+                        Powerful and comfortable bike
+                        for city rides and road trips.
+                    </p>
+
+                    <div class="price-row">
+
+                        <div>
+                            <span>Hourly Rate</span>
+                            <strong>₹100</strong>
+                            <small>/hr</small>
+                        </div>
+
+                        <div>
+                            <span>Daily Rate</span>
+                            <strong>₹900</strong>
+                            <small>/day</small>
+                        </div>
+
+                    </div>
+
+                    <div class="vehicle-features">
+
+                        <span>👤 2 Seats</span>
+                        <span>⚙️ Manual</span>
+                        <span>⛽ Petrol</span>
+
+                    </div>
+
+                    <a
+                        href="booking.html?vehicle=Royal%20Enfield"
+                        class="rent-btn">
+
+                        Rent Now →
+
+                    </a>
+
+                </div>
+
+            </div>
+
+
+            <!-- ================= HONDA ACTIVA ================= -->
+
+            <div class="vehicle-card">
+
+                <div class="vehicle-image">
+
+                    <img
+                        src="https://commons.wikimedia.org/wiki/Special:Redirect/file/Honda_Activa_6G.jpg"
+                        alt="Honda Activa"
+                        loading="lazy">
+
+                    <span class="vehicle-badge">
+                        🛵 SCOOTER
+                    </span>
+
+                </div>
+
+                <div class="vehicle-content">
+
+                    <h3>
+                        Honda Activa
+                    </h3>
+
+                    <p class="vehicle-description">
+                        Easy and affordable scooter
+                        for convenient city transportation.
+                    </p>
+
+                    <div class="price-row">
+
+                        <div>
+                            <span>Hourly Rate</span>
+                            <strong>₹60</strong>
+                            <small>/hr</small>
+                        </div>
+
+                        <div>
+                            <span>Daily Rate</span>
+                            <strong>₹500</strong>
+                            <small>/day</small>
+                        </div>
+
+                    </div>
+
+                    <div class="vehicle-features">
+
+                        <span>👤 2 Seats</span>
+                        <span>⚙️ Automatic</span>
+                        <span>⛽ Petrol</span>
+
+                    </div>
+
+                    <a
+                        href="booking.html?vehicle=Honda%20Activa"
+                        class="rent-btn">
+
+                        Rent Now →
+
+                    </a>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- ================= PICKUP LOCATIONS ================= -->
+
+    <section class="pickup-section">
+
+        <div class="section-heading">
+
+            <span>
+                PICKUP LOCATIONS
+            </span>
+
+            <h2>
+                Choose Your Pickup Location
+            </h2>
+
+            <p>
+                Select an available AtulRide service location
+                while making your booking.
+            </p>
+
+        </div>
+
+
+        <div class="location-grid">
+
+            <div class="location-card">
+
+                <div class="location-icon">
+                    📍
+                </div>
+
+                <h3>
+                    Main Road
+                </h3>
+
+                <span class="status available-status">
+                    ● Available
+                </span>
+
+                <a href="booking.html" class="location-btn">
+                    Select
+                </a>
+
+            </div>
+
+
+            <div class="location-card unavailable">
+
+                <div class="location-icon">
+                    📍
+                </div>
+
+                <h3>
+                    Lalpur
+                </h3>
+
+                <span class="status unavailable-status">
+                    ● Unavailable
+                </span>
+
+                <button
+                    class="location-btn disabled"
+                    disabled>
+
+                    Unavailable
+
+                </button>
+
+            </div>
+
+
+            <div class="location-card">
+
+                <div class="location-icon">
+                    📍
+                </div>
+
+                <h3>
+                    Kanke Road
+                </h3>
+
+                <span class="status available-status">
+                    ● Available
+                </span>
+
+                <a href="booking.html" class="location-btn">
+                    Select
+                </a>
+
+            </div>
+
+
+            <div class="location-card">
+
+                <div class="location-icon">
+                    📍
+                </div>
+
+                <h3>
+                    Harmu
+                </h3>
+
+                <span class="status available-status">
+                    ● Available
+                </span>
+
+                <a href="booking.html" class="location-btn">
+                    Select
+                </a>
+
+            </div>
+
+
+            <div class="location-card unavailable">
+
+                <div class="location-icon">
+                    📍
+                </div>
+
+                <h3>
+                    Doranda
+                </h3>
+
+                <span class="status unavailable-status">
+                    ● Unavailable
+                </span>
+
+                <button
+                    class="location-btn disabled"
+                    disabled>
+
+                    Unavailable
+
+                </button>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- ================= SHOWROOM ================= -->
+
+    <section class="showroom-section">
+
+        <div class="showroom-content">
+
+            <div>
+
+                <span>
+                    ATULRIDE SHOWROOM
+                </span>
+
+                <h2>
+                    Pickup From Our Showroom
+                </h2>
+
+                <p>
+                    After completing your booking,
+                    visit the AtulRide showroom in
+                    Ranchi, Jharkhand – 834001
+                    to collect your vehicle.
+                </p>
+
+            </div>
+
+            <a
+                href="https://www.google.com/maps/search/?api=1&query=Ranchi+Jharkhand+834001"
+                target="_blank"
+                class="maps-btn">
+
+                📍 View on Google Maps
+
+            </a>
+
+        </div>
+
+    </section>
+
+
+    <!-- ================= CTA ================= -->
+
+    <section class="vehicle-cta">
+
+        <h2>
+            Ready to Start Your Journey?
+        </h2>
 
         <p>
+            Choose your vehicle and book your ride today.
+        </p>
+
+        <a
+            href="booking.html"
+            class="cta-btn">
+
+            Book Your Ride →
+
+        </a>
+
+    </section>
+
+
+    <!-- ================= FOOTER ================= -->
+
+    <footer>
+
+        <div class="footer-logo">
+            AtulRide
+        </div>
+
+        <p>
+            Simple, convenient and flexible vehicle rental.
+        </p>
+
+        <p class="copyright">
             © 2026 AtulRide. All Rights Reserved.
         </p>
 
     </footer>
-
-
-    <script src="script.js"></script>
 
 </body>
 

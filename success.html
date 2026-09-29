@@ -1,462 +1,977 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <meta name="viewport"
-        content="width=device-width, initial-scale=1.0">
+    <title>Booking Confirmed - AtulRide</title>
 
-    <title>Booking Successful - AtulRide</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
 
-    <link rel="stylesheet" href="style.css">
+        body {
+            background: #f4f7fb;
+            color: #111827;
+        }
 
+        /* ================= NAVBAR ================= */
+
+        nav {
+            background: #111827;
+            padding: 16px 7%;
+
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+
+            color: white;
+        }
+
+        .logo {
+            font-size: 25px;
+            font-weight: bold;
+            color: #00d4ff;
+        }
+
+        nav ul {
+            list-style: none;
+
+            display: flex;
+            gap: 22px;
+        }
+
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            font-size: 14px;
+        }
+
+        nav ul li a:hover {
+            color: #00d4ff;
+        }
+
+
+        /* ================= MAIN ================= */
+
+        .confirmation-wrapper {
+            width: 92%;
+            max-width: 850px;
+
+            margin: 45px auto;
+        }
+
+
+        /* ================= SUCCESS HEADER ================= */
+
+        .success-card {
+            background: white;
+
+            border-radius: 18px;
+
+            padding: 35px 25px;
+
+            text-align: center;
+
+            box-shadow:
+                0 10px 35px rgba(0,0,0,0.08);
+
+            border: 1px solid #e5e7eb;
+        }
+
+        .success-icon {
+            width: 75px;
+            height: 75px;
+
+            margin: auto;
+
+            background: #dcfce7;
+
+            color: #16a34a;
+
+            border-radius: 50%;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            font-size: 40px;
+
+            font-weight: bold;
+        }
+
+        .success-card h1 {
+            margin-top: 20px;
+
+            font-size: 32px;
+
+            color: #15803d;
+        }
+
+        .success-card p {
+            margin-top: 10px;
+
+            color: #64748b;
+
+            font-size: 14px;
+
+            line-height: 1.6;
+        }
+
+        .booking-id {
+            display: inline-block;
+
+            margin-top: 18px;
+
+            padding: 9px 15px;
+
+            border-radius: 20px;
+
+            background: #eff6ff;
+
+            color: #1d4ed8;
+
+            font-weight: bold;
+
+            font-size: 13px;
+        }
+
+
+        /* ================= DETAILS ================= */
+
+        .details-card {
+            background: white;
+
+            margin-top: 22px;
+
+            padding: 25px;
+
+            border-radius: 16px;
+
+            border: 1px solid #e5e7eb;
+
+            box-shadow:
+                0 8px 25px rgba(0,0,0,0.05);
+        }
+
+        .details-card h2 {
+            font-size: 20px;
+
+            margin-bottom: 20px;
+
+            color: #111827;
+        }
+
+        .details-grid {
+            display: grid;
+
+            grid-template-columns:
+                repeat(2, 1fr);
+
+            gap: 14px;
+        }
+
+        .detail-box {
+            background: #f8fafc;
+
+            border-radius: 10px;
+
+            padding: 15px;
+        }
+
+        .detail-box span {
+            display: block;
+
+            color: #64748b;
+
+            font-size: 12px;
+
+            margin-bottom: 6px;
+        }
+
+        .detail-box strong {
+            font-size: 14px;
+
+            color: #111827;
+
+            word-break: break-word;
+        }
+
+
+        /* ================= RENT ================= */
+
+        .amount-box {
+            margin-top: 20px;
+
+            padding: 20px;
+
+            border-radius: 12px;
+
+            background: #eff6ff;
+
+            border: 1px solid #bfdbfe;
+
+            display: flex;
+
+            justify-content: space-between;
+
+            align-items: center;
+        }
+
+        .amount-box span {
+            font-size: 15px;
+
+            font-weight: bold;
+
+            color: #1e3a8a;
+        }
+
+        .amount-box strong {
+            font-size: 25px;
+
+            color: #16a34a;
+        }
+
+
+        /* ================= PAYMENT ================= */
+
+        .payment-status {
+            margin-top: 20px;
+
+            padding: 16px;
+
+            border-radius: 10px;
+
+            background: #f0fdf4;
+
+            border: 1px solid #bbf7d0;
+
+            display: flex;
+
+            justify-content: space-between;
+
+            align-items: center;
+        }
+
+        .payment-status span {
+            font-size: 13px;
+
+            color: #374151;
+        }
+
+        #paymentStatus {
+            color: #15803d;
+
+            font-weight: bold;
+        }
+
+
+        /* ================= PICKUP NOTE ================= */
+
+        .pickup-note {
+            margin-top: 22px;
+
+            padding: 18px;
+
+            border-radius: 12px;
+
+            background: #fff7ed;
+
+            border: 1px solid #fed7aa;
+        }
+
+        .pickup-note h3 {
+            color: #c2410c;
+
+            font-size: 16px;
+
+            margin-bottom: 7px;
+        }
+
+        .pickup-note p {
+            color: #7c2d12;
+
+            font-size: 13px;
+
+            line-height: 1.6;
+        }
+
+
+        /* ================= BUTTONS ================= */
+
+        .buttons {
+            display: flex;
+
+            justify-content: center;
+
+            gap: 12px;
+
+            flex-wrap: wrap;
+
+            margin-top: 25px;
+        }
+
+        .btn {
+            border: none;
+
+            text-decoration: none;
+
+            padding: 13px 22px;
+
+            border-radius: 8px;
+
+            font-size: 13px;
+
+            font-weight: bold;
+
+            cursor: pointer;
+        }
+
+        .home-btn {
+            background: #2563eb;
+
+            color: white;
+        }
+
+        .home-btn:hover {
+            background: #1d4ed8;
+        }
+
+        .profile-btn {
+            background: #111827;
+
+            color: white;
+        }
+
+        .profile-btn:hover {
+            background: #030712;
+        }
+
+        .print-btn {
+            background: #e5e7eb;
+
+            color: #111827;
+        }
+
+        .print-btn:hover {
+            background: #d1d5db;
+        }
+
+
+        /* ================= FOOTER ================= */
+
+        footer {
+            background: #111827;
+
+            color: white;
+
+            text-align: center;
+
+            padding: 25px;
+
+            margin-top: 50px;
+
+            font-size: 13px;
+        }
+
+
+        /* ================= MOBILE ================= */
+
+        @media(max-width: 650px) {
+
+            nav {
+                flex-direction: column;
+
+                gap: 15px;
+            }
+
+            nav ul {
+                flex-wrap: wrap;
+
+                justify-content: center;
+
+                gap: 12px;
+            }
+
+            .success-card h1 {
+                font-size: 27px;
+            }
+
+            .details-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .amount-box,
+            .payment-status {
+                flex-direction: column;
+
+                align-items: flex-start;
+
+                gap: 8px;
+            }
+
+            .btn {
+                width: 100%;
+
+                text-align: center;
+            }
+        }
+
+
+        /* ================= PRINT ================= */
+
+        @media print {
+
+            nav,
+            footer,
+            .buttons {
+                display: none;
+            }
+
+            body {
+                background: white;
+            }
+
+            .confirmation-wrapper {
+                width: 100%;
+
+                margin: 0;
+            }
+
+            .success-card,
+            .details-card {
+                box-shadow: none;
+
+                border: 1px solid #ddd;
+            }
+        }
+
+    </style>
 </head>
 
 
 <body>
 
 
-    <!-- ================= NAVBAR ================= -->
+<!-- ================= NAVBAR ================= -->
 
-    <header>
+<nav>
 
-        <nav class="navbar">
+    <div class="logo">
+        AtulRide
+    </div>
 
-            <div class="logo">
-                🚗 AtulRide
-            </div>
+    <ul>
 
-            <ul class="nav-links">
+        <li>
+            <a href="index.html">
+                Home
+            </a>
+        </li>
 
-                <li>
-                    <a href="index.html">
-                        Home
-                    </a>
-                </li>
+        <li>
+            <a href="vehicles.html">
+                Vehicles
+            </a>
+        </li>
 
-                <li>
-                    <a href="vehicles.html">
-                        Vehicles
-                    </a>
-                </li>
+        <li>
+            <a href="booking.html">
+                Booking
+            </a>
+        </li>
 
-                <li>
-                    <a href="booking.html">
-                        Booking
-                    </a>
-                </li>
+        <li>
+            <a href="about.html">
+                About
+            </a>
+        </li>
 
-                <li>
-                    <a href="about.html">
-                        About
-                    </a>
-                </li>
+        <li>
+            <a href="contact.html">
+                Contact
+            </a>
+        </li>
 
-                <li>
-                    <a href="contact.html">
-                        Contact
-                    </a>
-                </li>
+        <li>
+            <a href="profile.html">
+                Profile
+            </a>
+        </li>
 
-            </ul>
+    </ul>
 
-        </nav>
+</nav>
 
-    </header>
 
+<!-- ================= CONFIRMATION ================= -->
 
-    <!-- ================= SUCCESS ================= -->
+<main class="confirmation-wrapper">
 
-    <section class="success-section">
 
-        <div class="success-card">
+    <!-- SUCCESS -->
 
+    <div class="success-card">
 
-            <!-- SUCCESS ICON -->
+        <div class="success-icon">
+            ✓
+        </div>
 
-            <div class="success-icon">
-                ✓
-            </div>
+        <h1>
+            Booking Confirmed!
+        </h1>
 
+        <p>
+            Your AtulRide vehicle booking has been
+            successfully confirmed.
+        </p>
 
-            <h1>
-                Booking Confirmed! 🎉
-            </h1>
+        <p>
+            Please keep your booking details safe
+            and visit the selected pickup location
+            at the scheduled time.
+        </p>
 
+        <div class="booking-id">
+            Booking ID:
+            <span id="bookingId">
+                ATULRIDE-000000
+            </span>
+        </div>
 
-            <p class="success-message">
-                Your AtulRide vehicle booking has been
-                successfully confirmed.
-            </p>
+    </div>
 
 
-            <!-- BOOKING ID -->
+    <!-- BOOKING DETAILS -->
 
-            <div style="
-                background:#f1f7ff;
-                padding:15px;
-                border-radius:10px;
-                margin-bottom:25px;
-            ">
+    <div class="details-card">
 
-                <span style="color:#777;">
-                    Booking ID
-                </span>
+        <h2>
+            🚗 Booking Details
+        </h2>
 
-                <br>
 
-                <strong
-                    id="bookingId"
-                    style="
-                        font-size:20px;
-                        color:#007bff;
-                    ">
-                    AR-000000
-                </strong>
+        <div class="details-grid">
 
-            </div>
 
-
-            <!-- ================= DETAILS ================= -->
-
-            <div class="success-details">
-
-
-                <!-- CUSTOMER -->
-
-                <div>
-
-                    <span>
-                        Customer
-                    </span>
-
-                    <strong id="successName">
-                        -
-                    </strong>
-
-                </div>
-
-
-                <!-- MOBILE -->
-
-                <div>
-
-                    <span>
-                        Mobile
-                    </span>
-
-                    <strong id="successMobile">
-                        -
-                    </strong>
-
-                </div>
-
-
-                <!-- VEHICLE -->
-
-                <div>
-
-                    <span>
-                        Vehicle
-                    </span>
-
-                    <strong id="successVehicle">
-                        -
-                    </strong>
-
-                </div>
-
-
-                <!-- RC -->
-
-                <div>
-
-                    <span>
-                        RC Number
-                    </span>
-
-                    <strong id="successRC">
-                        -
-                    </strong>
-
-                </div>
-
-
-                <!-- RENTAL TYPE -->
-
-                <div>
-
-                    <span>
-                        Rental Type
-                    </span>
-
-                    <strong id="successRentalType">
-                        -
-                    </strong>
-
-                </div>
-
-
-                <!-- PICKUP -->
-
-                <div>
-
-                    <span>
-                        Pickup
-                    </span>
-
-                    <strong id="successPickup">
-                        -
-                    </strong>
-
-                </div>
-
-
-                <!-- RETURN -->
-
-                <div>
-
-                    <span>
-                        Return
-                    </span>
-
-                    <strong id="successReturn">
-                        -
-                    </strong>
-
-                </div>
-
-
-                <!-- PAYMENT -->
-
-                <div>
-
-                    <span>
-                        Payment
-                    </span>
-
-                    <strong id="successPayment">
-                        -
-                    </strong>
-
-                </div>
-
-
-            </div>
-
-
-            <!-- ================= TOTAL ================= -->
-
-            <div class="success-total">
+            <div class="detail-box">
 
                 <span>
-                    Total Amount
+                    Customer Name
                 </span>
 
-                <strong>
-                    ₹<span id="successAmount">
-                        0
-                    </span>
+                <strong id="customerName">
+                    -
                 </strong>
 
             </div>
 
 
-            <!-- MESSAGE -->
+            <div class="detail-box">
 
-            <p class="thank-you">
+                <span>
+                    Mobile Number
+                </span>
 
-                Thank you for choosing
-                <strong>AtulRide</strong>. 🚗
+                <strong id="customerMobile">
+                    -
+                </strong>
 
-            </p>
-
-
-            <!-- BUTTONS -->
-
-            <button
-                class="home-btn"
-                onclick="location.href='index.html'"
-            >
-                Back to Home 🏠
-            </button>
+            </div>
 
 
-            <button
-                onclick="window.print()"
-                style="
-                    width:100%;
-                    margin-top:12px;
-                    padding:13px;
-                    border:1px solid #007bff;
-                    border-radius:10px;
-                    background:white;
-                    color:#007bff;
-                    font-size:15px;
-                    font-weight:bold;
-                    cursor:pointer;
-                "
-            >
-                🖨️ Print Booking Receipt
-            </button>
+            <div class="detail-box">
 
+                <span>
+                    Vehicle
+                </span>
+
+                <strong id="vehicle">
+                    -
+                </strong>
+
+            </div>
+
+
+            <div class="detail-box">
+
+                <span>
+                    Rental Type
+                </span>
+
+                <strong id="rentalType">
+                    -
+                </strong>
+
+            </div>
+
+
+            <div class="detail-box">
+
+                <span>
+                    Pickup Location
+                </span>
+
+                <strong id="pickupLocation">
+                    -
+                </strong>
+
+            </div>
+
+
+            <div class="detail-box">
+
+                <span>
+                    Pickup Date
+                </span>
+
+                <strong id="pickupDate">
+                    -
+                </strong>
+
+            </div>
+
+
+            <div class="detail-box">
+
+                <span>
+                    Pickup Time
+                </span>
+
+                <strong id="pickupTime">
+                    -
+                </strong>
+
+            </div>
+
+
+            <div class="detail-box">
+
+                <span>
+                    Return Date
+                </span>
+
+                <strong id="returnDate">
+                    -
+                </strong>
+
+            </div>
+
+
+            <div class="detail-box">
+
+                <span>
+                    Return Time
+                </span>
+
+                <strong id="returnTime">
+                    -
+                </strong>
+
+            </div>
 
         </div>
 
-    </section>
+
+        <!-- AMOUNT -->
+
+        <div class="amount-box">
+
+            <span>
+                Total Rental Amount
+            </span>
+
+            <strong id="totalAmount">
+                ₹0
+            </strong>
+
+        </div>
 
 
-    <!-- ================= FOOTER ================= -->
+        <!-- PAYMENT -->
 
-    <footer>
+        <div class="payment-status">
 
-        <p>
-            © 2026 AtulRide. All Rights Reserved.
-        </p>
+            <span>
+                💳 Payment Method
+            </span>
 
-        <p>
-            🚗 Your Journey, Our Responsibility
-        </p>
+            <strong id="paymentMethod">
+                -
+            </strong>
 
-    </footer>
-
-
-    <!-- ================= SUCCESS SCRIPT ================= -->
-
-    <script>
-
-        // CUSTOMER NAME
-
-        const customerName =
-            localStorage.getItem("customerName");
-
-        const mobile =
-            localStorage.getItem("mobile");
+        </div>
 
 
-        document.getElementById("successName")
-            .innerText =
-            customerName || "-";
+        <div class="payment-status">
+
+            <span>
+                💰 Payment Status
+            </span>
+
+            <strong id="paymentStatus">
+                Pending
+            </strong>
+
+        </div>
 
 
-        document.getElementById("successMobile")
-            .innerText =
-            mobile || "-";
+        <!-- PICKUP NOTE -->
+
+        <div class="pickup-note">
+
+            <h3>
+                📍 Vehicle Pickup
+            </h3>
+
+            <p>
+                Please collect your booked vehicle
+                from the selected AtulRide pickup
+                location in Ranchi at your scheduled
+                pickup date and time.
+            </p>
+
+        </div>
 
 
-        // VEHICLE
+        <!-- BUTTONS -->
 
-        document.getElementById("successVehicle")
-            .innerText =
-            localStorage.getItem("bookingVehicle")
-            || "-";
+        <div class="buttons">
 
+            <a
+                href="index.html"
+                class="btn home-btn">
 
+                🏠 Back to Home
 
-        // RENTAL TYPE
-
-        const rentalType =
-            localStorage.getItem("rentalType");
+            </a>
 
 
-        if (rentalType === "day") {
+            <a
+                href="profile.html"
+                class="btn profile-btn">
 
-            document.getElementById(
-                "successRentalType"
-            ).innerText =
-                "Full Day";
+                👤 My Profile
 
-        }
-
-        else if (rentalType === "hour") {
-
-            document.getElementById(
-                "successRentalType"
-            ).innerText =
-                "Hourly";
-
-        }
-
-        else {
-
-            document.getElementById(
-                "successRentalType"
-            ).innerText =
-                "-";
-
-        }
+            </a>
 
 
-        // PICKUP
+            <button
+                class="btn print-btn"
+                onclick="window.print()">
 
-        document.getElementById("successPickup")
-            .innerText =
-            localStorage.getItem("pickupDate")
-            + " " +
-            (localStorage.getItem("pickupTime")
-            || "");
+                🧾 Print Confirmation
 
+            </button>
 
-        // RETURN
+        </div>
 
-        document.getElementById("successReturn")
-            .innerText =
-            localStorage.getItem("returnDate")
-            + " " +
-            (localStorage.getItem("returnTime")
-            || "");
+    </div>
+
+</main>
 
 
-        // PAYMENT
+<!-- ================= FOOTER ================= -->
 
-        document.getElementById("successPayment")
-            .innerText =
-            localStorage.getItem("paymentMethod")
-            || "-";
+<footer>
 
+    <p>
+        © 2026 AtulRide. All Rights Reserved.
+    </p>
 
-        // TOTAL
-
-        document.getElementById("successAmount")
-            .innerText =
-            localStorage.getItem("bookingTotal")
-            || "0";
+</footer>
 
 
-        // ================= BOOKING ID =================
+<script>
 
-        let bookingId =
-            localStorage.getItem("bookingId");
+/* =========================================
+   LOAD BOOKING
+========================================= */
 
-
-        if (!bookingId) {
-
-            const randomNumber =
-                Math.floor(
-                    100000 +
-                    Math.random() * 900000
-                );
-
-            bookingId =
-                "AR-" + randomNumber;
-
-            localStorage.setItem(
-                "bookingId",
-                bookingId
-            );
-
-        }
+const bookingData =
+    JSON.parse(
+        localStorage.getItem(
+            "bookingData"
+        )
+    );
 
 
-        document.getElementById("bookingId")
-            .innerText =
-            bookingId;
+/* =========================================
+   LOAD PAYMENT
+========================================= */
 
-    </script>
+const paymentMethod =
+    localStorage.getItem(
+        "paymentMethod"
+    ) || "Not Selected";
 
+
+const paymentStatus =
+    localStorage.getItem(
+        "paymentStatus"
+    ) || "Pending";
+
+
+/* =========================================
+   BOOKING ID
+========================================= */
+
+let bookingId =
+    localStorage.getItem(
+        "bookingId"
+    );
+
+
+if (!bookingId) {
+
+    bookingId =
+        "ATULRIDE-" +
+        Date.now()
+        .toString()
+        .slice(-8);
+
+    localStorage.setItem(
+        "bookingId",
+        bookingId
+    );
+
+}
+
+
+/* =========================================
+   SHOW DATA
+========================================= */
+
+if (bookingData) {
+
+
+    document.getElementById(
+        "bookingId"
+    ).textContent =
+        bookingId;
+
+
+    document.getElementById(
+        "customerName"
+    ).textContent =
+        bookingData.name || "-";
+
+
+    document.getElementById(
+        "customerMobile"
+    ).textContent =
+        bookingData.mobile || "-";
+
+
+    document.getElementById(
+        "vehicle"
+    ).textContent =
+        bookingData.vehicle || "-";
+
+
+    document.getElementById(
+        "rentalType"
+    ).textContent =
+        bookingData.rentalType === "hourly"
+            ? "Hourly Rental"
+            : "Daily Rental";
+
+
+    document.getElementById(
+        "pickupLocation"
+    ).textContent =
+        bookingData.pickupLocation ||
+        "AtulRide Showroom, Ranchi";
+
+
+    document.getElementById(
+        "pickupDate"
+    ).textContent =
+        bookingData.pickupDate || "-";
+
+
+    document.getElementById(
+        "pickupTime"
+    ).textContent =
+        bookingData.pickupTime || "-";
+
+
+    document.getElementById(
+        "returnDate"
+    ).textContent =
+        bookingData.returnDate || "-";
+
+
+    document.getElementById(
+        "returnTime"
+    ).textContent =
+        bookingData.returnTime || "-";
+
+
+    const amount =
+        Number(
+            bookingData.totalRent || 0
+        );
+
+
+    document.getElementById(
+        "totalAmount"
+    ).textContent =
+        "₹" +
+        amount.toLocaleString(
+            "en-IN"
+        );
+
+}
+
+
+/* =========================================
+   PAYMENT
+========================================= */
+
+document.getElementById(
+    "paymentMethod"
+).textContent =
+    paymentMethod;
+
+
+document.getElementById(
+    "paymentStatus"
+).textContent =
+    paymentStatus;
+
+
+/* =========================================
+   PAYMENT STATUS COLOR
+========================================= */
+
+const statusElement =
+    document.getElementById(
+        "paymentStatus"
+    );
+
+
+if (
+    paymentStatus.toLowerCase() === "paid" ||
+    paymentStatus.toLowerCase() === "success" ||
+    paymentStatus.toLowerCase() === "completed"
+) {
+
+    statusElement.style.color =
+        "#15803d";
+
+} else {
+
+    statusElement.style.color =
+        "#d97706";
+
+}
+
+</script>
 
 </body>
-
 </html>

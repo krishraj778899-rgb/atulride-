@@ -1,523 +1,1934 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <title>Book Your Vehicle - AtulRide</title>
 
-    <link rel="stylesheet" href="style.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        body {
+            background: #f5f7fb;
+            color: #111827;
+        }
+
+        /* ================= NAVBAR ================= */
+
+        nav {
+            background: #111827;
+            padding: 15px 7%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            color: white;
+        }
+
+        .logo {
+            font-size: 25px;
+            font-weight: bold;
+            color: #00d4ff;
+        }
+
+        nav ul {
+            display: flex;
+            gap: 22px;
+            list-style: none;
+        }
+
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            font-size: 14px;
+        }
+
+        nav ul li a:hover {
+            color: #00d4ff;
+        }
+
+
+        /* ================= HERO ================= */
+
+        .hero {
+            min-height: 205px;
+
+            background:
+                linear-gradient(
+                    rgba(5, 15, 35, 0.78),
+                    rgba(5, 15, 35, 0.78)
+                ),
+                url("https://images.unsplash.com/photo-1504215680853-026ed2a45def?auto=format&fit=crop&w=1600&q=80");
+
+            background-size: cover;
+            background-position: center;
+
+            color: white;
+
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            text-align: center;
+
+            padding: 40px 20px;
+        }
+
+        .hero-content small {
+            color: #38bdf8;
+            font-weight: bold;
+        }
+
+        .hero h1 {
+            font-size: 34px;
+            margin: 14px 0;
+        }
+
+        .hero p {
+            font-size: 14px;
+        }
+
+
+        /* ================= MAIN ================= */
+
+        .booking-wrapper {
+            width: 90%;
+            max-width: 1100px;
+
+            margin: 45px auto;
+
+            display: grid;
+
+            grid-template-columns: 250px 1fr;
+
+            gap: 20px;
+
+            align-items: start;
+        }
+
+
+        /* ================= STEPS ================= */
+
+        .steps {
+            background: #111827;
+
+            color: white;
+
+            border-radius: 14px;
+
+            padding: 25px 20px;
+        }
+
+        .steps h2 {
+            font-size: 20px;
+            margin-bottom: 12px;
+        }
+
+        .steps > p {
+            font-size: 11px;
+            line-height: 1.5;
+
+            margin-bottom: 20px;
+
+            color: #e5e7eb;
+        }
+
+        .step {
+            display: flex;
+
+            gap: 12px;
+
+            margin: 17px 0;
+        }
+
+        .step-number {
+            min-width: 22px;
+            height: 22px;
+
+            background: #2563eb;
+
+            border-radius: 50%;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            font-size: 12px;
+
+            font-weight: bold;
+        }
+
+        .step h4 {
+            font-size: 11px;
+
+            margin-bottom: 4px;
+        }
+
+        .step p {
+            font-size: 9px;
+
+            color: #cbd5e1;
+        }
+
+
+        /* ================= FORM CARD ================= */
+
+        .form-card {
+            background: white;
+
+            border: 1px solid #e5e7eb;
+
+            border-radius: 14px;
+
+            padding: 25px;
+
+            box-shadow:
+                0 8px 25px rgba(0,0,0,0.06);
+        }
+
+        .form-card h2 {
+            font-size: 22px;
+
+            margin-bottom: 7px;
+        }
+
+        .form-card > p {
+            font-size: 11px;
+
+            color: #64748b;
+
+            margin-bottom: 20px;
+        }
+
+        .form-grid {
+            display: grid;
+
+            grid-template-columns: 1fr 1fr;
+
+            gap: 15px;
+        }
+
+
+        /* ================= FIELDS ================= */
+
+        .field {
+            display: flex;
+
+            flex-direction: column;
+        }
+
+        .field.full {
+            grid-column: 1 / -1;
+        }
+
+        label {
+            font-size: 11px;
+
+            font-weight: bold;
+
+            margin-bottom: 7px;
+
+            color: #374151;
+        }
+
+        input,
+        select {
+            width: 100%;
+
+            height: 42px;
+
+            border: 1px solid #cbd5e1;
+
+            border-radius: 7px;
+
+            padding: 0 11px;
+
+            background: #f8fafc;
+
+            outline: none;
+
+            font-size: 12px;
+        }
+
+        input:focus,
+        select:focus {
+            border-color: #2563eb;
+
+            background: white;
+        }
+
+
+        /* ================= LOCATION ================= */
+
+        .location-note {
+            font-size: 9px;
+
+            color: #dc2626;
+
+            margin-top: 6px;
+        }
+
+
+        /* ================= RENTAL TYPE ================= */
+
+        .rental-options {
+            display: grid;
+
+            grid-template-columns: 1fr 1fr;
+
+            gap: 10px;
+        }
+
+        .rental-option {
+            border: 1px solid #cbd5e1;
+
+            border-radius: 8px;
+
+            padding: 14px;
+
+            cursor: pointer;
+
+            display: flex;
+
+            align-items: flex-start;
+
+            gap: 8px;
+        }
+
+        .rental-option:hover {
+            border-color: #2563eb;
+        }
+
+        .rental-option input {
+            width: auto;
+
+            height: auto;
+
+            margin-top: 2px;
+        }
+
+        .rental-option strong {
+            display: block;
+
+            font-size: 12px;
+
+            margin-bottom: 4px;
+        }
+
+        .rental-option span {
+            font-size: 9px;
+
+            color: #64748b;
+        }
+
+
+        /* ================= SECTION TITLE ================= */
+
+        .section-title {
+            grid-column: 1 / -1;
+
+            margin-top: 8px;
+
+            padding-top: 18px;
+
+            border-top: 1px solid #e5e7eb;
+        }
+
+        .section-title h3 {
+            font-size: 16px;
+
+            color: #1d4ed8;
+        }
+
+        .section-title p {
+            font-size: 10px;
+
+            color: #64748b;
+
+            margin-top: 4px;
+        }
+
+
+        /* ================= SUMMARY ================= */
+
+        .summary {
+            grid-column: 1 / -1;
+
+            background: #eff6ff;
+
+            border: 1px solid #bfdbfe;
+
+            border-radius: 10px;
+
+            padding: 18px;
+
+            margin-top: 5px;
+        }
+
+        .summary h3 {
+            color: #1d4ed8;
+
+            margin-bottom: 12px;
+
+            font-size: 16px;
+        }
+
+        .summary-row {
+            display: flex;
+
+            justify-content: space-between;
+
+            padding: 7px 0;
+
+            font-size: 12px;
+        }
+
+        .summary-row strong {
+            text-align: right;
+        }
+
+        .total-row {
+            border-top: 1px solid #bfdbfe;
+
+            margin-top: 8px;
+
+            padding-top: 13px;
+
+            font-size: 18px;
+
+            font-weight: bold;
+
+            color: #111827;
+        }
+
+        #rentDisplay {
+            color: #16a34a;
+
+            font-size: 22px;
+        }
+
+
+        /* ================= PAYMENT ================= */
+
+        .payment-box {
+            grid-column: 1 / -1;
+
+            background: #f0fdf4;
+
+            border: 1px solid #bbf7d0;
+
+            border-radius: 10px;
+
+            padding: 18px;
+        }
+
+        .payment-box h3 {
+            color: #15803d;
+
+            font-size: 16px;
+
+            margin-bottom: 8px;
+        }
+
+        .payment-box p {
+            font-size: 10px;
+
+            color: #64748b;
+
+            margin-bottom: 12px;
+        }
+
+        .payment-options {
+            display: grid;
+
+            grid-template-columns:
+                repeat(4, 1fr);
+
+            gap: 8px;
+        }
+
+        .payment-option {
+            border: 1px solid #bbf7d0;
+
+            background: white;
+
+            padding: 12px 7px;
+
+            border-radius: 8px;
+
+            text-align: center;
+
+            cursor: pointer;
+
+            font-size: 11px;
+        }
+
+        .payment-option:hover {
+            border-color: #16a34a;
+
+            background: #f0fdf4;
+        }
+
+        .payment-option input {
+            width: auto;
+
+            height: auto;
+
+            margin-right: 4px;
+        }
+
+
+        /* ================= BUTTON ================= */
+
+        .submit-btn {
+            grid-column: 1 / -1;
+
+            width: 100%;
+
+            border: none;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    #2563eb,
+                    #1d4ed8
+                );
+
+            color: white;
+
+            padding: 14px;
+
+            border-radius: 8px;
+
+            font-weight: bold;
+
+            font-size: 14px;
+
+            cursor: pointer;
+
+            margin-top: 5px;
+        }
+
+        .submit-btn:hover {
+            transform: translateY(-1px);
+        }
+
+
+        /* ================= FOOTER ================= */
+
+        footer {
+            background: #111827;
+
+            color: white;
+
+            text-align: center;
+
+            padding: 25px;
+
+            margin-top: 50px;
+
+            font-size: 13px;
+        }
+
+
+        /* ================= MOBILE ================= */
+
+        @media(max-width: 800px) {
+
+            nav {
+                flex-direction: column;
+
+                gap: 15px;
+            }
+
+            nav ul {
+                flex-wrap: wrap;
+
+                justify-content: center;
+            }
+
+            .booking-wrapper {
+                grid-template-columns: 1fr;
+            }
+
+            .form-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .field.full,
+            .section-title,
+            .summary,
+            .payment-box,
+            .submit-btn {
+                grid-column: auto;
+            }
+
+            .rental-options {
+                grid-template-columns: 1fr;
+            }
+
+            .payment-options {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+    </style>
 </head>
+
 
 <body>
 
-    <!-- ================= NAVBAR ================= -->
 
-    <header>
+<!-- ================= NAVBAR ================= -->
 
-        <nav class="navbar">
+<nav>
 
-            <div class="logo">
-                🚗 AtulRide
+    <div class="logo">
+        AtulRide
+    </div>
+
+    <ul>
+
+        <li>
+            <a href="index.html">Home</a>
+        </li>
+
+        <li>
+            <a href="vehicles.html">Vehicles</a>
+        </li>
+
+        <li>
+            <a href="booking.html">Booking</a>
+        </li>
+
+        <li>
+            <a href="about.html">About</a>
+        </li>
+
+        <li>
+            <a href="contact.html">Contact</a>
+        </li>
+
+        <li>
+            <a href="profile.html">Profile</a>
+        </li>
+
+    </ul>
+
+</nav>
+
+
+<!-- ================= HERO ================= -->
+
+<section class="hero">
+
+    <div class="hero-content">
+
+        <small>
+            🚘 ATULRIDE BOOKING
+        </small>
+
+        <h1>
+            Book Your Ride
+        </h1>
+
+        <p>
+            Select your vehicle, rental duration,
+            pickup location and booking details.
+        </p>
+
+    </div>
+
+</section>
+
+
+<!-- ================= BOOKING ================= -->
+
+<section class="booking-wrapper">
+
+
+    <!-- LEFT SIDE -->
+
+    <div class="steps">
+
+        <h2>
+            Easy Booking
+        </h2>
+
+        <p>
+            Complete these simple steps
+            to book your vehicle.
+        </p>
+
+
+        <div class="step">
+
+            <div class="step-number">
+                1
             </div>
 
-            <ul class="nav-links">
+            <div>
 
-                <li>
-                    <a href="index.html">
-                        Home
-                    </a>
-                </li>
+                <h4>
+                    Select Vehicle
+                </h4>
 
-                <li>
-                    <a href="vehicles.html">
-                        Vehicles
-                    </a>
-                </li>
+                <p>
+                    Choose your preferred car,
+                    SUV or bike.
+                </p>
 
-                <li>
-                    <a href="booking.html" class="active">
-                        Booking
-                    </a>
-                </li>
-
-                <li>
-                    <a href="about.html">
-                        About
-                    </a>
-                </li>
-
-                <li>
-                    <a href="contact.html">
-                        Contact
-                    </a>
-                </li>
-
-            </ul>
-
-        </nav>
-
-    </header>
-
-
-    <!-- ================= HERO ================= -->
-
-    <section class="booking-hero">
-
-        <div class="booking-title">
-
-            <h1>
-                Book Your Ride 🚗
-            </h1>
-
-            <p>
-                Choose your vehicle, rental duration,
-                date and time.
-            </p>
+            </div>
 
         </div>
 
-    </section>
 
+        <div class="step">
 
-    <!-- ================= BOOKING SECTION ================= -->
+            <div class="step-number">
+                2
+            </div>
 
-    <section class="booking-section">
+            <div>
 
-        <div class="booking-wrapper">
+                <h4>
+                    Choose Rental Type
+                </h4>
 
-
-            <!-- LEFT INFORMATION -->
-
-            <div class="booking-info">
-
-                <h2>
-                    Why Choose AtulRide?
-                </h2>
-
-                <p style="color:#666; line-height:1.7; margin-bottom:30px;">
-                    Make your vehicle reservation quickly
-                    and easily with AtulRide.
+                <p>
+                    Select hourly or daily rental.
                 </p>
-
-
-                <div class="info-item">
-
-                    <span>
-                        🚗
-                    </span>
-
-                    <div>
-
-                        <h3>
-                            Wide Range of Vehicles
-                        </h3>
-
-                        <p>
-                            Cars, SUVs and bikes for
-                            different travel needs.
-                        </p>
-
-                    </div>
-
-                </div>
-
-
-                <div class="info-item">
-
-                    <span>
-                        💰
-                    </span>
-
-                    <div>
-
-                        <h3>
-                            Affordable Prices
-                        </h3>
-
-                        <p>
-                            Choose hourly or full-day
-                            rental according to your needs.
-                        </p>
-
-                    </div>
-
-                </div>
-
-
-                <div class="info-item">
-
-                    <span>
-                        ⏱️
-                    </span>
-
-                    <div>
-
-                        <h3>
-                            Flexible Rental
-                        </h3>
-
-                        <p>
-                            Select your preferred pickup
-                            and return time.
-                        </p>
-
-                    </div>
-
-                </div>
-
-
-                <div class="info-item">
-
-                    <span>
-                        🔒
-                    </span>
-
-                    <div>
-
-                        <h3>
-                            Simple & Convenient
-                        </h3>
-
-                        <p>
-                            Easy booking process from
-                            vehicle selection to payment.
-                        </p>
-
-                    </div>
-
-                </div>
-
-
-                <!-- BOOKING STEPS -->
-
-                <div style="
-                    margin-top:35px;
-                    padding:20px;
-                    background:white;
-                    border-radius:15px;
-                    box-shadow:0 5px 20px rgba(0,0,0,0.07);
-                ">
-
-                    <h3>
-                        📋 Booking Process
-                    </h3>
-
-                    <p>
-                        1️⃣ Select your vehicle
-                    </p>
-
-                    <p>
-                        2️⃣ Choose rental duration
-                    </p>
-
-                    <p>
-                        3️⃣ Select pickup & return time
-                    </p>
-
-                    <p>
-                        4️⃣ Confirm booking
-                    </p>
-
-                    <p>
-                        5️⃣ Complete payment
-                    </p>
-
-                </div>
 
             </div>
 
+        </div>
 
-            <!-- ================= BOOKING FORM ================= -->
 
-            <div class="booking-card">
+        <div class="step">
 
-                <h2>
-                    Booking Details
-                </h2>
+            <div class="step-number">
+                3
+            </div>
 
-                <p class="form-subtitle">
-                    Enter your information to reserve
-                    your vehicle.
+            <div>
+
+                <h4>
+                    Set Date & Time
+                </h4>
+
+                <p>
+                    Enter pickup and return details.
                 </p>
 
+            </div>
 
-                <form id="bookingForm">
+        </div>
 
 
-                    <!-- CUSTOMER NAME -->
+        <div class="step">
 
-                    <div class="form-group">
+            <div class="step-number">
+                4
+            </div>
 
-                        <label for="name">
-                            👤 Customer Name
-                        </label>
+            <div>
 
-                        <input
-                            type="text"
-                            id="name"
-                            placeholder="Enter your full name"
-                            required
-                        >
+                <h4>
+                    Confirm Booking
+                </h4>
 
+                <p>
+                    Review the total rental amount.
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <div class="step">
+
+            <div class="step-number">
+                5
+            </div>
+
+            <div>
+
+                <h4>
+                    Payment
+                </h4>
+
+                <p>
+                    Continue to the payment page.
+                </p>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- RIGHT FORM -->
+
+    <div class="form-card">
+
+        <h2>
+            Booking Details
+        </h2>
+
+        <p>
+            Enter your information to continue.
+        </p>
+
+
+        <form id="bookingForm">
+
+            <div class="form-grid">
+
+
+                <!-- NAME -->
+
+                <div class="field">
+
+                    <label for="name">
+                        Full Name *
+                    </label>
+
+                    <input
+                        type="text"
+                        id="name"
+                        placeholder="Enter your full name"
+                        required>
+
+                </div>
+
+
+                <!-- MOBILE -->
+
+                <div class="field">
+
+                    <label for="mobile">
+                        Mobile Number *
+                    </label>
+
+                    <input
+                        type="tel"
+                        id="mobile"
+                        placeholder="Enter 10 digit mobile number"
+                        maxlength="10"
+                        required>
+
+                </div>
+
+
+                <!-- VEHICLE -->
+
+                <div class="field">
+
+                    <label for="vehicle">
+                        Select Vehicle *
+                    </label>
+
+                    <select
+                        id="vehicle"
+                        required>
+
+                        <option value="">
+                            -- Select Vehicle --
+                        </option>
+
+                        <option value="Maruti Swift">
+                            Maruti Swift - ₹1,200/day
+                        </option>
+
+                        <option value="Hyundai Creta">
+                            Hyundai Creta - ₹2,000/day
+                        </option>
+
+                        <option value="Royal Enfield">
+                            Royal Enfield - ₹900/day
+                        </option>
+
+                        <option value="Honda Activa">
+                            Honda Activa - ₹500/day
+                        </option>
+
+                    </select>
+
+                </div>
+
+
+                <!-- LOCATION -->
+
+                <div class="field">
+
+                    <label for="pickupLocation">
+                        Pickup Location *
+                    </label>
+
+                    <select
+                        id="pickupLocation"
+                        required>
+
+                        <option value="">
+                            -- Select Location --
+                        </option>
+
+                        <option value="Main Road">
+                            Main Road — Available
+                        </option>
+
+                        <option value="Kanke Road">
+                            Kanke Road — Available
+                        </option>
+
+                        <option value="Harmu">
+                            Harmu — Available
+                        </option>
+
+                        <option value="Lalpur" disabled>
+                            Lalpur — Unavailable
+                        </option>
+
+                        <option value="Doranda" disabled>
+                            Doranda — Unavailable
+                        </option>
+
+                    </select>
+
+                    <div class="location-note">
+                        🔴 Unavailable locations cannot be selected.
                     </div>
 
-
-                    <!-- MOBILE -->
-
-                    <div class="form-group">
-
-                        <label for="mobile">
-                            📱 Mobile Number
-                        </label>
-
-                        <input
-                            type="tel"
-                            id="mobile"
-                            placeholder="Enter 10 digit mobile number"
-                            maxlength="10"
-                            pattern="[0-9]{10}"
-                            required
-                        >
-
-                    </div>
+                </div>
 
 
-                    <!-- VEHICLE -->
+                <!-- RENTAL TYPE -->
 
-                    <div class="form-group">
+                <div class="field full">
 
-                        <label for="vehicle">
-                            🚘 Select Vehicle
-                        </label>
+                    <label>
+                        Rental Type *
+                    </label>
 
-                        <select
-                            id="vehicle"
-                            required
-                        >
-
-                            <option value="">
-                                -- Select Vehicle --
-                            </option>
-
-                            <option
-                                value="1200"
-                                data-hourly="150"
-                                data-vehicle-id="1"
-                            >
-                                🚗 Maruti Swift -
-                                ₹1,200/day |
-                                ₹150/hour
-                            </option>
-
-                            <option
-                                value="2000"
-                                data-hourly="250"
-                                data-vehicle-id="2"
-                            >
-                                🚙 Hyundai Creta -
-                                ₹2,000/day |
-                                ₹250/hour
-                            </option>
-
-                            <option
-                                value="900"
-                                data-hourly="100"
-                                data-vehicle-id="3"
-                            >
-                                🏍️ Royal Enfield -
-                                ₹900/day |
-                                ₹100/hour
-                            </option>
-
-                            <option
-                                value="500"
-                                data-hourly="60"
-                                data-vehicle-id="4"
-                            >
-                                🛵 Honda Activa -
-                                ₹500/day |
-                                ₹60/hour
-                            </option>
-
-                        </select>
-
-                    </div>
+                    <div class="rental-options">
 
 
-                    <!-- RENTAL TYPE -->
-
-                    <div class="form-group">
-
-                        <label for="rentalType">
-                            ⏱️ Rental Type
-                        </label>
-
-                        <select
-                            id="rentalType"
-                            required
-                        >
-
-                            <option value="">
-                                -- Select Rental Type --
-                            </option>
-
-                            <option value="day">
-                                🗓️ Full Day
-                            </option>
-
-                            <option value="hour">
-                                ⏱️ Hourly
-                            </option>
-
-                        </select>
-
-                    </div>
-
-
-                    <!-- PICKUP -->
-
-                    <div class="date-row">
-
-                        <div class="form-group">
-
-                            <label for="pickup">
-                                📅 Pickup Date
-                            </label>
+                        <label class="rental-option">
 
                             <input
-                                type="date"
-                                id="pickup"
-                                required
-                            >
+                                type="radio"
+                                name="rentalType"
+                                value="hourly"
+                                checked>
 
-                        </div>
+                            <div>
+
+                                <strong>
+                                    Hourly Rental
+                                </strong>
+
+                                <span>
+                                    Flexible short-term rental
+                                </span>
+
+                            </div>
+
+                        </label>
 
 
-                        <div class="form-group">
-
-                            <label for="pickupTime">
-                                🕐 Pickup Time
-                            </label>
+                        <label class="rental-option">
 
                             <input
-                                type="time"
-                                id="pickupTime"
-                                required
-                            >
+                                type="radio"
+                                name="rentalType"
+                                value="daily">
 
-                        </div>
+                            <div>
+
+                                <strong>
+                                    Daily Rental
+                                </strong>
+
+                                <span>
+                                    Full-day rental option
+                                </span>
+
+                            </div>
+
+                        </label>
 
                     </div>
 
-
-                    <!-- RETURN -->
-
-                    <div class="date-row">
-
-                        <div class="form-group">
-
-                            <label for="return">
-                                📅 Return Date
-                            </label>
-
-                            <input
-                                type="date"
-                                id="return"
-                                required
-                            >
-
-                        </div>
+                </div>
 
 
-                        <div class="form-group">
+                <!-- PICKUP -->
 
-                            <label for="returnTime">
-                                🕐 Return Time
-                            </label>
+                <div class="section-title">
 
-                            <input
-                                type="time"
-                                id="returnTime"
-                                required
-                            >
+                    <h3>
+                        📍 Pickup Details
+                    </h3>
 
-                        </div>
+                    <p>
+                        Select when you want
+                        to collect your vehicle.
+                    </p>
 
-                    </div>
+                </div>
 
 
-                    <!-- TOTAL RENT -->
+                <div class="field">
 
-                    <div class="total-box">
+                    <label for="pickupDate">
+                        Pickup Date *
+                    </label>
 
-                        <div>
+                    <input
+                        type="date"
+                        id="pickupDate"
+                        required>
 
-                            <span>
-                                💰 Total Rent
-                            </span>
+                </div>
 
-                            <small id="daysText">
-                                Select vehicle, rental type
-                                and dates.
-                            </small>
 
-                        </div>
+                <div class="field">
 
-                        <strong>
-                            ₹<span id="total">0</span>
+                    <label for="pickupTime">
+                        Pickup Time *
+                    </label>
+
+                    <input
+                        type="time"
+                        id="pickupTime"
+                        required>
+
+                </div>
+
+
+                <!-- RETURN -->
+
+                <div class="section-title">
+
+                    <h3>
+                        🔄 Return Details
+                    </h3>
+
+                    <p>
+                        Select when you will return
+                        the vehicle.
+                    </p>
+
+                </div>
+
+
+                <div class="field">
+
+                    <label for="returnDate">
+                        Return Date *
+                    </label>
+
+                    <input
+                        type="date"
+                        id="returnDate"
+                        required>
+
+                </div>
+
+
+                <div class="field">
+
+                    <label for="returnTime">
+                        Return Time *
+                    </label>
+
+                    <input
+                        type="time"
+                        id="returnTime"
+                        required>
+
+                </div>
+
+
+                <!-- SUMMARY -->
+
+                <div class="summary">
+
+                    <h3>
+                        💰 Rental Summary
+                    </h3>
+
+
+                    <div class="summary-row">
+
+                        <span>
+                            Vehicle
+                        </span>
+
+                        <strong id="summaryVehicle">
+                            -
                         </strong>
 
                     </div>
 
 
-                    <!-- CONFIRM -->
+                    <div class="summary-row">
 
-                    <button
-                        type="submit"
-                        class="confirm-btn"
-                    >
-                        Confirm Booking 🚗
-                    </button>
+                        <span>
+                            Rental Type
+                        </span>
+
+                        <strong id="summaryType">
+                            Hourly
+                        </strong>
+
+                    </div>
 
 
-                    <p style="
-                        text-align:center;
-                        color:#777;
-                        font-size:13px;
-                        margin-top:15px;
-                    ">
-                        🔒 Your booking details are
-                        stored for this demo.
+                    <div class="summary-row">
+
+                        <span>
+                            Rental Duration
+                        </span>
+
+                        <strong id="summaryDuration">
+                            Select date & time
+                        </strong>
+
+                    </div>
+
+
+                    <div class="summary-row total-row">
+
+                        <span>
+                            Total Amount
+                        </span>
+
+                        <strong id="rentDisplay">
+                            ₹0
+                        </strong>
+
+                    </div>
+
+                </div>
+
+
+                <!-- PAYMENT -->
+
+                <div class="payment-box">
+
+                    <h3>
+                        💳 Payment Option
+                    </h3>
+
+                    <p>
+                        Select your preferred payment method.
                     </p>
 
-                </form>
+
+                    <div class="payment-options">
+
+
+                        <label class="payment-option">
+
+                            <input
+                                type="radio"
+                                name="paymentMethod"
+                                value="UPI"
+                                checked>
+
+                            UPI
+
+                        </label>
+
+
+                        <label class="payment-option">
+
+                            <input
+                                type="radio"
+                                name="paymentMethod"
+                                value="Card">
+
+                            Card
+
+                        </label>
+
+
+                        <label class="payment-option">
+
+                            <input
+                                type="radio"
+                                name="paymentMethod"
+                                value="Net Banking">
+
+                            Net Banking
+
+                        </label>
+
+
+                        <label class="payment-option">
+
+                            <input
+                                type="radio"
+                                name="paymentMethod"
+                                value="Cash">
+
+                            Cash
+
+                        </label>
+
+
+                    </div>
+
+                </div>
+
+
+                <!-- HIDDEN TOTAL -->
+
+                <input
+                    type="hidden"
+                    id="totalRent"
+                    value="0">
+
+
+                <!-- SUBMIT -->
+
+                <button
+                    type="submit"
+                    class="submit-btn">
+
+                    Continue to Payment →
+
+                </button>
 
             </div>
 
-        </div>
+        </form>
 
-    </section>
+    </div>
 
-
-    <!-- ================= FOOTER ================= -->
-
-    <footer>
-
-        <p>
-            © 2026 AtulRide. All Rights Reserved.
-        </p>
-
-        <p>
-            🚗 Your Journey, Our Responsibility
-        </p>
-
-    </footer>
+</section>
 
 
-    <script src="script.js"></script>
+<!-- ================= FOOTER ================= -->
+
+<footer>
+
+    <p>
+        © 2026 AtulRide. All Rights Reserved.
+    </p>
+
+</footer>
+
+
+<script>
+
+/* =========================================
+   VEHICLE RATES
+========================================= */
+
+const vehicleRates = {
+
+    "Maruti Swift": {
+        hourly: 150,
+        daily: 1200
+    },
+
+    "Hyundai Creta": {
+        hourly: 250,
+        daily: 2000
+    },
+
+    "Royal Enfield": {
+        hourly: 100,
+        daily: 900
+    },
+
+    "Honda Activa": {
+        hourly: 60,
+        daily: 500
+    }
+
+};
+
+
+/* =========================================
+   ELEMENTS
+========================================= */
+
+const vehicleSelect =
+    document.getElementById("vehicle");
+
+const rentalTypeInputs =
+    document.querySelectorAll(
+        'input[name="rentalType"]'
+    );
+
+const pickupDate =
+    document.getElementById("pickupDate");
+
+const pickupTime =
+    document.getElementById("pickupTime");
+
+const returnDate =
+    document.getElementById("returnDate");
+
+const returnTime =
+    document.getElementById("returnTime");
+
+const pickupLocation =
+    document.getElementById("pickupLocation");
+
+const rentDisplay =
+    document.getElementById("rentDisplay");
+
+const totalRent =
+    document.getElementById("totalRent");
+
+const summaryVehicle =
+    document.getElementById("summaryVehicle");
+
+const summaryType =
+    document.getElementById("summaryType");
+
+const summaryDuration =
+    document.getElementById("summaryDuration");
+
+
+/* =========================================
+   TODAY
+========================================= */
+
+const today =
+    new Date().toISOString().split("T")[0];
+
+pickupDate.min = today;
+returnDate.min = today;
+
+
+/* =========================================
+   VEHICLE FROM URL
+========================================= */
+
+const params =
+    new URLSearchParams(
+        window.location.search
+    );
+
+const urlVehicle =
+    params.get("vehicle");
+
+if (
+    urlVehicle &&
+    vehicleRates[urlVehicle]
+) {
+
+    vehicleSelect.value =
+        urlVehicle;
+
+}
+
+
+/* =========================================
+   SAVED LOCATION
+========================================= */
+
+const savedLocation =
+    localStorage.getItem(
+        "selectedLocation"
+    );
+
+if (savedLocation) {
+
+    const option =
+        [...pickupLocation.options]
+        .find(
+            option =>
+                option.value === savedLocation &&
+                !option.disabled
+        );
+
+    if (option) {
+
+        pickupLocation.value =
+            savedLocation;
+
+    }
+
+}
+
+
+/* =========================================
+   CUSTOMER DATA
+========================================= */
+
+const customerData =
+    JSON.parse(
+        localStorage.getItem(
+            "customerData"
+        )
+    ) || {};
+
+
+if (customerData.name) {
+
+    document.getElementById("name").value =
+        customerData.name;
+
+}
+
+
+if (customerData.mobile) {
+
+    document.getElementById("mobile").value =
+        customerData.mobile;
+
+}
+
+
+/* =========================================
+   CALCULATE RENT
+========================================= */
+
+function calculateRent() {
+
+    const vehicle =
+        vehicleSelect.value;
+
+    const rentalType =
+        document.querySelector(
+            'input[name="rentalType"]:checked'
+        ).value;
+
+
+    /* NO VEHICLE */
+
+    if (!vehicle) {
+
+        summaryVehicle.textContent =
+            "-";
+
+        summaryType.textContent =
+            rentalType === "hourly"
+                ? "Hourly"
+                : "Daily";
+
+        summaryDuration.textContent =
+            "Select vehicle";
+
+        rentDisplay.textContent =
+            "₹0";
+
+        totalRent.value =
+            "0";
+
+        return;
+    }
+
+
+    /* VEHICLE */
+
+    summaryVehicle.textContent =
+        vehicle;
+
+
+    /* RENTAL TYPE */
+
+    summaryType.textContent =
+        rentalType === "hourly"
+            ? "Hourly"
+            : "Daily";
+
+
+    /* RATE */
+
+    const rate =
+        rentalType === "hourly"
+            ? vehicleRates[vehicle].hourly
+            : vehicleRates[vehicle].daily;
+
+
+    /* =====================================
+       DATE/TIME NOT SELECTED
+       SHOW BASE RATE
+    ===================================== */
+
+    if (
+        !pickupDate.value ||
+        !pickupTime.value ||
+        !returnDate.value ||
+        !returnTime.value
+    ) {
+
+        if (rentalType === "hourly") {
+
+            summaryDuration.textContent =
+                `₹${rate} / hour`;
+
+        } else {
+
+            summaryDuration.textContent =
+                `₹${rate} / day`;
+
+        }
+
+        rentDisplay.textContent =
+            `₹${rate}`;
+
+        totalRent.value =
+            rate;
+
+        return;
+    }
+
+
+    /* =====================================
+       START
+    ===================================== */
+
+    const start =
+        new Date(
+            `${pickupDate.value}T${pickupTime.value}`
+        );
+
+
+    /* =====================================
+       END
+    ===================================== */
+
+    const end =
+        new Date(
+            `${returnDate.value}T${returnTime.value}`
+        );
+
+
+    /* =====================================
+       INVALID
+    ===================================== */
+
+    if (
+        isNaN(start.getTime()) ||
+        isNaN(end.getTime()) ||
+        end <= start
+    ) {
+
+        summaryDuration.textContent =
+            "Invalid return time";
+
+        rentDisplay.textContent =
+            "₹0";
+
+        totalRent.value =
+            "0";
+
+        return;
+    }
+
+
+    /* =====================================
+       HOURS
+    ===================================== */
+
+    const difference =
+        end.getTime() -
+        start.getTime();
+
+    const hours =
+        difference /
+        (1000 * 60 * 60);
+
+
+    let amount = 0;
+
+
+    /* =====================================
+       HOURLY
+    ===================================== */
+
+    if (
+        rentalType === "hourly"
+    ) {
+
+        const chargeableHours =
+            Math.ceil(hours);
+
+        amount =
+            chargeableHours *
+            vehicleRates[vehicle].hourly;
+
+        summaryDuration.textContent =
+            `${chargeableHours} hour(s)`;
+
+    }
+
+
+    /* =====================================
+       DAILY
+    ===================================== */
+
+    else {
+
+        const days =
+            Math.ceil(
+                hours / 24
+            );
+
+        amount =
+            days *
+            vehicleRates[vehicle].daily;
+
+        summaryDuration.textContent =
+            `${days} day(s)`;
+
+    }
+
+
+    /* =====================================
+       SHOW AMOUNT
+    ===================================== */
+
+    rentDisplay.textContent =
+        `₹${amount.toLocaleString("en-IN")}`;
+
+    totalRent.value =
+        amount;
+
+}
+
+
+/* =========================================
+   VEHICLE CHANGE
+========================================= */
+
+vehicleSelect.addEventListener(
+    "change",
+    calculateRent
+);
+
+
+/* =========================================
+   RENTAL TYPE CHANGE
+========================================= */
+
+rentalTypeInputs.forEach(
+    input => {
+
+        input.addEventListener(
+            "change",
+            calculateRent
+        );
+
+    }
+);
+
+
+/* =========================================
+   PICKUP DATE
+========================================= */
+
+pickupDate.addEventListener(
+    "change",
+    function () {
+
+        returnDate.min =
+            pickupDate.value;
+
+        calculateRent();
+
+    }
+);
+
+
+/* =========================================
+   PICKUP TIME
+========================================= */
+
+pickupTime.addEventListener(
+    "change",
+    calculateRent
+);
+
+
+/* =========================================
+   RETURN DATE
+========================================= */
+
+returnDate.addEventListener(
+    "change",
+    calculateRent
+);
+
+
+/* =========================================
+   RETURN TIME
+========================================= */
+
+returnTime.addEventListener(
+    "change",
+    calculateRent
+);
+
+
+/* =========================================
+   SUBMIT BOOKING
+========================================= */
+
+document
+.getElementById("bookingForm")
+.addEventListener(
+    "submit",
+    function(event) {
+
+        event.preventDefault();
+
+
+        /* CUSTOMER */
+
+        const name =
+            document
+            .getElementById("name")
+            .value
+            .trim();
+
+
+        const mobile =
+            document
+            .getElementById("mobile")
+            .value
+            .trim();
+
+
+        /* VEHICLE */
+
+        const vehicle =
+            vehicleSelect.value;
+
+
+        /* LOCATION */
+
+        const location =
+            pickupLocation.value;
+
+
+        /* RENTAL TYPE */
+
+        const rentalType =
+            document.querySelector(
+                'input[name="rentalType"]:checked'
+            ).value;
+
+
+        /* PAYMENT */
+
+        const paymentMethod =
+            document.querySelector(
+                'input[name="paymentMethod"]:checked'
+            ).value;
+
+
+        /* MOBILE VALIDATION */
+
+        if (
+            !/^[0-9]{10}$/.test(mobile)
+        ) {
+
+            alert(
+                "Please enter a valid 10 digit mobile number."
+            );
+
+            return;
+
+        }
+
+
+        /* VEHICLE */
+
+        if (!vehicle) {
+
+            alert(
+                "Please select a vehicle."
+            );
+
+            return;
+
+        }
+
+
+        /* LOCATION */
+
+        if (!location) {
+
+            alert(
+                "Please select pickup location."
+            );
+
+            return;
+
+        }
+
+
+        /* DATES */
+
+        if (
+            !pickupDate.value ||
+            !pickupTime.value ||
+            !returnDate.value ||
+            !returnTime.value
+        ) {
+
+            alert(
+                "Please select pickup and return date/time."
+            );
+
+            return;
+
+        }
+
+
+        /* CALCULATE */
+
+        calculateRent();
+
+
+        const amount =
+            Number(
+                totalRent.value
+            );
+
+
+        /* AMOUNT VALIDATION */
+
+        if (
+            !amount ||
+            amount <= 0
+        ) {
+
+            alert(
+                "Please select a valid return date and time."
+            );
+
+            return;
+
+        }
+
+
+        /* =====================================
+           BOOKING OBJECT
+        ===================================== */
+
+        const bookingData = {
+
+            name: name,
+
+            mobile: mobile,
+
+            vehicle: vehicle,
+
+            pickupLocation: location,
+
+            rentalType: rentalType,
+
+            pickupDate:
+                pickupDate.value,
+
+            pickupTime:
+                pickupTime.value,
+
+            returnDate:
+                returnDate.value,
+
+            returnTime:
+                returnTime.value,
+
+            totalRent:
+                amount,
+
+            bookingStatus:
+                "Confirmed"
+
+        };
+
+
+        /* =====================================
+           SAVE BOOKING
+        ===================================== */
+
+        localStorage.setItem(
+            "bookingData",
+            JSON.stringify(
+                bookingData
+            )
+        );
+
+
+        /* =====================================
+           SAVE PAYMENT METHOD
+        ===================================== */
+
+        localStorage.setItem(
+            "paymentMethod",
+            paymentMethod
+        );
+
+
+        /* =====================================
+           PAYMENT STATUS
+        ===================================== */
+
+        localStorage.setItem(
+            "paymentStatus",
+            "Pending"
+        );
+
+
+        /* =====================================
+           CUSTOMER DATA
+        ===================================== */
+
+        localStorage.setItem(
+            "customerData",
+            JSON.stringify({
+
+                name:
+                    name,
+
+                mobile:
+                    mobile,
+
+                email:
+                    customerData.email || "",
+
+                address:
+                    customerData.address || ""
+
+            })
+        );
+
+
+        /* =====================================
+           GO TO PAYMENT
+        ===================================== */
+
+        window.location.href =
+            "payment.html";
+
+    }
+);
+
+
+/* =========================================
+   INITIAL CALCULATION
+========================================= */
+
+calculateRent();
+
+</script>
 
 </body>
-
 </html>

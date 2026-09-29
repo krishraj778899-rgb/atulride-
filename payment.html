@@ -5,376 +5,1091 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>Payment | AtulRide</title>
+    <title>Payment - krishride</title>
 
     <link rel="stylesheet" href="style.css">
+
+    <style>
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            font-family: Arial, Helvetica, sans-serif;
+            background: #f1f5f9;
+            color: #1e293b;
+        }
+
+        /* ================= NAVBAR ================= */
+
+        .navbar {
+            min-height: 70px;
+        }
+
+        /* ================= PAYMENT PAGE ================= */
+
+        .payment-page {
+            min-height: calc(100vh - 70px);
+            padding: 45px 20px 70px;
+        }
+
+        .payment-container {
+            max-width: 1100px;
+            margin: auto;
+        }
+
+        /* ================= HEADER ================= */
+
+        .payment-header {
+            text-align: center;
+            margin-bottom: 35px;
+        }
+
+        .payment-header h1 {
+            margin: 0 0 10px;
+            font-size: 38px;
+            color: #0f172a;
+        }
+
+        .payment-header p {
+            margin: 0;
+            color: #64748b;
+            font-size: 16px;
+        }
+
+        /* ================= MAIN GRID ================= */
+
+        .payment-grid {
+            display: grid;
+            grid-template-columns: 1.35fr 0.85fr;
+            gap: 25px;
+            align-items: start;
+        }
+
+        /* ================= CARD ================= */
+
+        .payment-card,
+        .summary-card {
+            background: white;
+            border-radius: 18px;
+            box-shadow: 0 8px 30px rgba(15, 23, 42, 0.08);
+            border: 1px solid #e2e8f0;
+        }
+
+        .payment-card {
+            padding: 30px;
+        }
+
+        .summary-card {
+            padding: 28px;
+            position: sticky;
+            top: 20px;
+        }
+
+        /* ================= SECTION TITLE ================= */
+
+        .card-title {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 25px;
+        }
+
+        .card-icon {
+            width: 45px;
+            height: 45px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            background: #eff6ff;
+            color: #2563eb;
+
+            border-radius: 12px;
+            font-size: 22px;
+        }
+
+        .card-title h2 {
+            margin: 0;
+            font-size: 22px;
+            color: #0f172a;
+        }
+
+        .card-title p {
+            margin: 4px 0 0;
+            color: #64748b;
+            font-size: 13px;
+        }
+
+        /* ================= PAYMENT METHODS ================= */
+
+        .payment-methods {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 12px;
+            margin-bottom: 25px;
+        }
+
+        .method {
+            border: 2px solid #e2e8f0;
+            border-radius: 12px;
+            padding: 15px 8px;
+            text-align: center;
+            cursor: pointer;
+            transition: 0.25s;
+            background: white;
+        }
+
+        .method:hover {
+            border-color: #93c5fd;
+            background: #f8fbff;
+        }
+
+        .method.active {
+            border-color: #2563eb;
+            background: #eff6ff;
+        }
+
+        .method-icon {
+            font-size: 24px;
+            margin-bottom: 7px;
+        }
+
+        .method span {
+            display: block;
+            font-size: 12px;
+            font-weight: 600;
+            color: #334155;
+        }
+
+        /* ================= FORM ================= */
+
+        .form-group {
+            margin-bottom: 18px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-size: 14px;
+            font-weight: 600;
+            color: #334155;
+        }
+
+        .form-group input {
+            width: 100%;
+            padding: 13px 14px;
+            border: 1px solid #cbd5e1;
+            border-radius: 10px;
+            font-size: 15px;
+            outline: none;
+            transition: 0.2s;
+        }
+
+        .form-group input:focus {
+            border-color: #2563eb;
+            box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.10);
+        }
+
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+        }
+
+        /* ================= UPI ================= */
+
+        .upi-box {
+            padding: 18px;
+            background: #f8fafc;
+            border: 1px solid #e2e8f0;
+            border-radius: 12px;
+            margin-bottom: 20px;
+        }
+
+        .upi-box h3 {
+            margin: 0 0 8px;
+            font-size: 16px;
+        }
+
+        .upi-box p {
+            margin: 0 0 15px;
+            font-size: 13px;
+            color: #64748b;
+        }
+
+        /* ================= SECURITY ================= */
+
+        .security-box {
+            display: flex;
+            gap: 12px;
+            align-items: center;
+
+            padding: 14px;
+            margin-top: 20px;
+
+            border-radius: 10px;
+            background: #f0fdf4;
+            border: 1px solid #bbf7d0;
+
+            color: #166534;
+            font-size: 13px;
+        }
+
+        .security-icon {
+            font-size: 22px;
+        }
+
+        /* ================= PAY BUTTON ================= */
+
+        .pay-button {
+            width: 100%;
+            margin-top: 22px;
+
+            padding: 15px;
+
+            border: none;
+            border-radius: 11px;
+
+            background: #2563eb;
+            color: white;
+
+            font-size: 16px;
+            font-weight: 700;
+
+            cursor: pointer;
+
+            transition: 0.25s;
+        }
+
+        .pay-button:hover {
+            background: #1d4ed8;
+            transform: translateY(-1px);
+        }
+
+        /* ================= SUMMARY ================= */
+
+        .summary-card h2 {
+            margin: 0 0 22px;
+            font-size: 22px;
+            color: #0f172a;
+        }
+
+        .vehicle-summary {
+            display: flex;
+            gap: 15px;
+            align-items: center;
+
+            padding-bottom: 20px;
+            border-bottom: 1px solid #e2e8f0;
+        }
+
+        .vehicle-image {
+            width: 90px;
+            height: 70px;
+
+            border-radius: 12px;
+
+            object-fit: cover;
+
+            background: #e2e8f0;
+        }
+
+        .vehicle-info h3 {
+            margin: 0 0 6px;
+            font-size: 17px;
+        }
+
+        .vehicle-info p {
+            margin: 0;
+            color: #64748b;
+            font-size: 13px;
+        }
+
+        /* ================= SUMMARY DETAILS ================= */
+
+        .summary-details {
+            padding: 20px 0;
+            border-bottom: 1px solid #e2e8f0;
+        }
+
+        .summary-row {
+            display: flex;
+            justify-content: space-between;
+            gap: 20px;
+
+            margin-bottom: 14px;
+
+            font-size: 14px;
+        }
+
+        .summary-row:last-child {
+            margin-bottom: 0;
+        }
+
+        .summary-label {
+            color: #64748b;
+        }
+
+        .summary-value {
+            color: #334155;
+            font-weight: 600;
+            text-align: right;
+        }
+
+        /* ================= TOTAL ================= */
+
+        .total-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+
+            padding-top: 20px;
+        }
+
+        .total-row span:first-child {
+            font-size: 16px;
+            font-weight: 600;
+        }
+
+        .total-amount {
+            font-size: 28px;
+            font-weight: 800;
+            color: #2563eb;
+        }
+
+        /* ================= DEMO NOTICE ================= */
+
+        .demo-notice {
+            margin-top: 20px;
+
+            padding: 14px;
+
+            border-radius: 10px;
+
+            background: #fff7ed;
+            border: 1px solid #fed7aa;
+
+            color: #9a3412;
+
+            font-size: 12px;
+            line-height: 1.5;
+        }
+
+        /* ================= FOOTER ================= */
+
+        footer {
+            text-align: center;
+            padding: 25px 20px;
+            background: #0f172a;
+            color: #cbd5e1;
+        }
+
+        footer p {
+            margin: 5px 0;
+        }
+
+        /* ================= RESPONSIVE ================= */
+
+        @media (max-width: 850px) {
+
+            .payment-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .summary-card {
+                position: static;
+            }
+
+            .payment-methods {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+        }
+
+        @media (max-width: 550px) {
+
+            .payment-page {
+                padding: 30px 15px 50px;
+            }
+
+            .payment-header h1 {
+                font-size: 30px;
+            }
+
+            .payment-card,
+            .summary-card {
+                padding: 20px;
+            }
+
+            .form-row {
+                grid-template-columns: 1fr;
+                gap: 0;
+            }
+
+            .payment-methods {
+                grid-template-columns: 1fr 1fr;
+            }
+
+        }
+
+    </style>
+
 </head>
+
 
 <body>
 
-    <!-- NAVBAR -->
+
+    <!-- ================= NAVBAR ================= -->
+
     <header>
+
         <nav class="navbar">
 
             <div class="logo">
-                🚗 AtulRide
+                🚗 krishride
             </div>
 
-            <div class="nav-links">
-                <a href="index.html">Home</a>
-                <a href="vehicles.html">Vehicles</a>
-                <a href="booking.html">Booking</a>
-                <a href="about.html">About</a>
-                <a href="contact.html">Contact</a>
-            </div>
+            <ul class="nav-links">
+
+                <li>
+                    <a href="index.html">Home</a>
+                </li>
+
+                <li>
+                    <a href="vehicles.html">Vehicles</a>
+                </li>
+
+                <li>
+                    <a href="booking.html">Booking</a>
+                </li>
+
+                <li>
+                    <a href="about.html">About</a>
+                </li>
+
+                <li>
+                    <a href="contact.html">Contact</a>
+                </li>
+
+                <li>
+                    <a href="profile.html">Profile</a>
+                </li>
+
+            </ul>
 
         </nav>
+
     </header>
 
 
-    <!-- HERO -->
-    <section class="page-hero">
+    <!-- ================= PAYMENT PAGE ================= -->
 
-        <div>
-            <h1>Secure Payment</h1>
-
-            <p>
-                Complete your AtulRide booking payment.
-            </p>
-        </div>
-
-    </section>
-
-
-    <!-- PAYMENT SECTION -->
-    <section class="payment-section">
+    <main class="payment-page">
 
         <div class="payment-container">
 
-            <!-- BOOKING SUMMARY -->
-            <div class="payment-summary">
 
-                <h2>Booking Summary</h2>
+            <div class="payment-header">
 
-                <div class="summary-row">
-                    <span>Vehicle</span>
-                    <strong id="summaryVehicle">-</strong>
-                </div>
+                <h1>
+                    Complete Your Payment 💳
+                </h1>
 
-                <div class="summary-row">
-                    <span>Pickup Date</span>
-                    <strong id="summaryPickup">-</strong>
-                </div>
-
-                <div class="summary-row">
-                    <span>Return Date</span>
-                    <strong id="summaryReturn">-</strong>
-                </div>
-
-                <div class="summary-total">
-
-                    <span>Total Amount</span>
-
-                    <strong>
-                        ₹<span id="summaryAmount">0</span>
-                    </strong>
-
-                </div>
+                <p>
+                    Securely complete your krishride booking
+                </p>
 
             </div>
 
 
-            <!-- PAYMENT CARD -->
-            <div class="payment-card">
-
-                <h2>Choose Payment Method</h2>
-
-                <p class="payment-description">
-                    Select your preferred payment method.
-                </p>
+            <div class="payment-grid">
 
 
-                <!-- UPI -->
-                <label class="payment-option">
+                <!-- ================= PAYMENT FORM ================= -->
 
-                    <input
-                        type="radio"
-                        name="payment"
-                        value="UPI"
+                <div class="payment-card">
+
+
+                    <div class="card-title">
+
+                        <div class="card-icon">
+                            💳
+                        </div>
+
+                        <div>
+
+                            <h2>
+                                Payment Method
+                            </h2>
+
+                            <p>
+                                Select your preferred payment option
+                            </p>
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- PAYMENT METHODS -->
+
+                    <div class="payment-methods">
+
+                        <div class="method active" onclick="selectMethod(this, 'UPI')">
+
+                            <div class="method-icon">
+                                📱
+                            </div>
+
+                            <span>
+                                UPI
+                            </span>
+
+                        </div>
+
+
+                        <div class="method" onclick="selectMethod(this, 'Card')">
+
+                            <div class="method-icon">
+                                💳
+                            </div>
+
+                            <span>
+                                Card
+                            </span>
+
+                        </div>
+
+
+                        <div class="method" onclick="selectMethod(this, 'Net Banking')">
+
+                            <div class="method-icon">
+                                🏦
+                            </div>
+
+                            <span>
+                                Net Banking
+                            </span>
+
+                        </div>
+
+
+                        <div class="method" onclick="selectMethod(this, 'Cash')">
+
+                            <div class="method-icon">
+                                💵
+                            </div>
+
+                            <span>
+                                Cash
+                            </span>
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- UPI FORM -->
+
+                    <div id="upiSection">
+
+                        <div class="upi-box">
+
+                            <h3>
+                                📱 UPI Payment
+                            </h3>
+
+                            <p>
+                                Enter your UPI ID to continue.
+                            </p>
+
+                            <div class="form-group">
+
+                                <label>
+                                    UPI ID
+                                </label>
+
+                                <input
+                                    type="text"
+                                    id="upiId"
+                                    placeholder="example@upi"
+                                >
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- CARD FORM -->
+
+                    <div id="cardSection" style="display:none;">
+
+                        <div class="form-group">
+
+                            <label>
+                                Card Number
+                            </label>
+
+                            <input
+                                type="text"
+                                id="cardNumber"
+                                placeholder="1234 5678 9012 3456"
+                                maxlength="19"
+                            >
+
+                        </div>
+
+
+                        <div class="form-row">
+
+                            <div class="form-group">
+
+                                <label>
+                                    Expiry Date
+                                </label>
+
+                                <input
+                                    type="text"
+                                    id="expiry"
+                                    placeholder="MM/YY"
+                                    maxlength="5"
+                                >
+
+                            </div>
+
+
+                            <div class="form-group">
+
+                                <label>
+                                    CVV
+                                </label>
+
+                                <input
+                                    type="password"
+                                    id="cvv"
+                                    placeholder="•••"
+                                    maxlength="3"
+                                >
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- NET BANKING -->
+
+                    <div id="bankSection" style="display:none;">
+
+                        <div class="form-group">
+
+                            <label>
+                                Bank Name
+                            </label>
+
+                            <input
+                                type="text"
+                                id="bankName"
+                                placeholder="Enter your bank name"
+                            >
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- CASH -->
+
+                    <div id="cashSection" style="display:none;">
+
+                        <div class="upi-box">
+
+                            <h3>
+                                💵 Cash on Pickup
+                            </h3>
+
+                            <p>
+                                You can pay the rental amount
+                                directly at the time of vehicle pickup.
+                            </p>
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- SECURITY -->
+
+                    <div class="security-box">
+
+                        <div class="security-icon">
+                            🔒
+                        </div>
+
+                        <div>
+                            Your payment information is protected
+                            and processed through a secure checkout.
+                        </div>
+
+                    </div>
+
+
+                    <button
+                        class="pay-button"
+                        onclick="processPayment()"
                     >
-
-                    <span>
-                        📱 UPI
-                    </span>
-
-                </label>
+                        🔐 Pay Now
+                    </button>
 
 
-                <!-- CARD -->
-                <label class="payment-option">
+                    <div class="demo-notice">
 
-                    <input
-                        type="radio"
-                        name="payment"
-                        value="Card"
-                    >
+                        <strong>Demo Mode:</strong>
+                        This payment page is currently a frontend
+                        demonstration. No real money will be charged.
 
-                    <span>
-                        💳 Debit / Credit Card
-                    </span>
+                    </div>
 
-                </label>
-
-
-                <!-- NET BANKING -->
-                <label class="payment-option">
-
-                    <input
-                        type="radio"
-                        name="payment"
-                        value="Net Banking"
-                    >
-
-                    <span>
-                        🏦 Net Banking
-                    </span>
-
-                </label>
-
-
-                <!-- CASH -->
-                <label class="payment-option">
-
-                    <input
-                        type="radio"
-                        name="payment"
-                        value="Cash on Pickup"
-                    >
-
-                    <span>
-                        💵 Cash on Pickup
-                    </span>
-
-                </label>
-
-
-                <!-- UPI INPUT -->
-                <div
-                    id="upiBox"
-                    style="display:none;"
-                >
-
-                    <label>
-                        Enter UPI ID
-                    </label>
-
-                    <input
-                        type="text"
-                        id="upiId"
-                        placeholder="example@upi"
-                    >
 
                 </div>
 
 
-                <!-- DEMO NOTICE -->
-                <div class="secure-payment">
+                <!-- ================= BOOKING SUMMARY ================= -->
 
-                    🔒
+                <div class="summary-card">
 
-                    <div>
+                    <h2>
+                        Booking Summary
+                    </h2>
 
-                        <strong>
-                            Demo Payment System
-                        </strong>
 
-                        <p>
-                            This is a demonstration payment
-                            system for the AtulRide project.
-                            No real money will be charged.
-                        </p>
+                    <div class="vehicle-summary">
+
+                        <img
+                            id="vehicleImage"
+                            class="vehicle-image"
+                            src="https://images.unsplash.com/photo-1549317661-bd32c8ce0db2?auto=format&fit=crop&w=500&q=80"
+                            alt="Vehicle"
+                        >
+
+                        <div class="vehicle-info">
+
+                            <h3 id="vehicleName">
+                                krishride Vehicle
+                            </h3>
+
+                            <p id="rentalType">
+                                Rental Booking
+                            </p>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="summary-details">
+
+
+                        <div class="summary-row">
+
+                            <span class="summary-label">
+                                Customer
+                            </span>
+
+                            <span
+                                class="summary-value"
+                                id="customerName"
+                            >
+                                —
+                            </span>
+
+                        </div>
+
+
+                        <div class="summary-row">
+
+                            <span class="summary-label">
+                                Pickup
+                            </span>
+
+                            <span
+                                class="summary-value"
+                                id="pickupDate"
+                            >
+                                —
+                            </span>
+
+                        </div>
+
+
+                        <div class="summary-row">
+
+                            <span class="summary-label">
+                                Return
+                            </span>
+
+                            <span
+                                class="summary-value"
+                                id="returnDate"
+                            >
+                                —
+                            </span>
+
+                        </div>
+
+
+                        <div class="summary-row">
+
+                            <span class="summary-label">
+                                Rental Type
+                            </span>
+
+                            <span
+                                class="summary-value"
+                                id="summaryRentalType"
+                            >
+                                —
+                            </span>
+
+                        </div>
+
+
+                    </div>
+
+
+                    <div class="total-row">
+
+                        <span>
+                            Total Amount
+                        </span>
+
+                        <span
+                            class="total-amount"
+                            id="totalAmount"
+                        >
+                            ₹0
+                        </span>
 
                     </div>
 
                 </div>
 
 
-                <!-- PAYMENT BUTTON -->
-                <button
-                    type="button"
-                    id="demoPayButton"
-                    class="primary-btn"
-                >
-
-                    Pay ₹<span id="paymentAmount">0</span>
-
-                </button>
-
-
-                <p
-                    id="paymentMessage"
-                    class="payment-message"
-                ></p>
-
             </div>
 
         </div>
 
-    </section>
+    </main>
 
 
-    <!-- FOOTER -->
+    <!-- ================= FOOTER ================= -->
+
     <footer>
 
-        <div class="footer-content">
+        <p>
+            © 2026 krishride. All Rights Reserved.
+        </p>
 
-            <h2>🚗 AtulRide</h2>
-
-            <p>
-                Smart, simple and reliable vehicle rental.
-            </p>
-
-            <p>
-                © 2026 AtulRide. All Rights Reserved.
-            </p>
-
-        </div>
+        <p>
+            🚗 Your Journey, Our Responsibility
+        </p>
 
     </footer>
 
 
-    <!-- EXISTING SCRIPT -->
-    <script src="script.js"></script>
+    <!-- ================= JAVASCRIPT ================= -->
 
-
-    <!-- DEMO PAYMENT SCRIPT -->
     <script>
 
-        const demoPayButton =
-            document.getElementById("demoPayButton");
-
-        const paymentMessage =
-            document.getElementById("paymentMessage");
+        let selectedMethod = "UPI";
 
 
-        // UPI OPTION
-        const upiOption =
-            document.querySelector(
-                'input[value="UPI"]'
-            );
+        function selectMethod(element, method) {
 
-        const upiBox =
-            document.getElementById("upiBox");
+            selectedMethod = method;
+
+            document
+                .querySelectorAll(".method")
+                .forEach(item => {
+                    item.classList.remove("active");
+                });
+
+            element.classList.add("active");
 
 
-        if (upiOption && upiBox) {
+            document.getElementById("upiSection").style.display = "none";
+            document.getElementById("cardSection").style.display = "none";
+            document.getElementById("bankSection").style.display = "none";
+            document.getElementById("cashSection").style.display = "none";
 
-            upiOption.addEventListener(
-                "change",
-                function () {
 
-                    if (upiOption.checked) {
+            if (method === "UPI") {
+                document.getElementById("upiSection").style.display = "block";
+            }
 
-                        upiBox.style.display =
-                            "block";
+            if (method === "Card") {
+                document.getElementById("cardSection").style.display = "block";
+            }
 
-                    }
+            if (method === "Net Banking") {
+                document.getElementById("bankSection").style.display = "block";
+            }
 
-                }
-            );
+            if (method === "Cash") {
+                document.getElementById("cashSection").style.display = "block";
+            }
+
+        }
+
+
+        function loadBookingData() {
+
+            const booking =
+                JSON.parse(localStorage.getItem("bookingData") || "{}");
+
+
+            if (booking.name) {
+
+                document.getElementById("customerName").textContent =
+                    booking.name;
+
+            }
+
+
+            if (booking.vehicle) {
+
+                document.getElementById("vehicleName").textContent =
+                    booking.vehicle;
+
+            }
+
+
+            if (booking.rentalType) {
+
+                document.getElementById("rentalType").textContent =
+                    booking.rentalType;
+
+                document.getElementById("summaryRentalType").textContent =
+                    booking.rentalType;
+
+            }
+
+
+            if (booking.pickupDate) {
+
+                document.getElementById("pickupDate").textContent =
+                    booking.pickupDate;
+
+            }
+
+
+            if (booking.returnDate) {
+
+                document.getElementById("returnDate").textContent =
+                    booking.returnDate;
+
+            }
+
+
+            if (booking.totalRent) {
+
+                document.getElementById("totalAmount").textContent =
+                    "₹" + booking.totalRent;
+
+            }
 
         }
 
 
-        // DEMO PAYMENT
-        if (demoPayButton) {
+        function processPayment() {
 
-            demoPayButton.addEventListener(
-                "click",
-                function () {
+            if (selectedMethod === "UPI") {
 
-                    const selectedPayment =
-                        document.querySelector(
-                            'input[name="payment"]:checked'
-                        );
+                const upi =
+                    document.getElementById("upiId").value.trim();
 
+                if (!upi) {
 
-                    if (!selectedPayment) {
+                    alert("Please enter your UPI ID.");
 
-                        alert(
-                            "Please select a payment method."
-                        );
-
-                        return;
-
-                    }
-
-
-                    // UPI VALIDATION
-                    if (
-                        selectedPayment.value === "UPI"
-                    ) {
-
-                        const upiId =
-                            document.getElementById(
-                                "upiId"
-                            ).value.trim();
-
-
-                        if (upiId === "") {
-
-                            alert(
-                                "Please enter your UPI ID."
-                            );
-
-                            return;
-
-                        }
-
-                    }
-
-
-                    // SAVE PAYMENT METHOD
-                    localStorage.setItem(
-                        "paymentMethod",
-                        selectedPayment.value
-                    );
-
-
-                    // DEMO PAYMENT STATUS
-                    localStorage.setItem(
-                        "paymentStatus",
-                        "Demo Payment Successful"
-                    );
-
-
-                    // BUTTON MESSAGE
-                    demoPayButton.innerText =
-                        "Processing...";
-
-
-                    paymentMessage.innerText =
-                        "Demo payment successful!";
-
-
-                    // REDIRECT
-                    setTimeout(
-                        function () {
-
-                            window.location.href =
-                                "success.html";
-
-                        },
-                        1000
-                    );
+                    return;
 
                 }
 
+            }
+
+
+            if (selectedMethod === "Card") {
+
+                const card =
+                    document.getElementById("cardNumber").value.trim();
+
+                const expiry =
+                    document.getElementById("expiry").value.trim();
+
+                const cvv =
+                    document.getElementById("cvv").value.trim();
+
+
+                if (!card || !expiry || !cvv) {
+
+                    alert("Please fill all card details.");
+
+                    return;
+
+                }
+
+            }
+
+
+            if (selectedMethod === "Net Banking") {
+
+                const bank =
+                    document.getElementById("bankName").value.trim();
+
+                if (!bank) {
+
+                    alert("Please enter your bank name.");
+
+                    return;
+
+                }
+
+            }
+
+
+            localStorage.setItem(
+                "paymentMethod",
+                selectedMethod
             );
 
+            localStorage.setItem(
+                "paymentStatus",
+                "Successful"
+            );
+
+
+            alert(
+                "Payment successful! Your booking has been confirmed."
+            );
+
+
+            window.location.href = "success.html";
+
         }
+
+
+        loadBookingData();
 
     </script>
+
 
 </body>
 
