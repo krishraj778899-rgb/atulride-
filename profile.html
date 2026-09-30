@@ -3,7 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My Account - AtulRide</title>
+
+    <title>My Profile - AtulRide</title>
 
     <style>
         * {
@@ -14,226 +15,100 @@
         }
 
         body {
-            background: #f1f3f6;
+            background: #f4f7fb;
             color: #222;
         }
 
         /* ================= NAVBAR ================= */
 
-        .navbar {
-            background: #2874f0;
+        nav {
+            background: #111827;
             color: white;
-            min-height: 60px;
+            padding: 16px 7%;
             display: flex;
-            align-items: center;
-            padding: 0 7%;
             justify-content: space-between;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
         }
 
         .logo {
             font-size: 26px;
             font-weight: bold;
-            text-decoration: none;
-            color: white;
+            color: #00d4ff;
         }
 
-        .nav-links {
+        nav ul {
+            list-style: none;
             display: flex;
-            gap: 25px;
-            align-items: center;
+            gap: 24px;
         }
 
-        .nav-links a {
+        nav ul li a {
             color: white;
             text-decoration: none;
             font-size: 15px;
+            transition: 0.3s;
         }
 
-        .nav-links a:hover {
-            text-decoration: underline;
+        nav ul li a:hover {
+            color: #00d4ff;
         }
 
-        /* ================= MAIN ================= */
+        /* ================= HERO ================= */
 
-        .container {
-            width: 90%;
-            max-width: 1200px;
-            margin: 25px auto;
-            display: grid;
-            grid-template-columns: 260px 1fr;
-            gap: 20px;
-        }
-
-        /* ================= SIDEBAR ================= */
-
-        .sidebar {
-            background: white;
-            border-radius: 5px;
-            overflow: hidden;
-            height: fit-content;
-        }
-
-        .profile-mini {
-            padding: 22px;
-            border-bottom: 1px solid #ddd;
-            display: flex;
-            align-items: center;
-            gap: 15px;
-        }
-
-        .avatar {
-            width: 55px;
-            height: 55px;
-            background: #2874f0;
+        .hero {
+            background: linear-gradient(135deg, #111827, #1e3a8a);
             color: white;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 25px;
-            font-weight: bold;
-        }
-
-        .profile-mini h3 {
-            font-size: 16px;
-        }
-
-        .profile-mini p {
-            color: #777;
-            font-size: 13px;
-            margin-top: 4px;
-        }
-
-        .menu-item {
-            padding: 17px 22px;
-            border-bottom: 1px solid #eee;
-            cursor: pointer;
-            color: #444;
-            font-size: 15px;
-        }
-
-        .menu-item:hover,
-        .menu-item.active {
-            color: #2874f0;
-            background: #f7faff;
-        }
-
-        /* ================= CONTENT ================= */
-
-        .content {
-            background: white;
-            border-radius: 5px;
-            padding: 28px;
-            min-height: 500px;
-        }
-
-        .section {
-            display: none;
-        }
-
-        .section.active {
-            display: block;
-        }
-
-        .section-title {
-            font-size: 22px;
-            margin-bottom: 25px;
-            border-bottom: 1px solid #ddd;
-            padding-bottom: 15px;
-        }
-
-        /* ================= LOGIN ================= */
-
-        .login-box {
-            max-width: 450px;
-            margin: 30px auto;
-            border: 1px solid #ddd;
-            border-radius: 8px;
-            padding: 30px;
-            box-shadow: 0 5px 20px rgba(0,0,0,0.06);
-        }
-
-        .login-box h2 {
             text-align: center;
-            color: #2874f0;
+            padding: 65px 20px;
+        }
+
+        .hero h1 {
+            font-size: 42px;
             margin-bottom: 10px;
         }
 
-        .login-box .subtitle {
+        .hero p {
+            font-size: 17px;
+            opacity: 0.9;
+        }
+
+        /* ================= CONTAINER ================= */
+
+        .container {
+            width: 92%;
+            max-width: 1150px;
+            margin: 40px auto;
+        }
+
+        /* ================= AUTH ================= */
+
+        .auth-container {
+            max-width: 500px;
+            margin: 40px auto;
+        }
+
+        .auth-card {
+            background: white;
+            padding: 35px;
+            border-radius: 18px;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.08);
+        }
+
+        .auth-card h2 {
             text-align: center;
-            color: #777;
+            margin-bottom: 10px;
+            color: #111827;
+        }
+
+        .auth-card .subtitle {
+            text-align: center;
+            color: #64748b;
             margin-bottom: 25px;
             font-size: 14px;
         }
-
-        .login-btn {
-            width: 100%;
-            background: #2874f0;
-            color: white;
-            border: none;
-            padding: 14px;
-            border-radius: 4px;
-            cursor: pointer;
-            font-size: 16px;
-            font-weight: bold;
-        }
-
-        .login-btn:hover {
-            background: #125bd0;
-        }
-
-        .register-note {
-            text-align: center;
-            color: #777;
-            margin-top: 18px;
-            font-size: 13px;
-        }
-
-        /* ================= PROFILE ================= */
-
-        .info-box {
-            border: 1px solid #ddd;
-            padding: 20px;
-            margin-bottom: 20px;
-            border-radius: 5px;
-        }
-
-        .info-box h3 {
-            margin-bottom: 15px;
-            color: #2874f0;
-        }
-
-        .info-row {
-            display: grid;
-            grid-template-columns: 180px 1fr;
-            margin: 12px 0;
-            font-size: 15px;
-        }
-
-        .label {
-            color: #777;
-        }
-
-        .value {
-            font-weight: 500;
-        }
-
-        .edit-btn {
-            background: #2874f0;
-            color: white;
-            border: none;
-            padding: 11px 25px;
-            border-radius: 3px;
-            cursor: pointer;
-            text-decoration: none;
-            display: inline-block;
-        }
-
-        .edit-btn:hover {
-            background: #125bd0;
-        }
-
-        /* ================= FORM ================= */
 
         .form-group {
             margin-bottom: 18px;
@@ -241,166 +116,369 @@
 
         .form-group label {
             display: block;
-            margin-bottom: 7px;
             font-weight: bold;
             font-size: 14px;
+            margin-bottom: 7px;
         }
 
         .form-group input,
-        .form-group textarea {
+        .form-group select {
             width: 100%;
-            padding: 12px;
-            border: 1px solid #ccc;
-            border-radius: 4px;
+            padding: 13px;
+            border: 1px solid #d1d5db;
+            border-radius: 8px;
             outline: none;
+            font-size: 14px;
         }
 
         .form-group input:focus,
-        .form-group textarea:focus {
-            border-color: #2874f0;
+        .form-group select:focus {
+            border-color: #2563eb;
+            box-shadow: 0 0 0 3px rgba(37,99,235,0.1);
         }
 
-        .save-btn {
-            background: #fb641b;
-            color: white;
+        .auth-btn {
+            width: 100%;
+            padding: 14px;
             border: none;
-            padding: 13px 30px;
-            border-radius: 3px;
+            border-radius: 9px;
+            background: linear-gradient(135deg, #2563eb, #00bcd4);
+            color: white;
+            font-size: 16px;
+            font-weight: bold;
             cursor: pointer;
+            margin-top: 5px;
+        }
+
+        .auth-btn:hover {
+            opacity: 0.92;
+        }
+
+        .switch-text {
+            text-align: center;
+            margin-top: 20px;
+            color: #64748b;
+            font-size: 14px;
+        }
+
+        .switch-text button {
+            border: none;
+            background: none;
+            color: #2563eb;
+            font-weight: bold;
+            cursor: pointer;
+            font-size: 14px;
+        }
+
+        .switch-text button:hover {
+            text-decoration: underline;
+        }
+
+        /* ================= PROFILE LAYOUT ================= */
+
+        .profile-layout {
+            display: grid;
+            grid-template-columns: 260px 1fr;
+            gap: 25px;
+        }
+
+        .sidebar {
+            background: white;
+            border-radius: 16px;
+            padding: 20px;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.07);
+            height: fit-content;
+        }
+
+        .sidebar-profile {
+            text-align: center;
+            padding-bottom: 20px;
+            border-bottom: 1px solid #e5e7eb;
+            margin-bottom: 15px;
+        }
+
+        .profile-avatar {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #2563eb, #00bcd4);
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: auto;
+            font-size: 30px;
             font-weight: bold;
         }
 
-        .save-btn:hover {
-            background: #e85a17;
+        .sidebar-profile h3 {
+            margin-top: 12px;
+            font-size: 18px;
         }
 
-        /* ================= BOOKING ================= */
+        .sidebar-profile p {
+            margin-top: 5px;
+            color: #64748b;
+            font-size: 13px;
+            word-break: break-word;
+        }
+
+        .sidebar-menu button {
+            width: 100%;
+            border: none;
+            background: transparent;
+            padding: 12px;
+            text-align: left;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 14px;
+            margin-bottom: 5px;
+            color: #374151;
+        }
+
+        .sidebar-menu button:hover,
+        .sidebar-menu button.active {
+            background: #eff6ff;
+            color: #2563eb;
+        }
+
+        .logout-btn {
+            color: #dc2626 !important;
+        }
+
+        .logout-btn:hover {
+            background: #fef2f2 !important;
+            color: #dc2626 !important;
+        }
+
+        /* ================= CONTENT ================= */
+
+        .content-card {
+            background: white;
+            border-radius: 16px;
+            padding: 30px;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.07);
+        }
+
+        .content-card h2 {
+            color: #111827;
+            margin-bottom: 25px;
+        }
+
+        .profile-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+        }
+
+        .profile-item {
+            background: #f8fafc;
+            padding: 18px;
+            border-radius: 10px;
+            border: 1px solid #e5e7eb;
+        }
+
+        .profile-item span {
+            display: block;
+            font-size: 12px;
+            color: #64748b;
+            margin-bottom: 7px;
+        }
+
+        .profile-item strong {
+            font-size: 15px;
+            color: #111827;
+            word-break: break-word;
+        }
+
+        /* ================= BUTTONS ================= */
+
+        .primary-btn {
+            background: #2563eb;
+            color: white;
+            border: none;
+            padding: 12px 20px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: bold;
+            margin-top: 20px;
+        }
+
+        .primary-btn:hover {
+            background: #1d4ed8;
+        }
+
+        .secondary-btn {
+            background: #e5e7eb;
+            color: #111827;
+            border: none;
+            padding: 12px 20px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: bold;
+            margin-top: 20px;
+            margin-left: 8px;
+        }
+
+        .secondary-btn:hover {
+            background: #d1d5db;
+        }
+
+        /* ================= BOOKING CARD ================= */
 
         .booking-card {
-            border: 1px solid #ddd;
+            border: 1px solid #e5e7eb;
+            border-radius: 12px;
             padding: 20px;
-            margin-bottom: 15px;
-            border-radius: 5px;
+            margin-bottom: 18px;
+            background: #f8fafc;
         }
 
-        .booking-card h3 {
-            color: #2874f0;
-            margin-bottom: 12px;
-        }
-
-        .booking-row {
+        .booking-header {
             display: flex;
             justify-content: space-between;
-            padding: 7px 0;
-            border-bottom: 1px solid #eee;
             gap: 15px;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+
+        .booking-header h3 {
+            color: #111827;
         }
 
         .status {
-            display: inline-block;
-            padding: 5px 12px;
-            background: #e6f4ea;
-            color: #16803c;
-            border-radius: 15px;
-            font-size: 13px;
-            margin-top: 12px;
+            padding: 6px 12px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: bold;
+            background: #dcfce7;
+            color: #166534;
         }
 
-        .empty {
+        .booking-details {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 12px;
+        }
+
+        .booking-detail {
+            font-size: 14px;
+        }
+
+        .booking-detail span {
+            color: #64748b;
+            display: block;
+            font-size: 12px;
+            margin-bottom: 4px;
+        }
+
+        .booking-detail strong {
+            color: #111827;
+        }
+
+        .no-data {
             text-align: center;
-            padding: 50px 20px;
-            color: #777;
+            padding: 40px 20px;
+            color: #64748b;
         }
 
-        .empty-icon {
-            font-size: 50px;
-            margin-bottom: 15px;
+        .book-now-btn {
+            display: inline-block;
+            margin-top: 15px;
+            padding: 12px 20px;
+            background: #2563eb;
+            color: white;
+            text-decoration: none;
+            border-radius: 8px;
+            font-weight: bold;
         }
 
         /* ================= PAYMENT ================= */
 
         .payment-card {
-            border: 1px solid #ddd;
-            padding: 20px;
-            border-radius: 5px;
+            border: 1px solid #e5e7eb;
+            padding: 18px;
+            border-radius: 10px;
             margin-bottom: 15px;
         }
 
-        .payment-success {
-            color: green;
-            font-weight: bold;
-        }
-
-        /* ================= LOGOUT ================= */
-
-        .logout-btn {
-            background: #e53935;
-            color: white;
-            border: none;
-            padding: 12px 30px;
-            border-radius: 4px;
-            cursor: pointer;
-        }
-
-        .logout-btn:hover {
-            background: #c62828;
-        }
-
-        /* ================= LOGIN STATUS ================= */
-
-        .login-status {
+        .payment-status {
             display: inline-block;
-            background: #e6f4ea;
-            color: #16803c;
-            padding: 6px 12px;
+            padding: 5px 10px;
             border-radius: 15px;
-            font-size: 13px;
-            margin-bottom: 20px;
+            font-size: 12px;
+            background: #fef3c7;
+            color: #92400e;
+            margin-top: 8px;
+        }
+
+        /* ================= SAVED ================= */
+
+        .saved-card {
+            border: 1px solid #e5e7eb;
+            border-radius: 10px;
+            padding: 20px;
+            margin-bottom: 15px;
         }
 
         /* ================= FOOTER ================= */
 
         footer {
-            background: #172337;
+            background: #111827;
             color: white;
             text-align: center;
             padding: 25px;
-            margin-top: 40px;
+            margin-top: 50px;
         }
 
-        /* ================= MOBILE ================= */
+        footer p {
+            color: #cbd5e1;
+            font-size: 14px;
+        }
 
-        @media(max-width: 768px) {
+        /* ================= RESPONSIVE ================= */
 
-            .navbar {
-                padding: 12px 20px;
+        @media (max-width: 850px) {
+
+            nav {
                 flex-direction: column;
-                gap: 12px;
+                gap: 15px;
             }
 
-            .nav-links {
+            nav ul {
                 flex-wrap: wrap;
                 justify-content: center;
-                gap: 12px;
+                gap: 15px;
             }
 
-            .container {
+            .profile-layout {
                 grid-template-columns: 1fr;
-                width: 95%;
             }
 
             .sidebar {
-                width: 100%;
+                height: auto;
+            }
+        }
+
+        @media (max-width: 600px) {
+
+            .hero h1 {
+                font-size: 30px;
             }
 
-            .info-row {
+            .content-card,
+            .auth-card {
+                padding: 22px;
+            }
+
+            .profile-grid,
+            .booking-details {
                 grid-template-columns: 1fr;
-                gap: 5px;
             }
 
-            .booking-row {
+            .booking-header {
                 flex-direction: column;
-                gap: 3px;
+                align-items: flex-start;
             }
         }
     </style>
@@ -410,154 +488,476 @@
 
 <!-- ================= NAVBAR ================= -->
 
-<nav class="navbar">
+<nav>
 
-    <a href="index.html" class="logo">
+    <div class="logo">
         AtulRide
-    </a>
-
-    <div class="nav-links">
-
-        <a href="index.html">Home</a>
-
-        <a href="vehicles.html">Vehicles</a>
-
-        <a href="booking.html">Booking</a>
-
-        <a href="about.html">About</a>
-
-        <a href="contact.html">Contact</a>
-
     </div>
+
+    <ul>
+        <li>
+            <a href="index.html">Home</a>
+        </li>
+
+        <li>
+            <a href="vehicles.html">Vehicles</a>
+        </li>
+
+        <li>
+            <a href="booking.html">Booking</a>
+        </li>
+
+        <li>
+            <a href="about.html">About</a>
+        </li>
+
+        <li>
+            <a href="contact.html">Contact</a>
+        </li>
+
+        <li>
+            <a href="profile.html">Profile</a>
+        </li>
+    </ul>
 
 </nav>
 
 
-<!-- ================= MAIN ================= -->
+<!-- ================= HERO ================= -->
 
-<div class="container">
+<section class="hero">
 
-    <!-- ================= SIDEBAR ================= -->
+    <h1>My Profile 👤</h1>
 
-    <aside class="sidebar">
+    <p>
+        Manage your AtulRide account and bookings.
+    </p>
 
-        <div class="profile-mini">
+</section>
 
-            <div class="avatar" id="avatar">
-                C
+
+<!-- ================= AUTH AREA ================= -->
+
+<div
+    class="auth-container"
+    id="authContainer"
+    style="display:none;"
+>
+
+    <!-- LOGIN -->
+
+    <div
+        class="auth-card"
+        id="loginBox"
+    >
+
+        <h2>Welcome Back</h2>
+
+        <p class="subtitle">
+            Login to continue with AtulRide.
+        </p>
+
+        <form id="loginForm">
+
+            <div class="form-group">
+
+                <label for="loginMobile">
+                    Mobile Number
+                </label>
+
+                <input
+                    type="tel"
+                    id="loginMobile"
+                    placeholder="Enter mobile number"
+                    maxlength="10"
+                    required
+                >
+
             </div>
 
-            <div>
 
-                <h3 id="sideName">
+            <div class="form-group">
+
+                <label for="loginPassword">
+                    Password
+                </label>
+
+                <input
+                    type="password"
+                    id="loginPassword"
+                    placeholder="Enter password"
+                    required
+                >
+
+            </div>
+
+
+            <button
+                type="submit"
+                class="auth-btn"
+            >
+                Login
+            </button>
+
+        </form>
+
+
+        <div class="switch-text">
+
+            New customer?
+
+            <button
+                type="button"
+                onclick="showCreateAccount()"
+            >
+                Create Account
+            </button>
+
+        </div>
+
+    </div>
+
+
+    <!-- CREATE ACCOUNT -->
+
+    <div
+        class="auth-card"
+        id="createBox"
+        style="display:none;"
+    >
+
+        <h2>Create Account</h2>
+
+        <p class="subtitle">
+            Create your AtulRide customer account.
+        </p>
+
+        <form id="createForm">
+
+            <div class="form-group">
+
+                <label for="createName">
+                    Full Name
+                </label>
+
+                <input
+                    type="text"
+                    id="createName"
+                    placeholder="Enter your full name"
+                    required
+                >
+
+            </div>
+
+
+            <div class="form-group">
+
+                <label for="createMobile">
+                    Mobile Number
+                </label>
+
+                <input
+                    type="tel"
+                    id="createMobile"
+                    placeholder="Enter 10-digit mobile number"
+                    maxlength="10"
+                    required
+                >
+
+            </div>
+
+
+            <div class="form-group">
+
+                <label for="createEmail">
+                    Email Address
+                </label>
+
+                <input
+                    type="email"
+                    id="createEmail"
+                    placeholder="Enter email address"
+                    required
+                >
+
+            </div>
+
+
+            <div class="form-group">
+
+                <label for="createPassword">
+                    Password
+                </label>
+
+                <input
+                    type="password"
+                    id="createPassword"
+                    placeholder="Create password"
+                    minlength="6"
+                    required
+                >
+
+            </div>
+
+
+            <div class="form-group">
+
+                <label for="confirmPassword">
+                    Confirm Password
+                </label>
+
+                <input
+                    type="password"
+                    id="confirmPassword"
+                    placeholder="Confirm password"
+                    minlength="6"
+                    required
+                >
+
+            </div>
+
+
+            <button
+                type="submit"
+                class="auth-btn"
+            >
+                Create Account
+            </button>
+
+        </form>
+
+
+        <div class="switch-text">
+
+            Already have an account?
+
+            <button
+                type="button"
+                onclick="showLogin()"
+            >
+                Login
+            </button>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+<!-- ================= PROFILE AREA ================= -->
+
+<div
+    class="container"
+    id="profileContainer"
+    style="display:none;"
+>
+
+    <div class="profile-layout">
+
+
+        <!-- SIDEBAR -->
+
+        <aside class="sidebar">
+
+            <div class="sidebar-profile">
+
+                <div
+                    class="profile-avatar"
+                    id="profileAvatar"
+                >
+                    A
+                </div>
+
+                <h3 id="sidebarName">
                     Customer
                 </h3>
 
-                <p id="sideStatus">
-                    Login Required
+                <p id="sidebarEmail">
+                    -
                 </p>
 
             </div>
 
-        </div>
+
+            <div class="sidebar-menu">
+
+                <button
+                    class="active"
+                    onclick="showSection('profile', this)"
+                >
+                    👤 My Profile
+                </button>
+
+                <button
+                    onclick="showSection('bookings', this)"
+                >
+                    📋 My Bookings
+                </button>
+
+                <button
+                    onclick="showSection('payments', this)"
+                >
+                    💳 Payment History
+                </button>
+
+                <button
+                    onclick="showSection('edit', this)"
+                >
+                    ✏️ Edit Profile
+                </button>
+
+                <button
+                    onclick="showSection('password', this)"
+                >
+                    🔐 Change Password
+                </button>
+
+                <button
+                    onclick="showSection('saved', this)"
+                >
+                    ❤️ Saved Vehicles
+                </button>
+
+                <button
+                    class="logout-btn"
+                    onclick="logout()"
+                >
+                    🚪 Logout
+                </button>
+
+            </div>
+
+        </aside>
 
 
-        <div
-            class="menu-item active"
-            id="profileMenu"
-            onclick="showSection('profile', this)"
-        >
-            👤 My Profile
-        </div>
+        <!-- CONTENT -->
+
+        <main class="content-card">
 
 
-        <div
-            class="menu-item"
-            onclick="showSection('bookings', this)"
-        >
-            🚗 My Bookings
-        </div>
+            <!-- ================= PROFILE ================= -->
+
+            <section id="profileSection">
+
+                <h2>My Profile</h2>
+
+                <div class="profile-grid">
+
+                    <div class="profile-item">
+
+                        <span>
+                            Full Name
+                        </span>
+
+                        <strong id="displayName">
+                            -
+                        </strong>
+
+                    </div>
 
 
-        <div
-            class="menu-item"
-            onclick="showSection('payments', this)"
-        >
-            💳 Payment History
-        </div>
+                    <div class="profile-item">
+
+                        <span>
+                            Mobile Number
+                        </span>
+
+                        <strong id="displayMobile">
+                            -
+                        </strong>
+
+                    </div>
 
 
-        <div
-            class="menu-item"
-            onclick="showSection('edit', this)"
-        >
-            ✏️ Edit Profile
-        </div>
+                    <div class="profile-item">
+
+                        <span>
+                            Email Address
+                        </span>
+
+                        <strong id="displayEmail">
+                            -
+                        </strong>
+
+                    </div>
 
 
-        <div
-            class="menu-item"
-            onclick="showSection('password', this)"
-        >
-            🔐 Change Password
-        </div>
+                    <div class="profile-item">
+
+                        <span>
+                            Account Status
+                        </span>
+
+                        <strong>
+                            Active
+                        </strong>
+
+                    </div>
+
+                </div>
 
 
-        <div
-            class="menu-item"
-            onclick="showSection('saved', this)"
-        >
-            ❤️ Saved Vehicles
-        </div>
+                <button
+                    class="primary-btn"
+                    onclick="openEditProfile()"
+                >
+                    Edit Profile
+                </button>
+
+            </section>
 
 
-        <div
-            class="menu-item"
-            id="loginLogoutMenu"
-            onclick="handleLoginLogout()"
-        >
-            🔐 Login
-        </div>
+            <!-- ================= BOOKINGS ================= -->
 
-    </aside>
+            <section
+                id="bookingsSection"
+                style="display:none;"
+            >
 
+                <h2>My Bookings</h2>
 
-    <!-- ================= CONTENT ================= -->
+                <div id="bookingsContainer">
+                </div>
 
-    <main class="content">
-
-
-        <!-- ================= LOGIN SECTION ================= -->
-
-        <section
-            id="login"
-            class="section active"
-        >
-
-            <div class="login-box">
-
-                <h2>
-                    Login to AtulRide
-                </h2>
-
-                <p class="subtitle">
-                    Login from your Profile to book a vehicle.
-                </p>
+            </section>
 
 
-                <form onsubmit="loginUser(event)">
+            <!-- ================= PAYMENTS ================= -->
+
+            <section
+                id="paymentsSection"
+                style="display:none;"
+            >
+
+                <h2>Payment History</h2>
+
+                <div id="paymentsContainer">
+                </div>
+
+            </section>
+
+
+            <!-- ================= EDIT PROFILE ================= -->
+
+            <section
+                id="editSection"
+                style="display:none;"
+            >
+
+                <h2>Edit Profile</h2>
+
+                <form id="editForm">
 
                     <div class="form-group">
 
-                        <label for="loginMobile">
-                            Mobile Number
+                        <label for="editName">
+                            Full Name
                         </label>
 
                         <input
-                            type="tel"
-                            id="loginMobile"
-                            maxlength="10"
-                            placeholder="Enter 10 digit mobile number"
+                            type="text"
+                            id="editName"
                             required
                         >
 
@@ -566,14 +966,29 @@
 
                     <div class="form-group">
 
-                        <label for="loginPassword">
-                            Password
+                        <label for="editMobile">
+                            Mobile Number
                         </label>
 
                         <input
-                            type="password"
-                            id="loginPassword"
-                            placeholder="Enter password"
+                            type="tel"
+                            id="editMobile"
+                            maxlength="10"
+                            required
+                        >
+
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <label for="editEmail">
+                            Email Address
+                        </label>
+
+                        <input
+                            type="email"
+                            id="editEmail"
                             required
                         >
 
@@ -582,396 +997,119 @@
 
                     <button
                         type="submit"
-                        class="login-btn"
+                        class="primary-btn"
                     >
-                        Login
+                        Save Changes
                     </button>
 
                 </form>
 
+            </section>
 
-                <p class="register-note">
-                    New customer? Enter your details in Edit Profile
-                    and create your account first.
-                </p>
 
-            </div>
+            <!-- ================= PASSWORD ================= -->
 
-        </section>
-
-
-        <!-- ================= PROFILE ================= -->
-
-        <section
-            id="profile"
-            class="section"
-        >
-
-            <h2 class="section-title">
-                My Profile
-            </h2>
-
-            <span class="login-status">
-                ✓ Logged In
-            </span>
-
-
-            <div class="info-box">
-
-                <h3>
-                    Personal Information
-                </h3>
-
-
-                <div class="info-row">
-
-                    <span class="label">
-                        Full Name
-                    </span>
-
-                    <span
-                        class="value"
-                        id="profileName"
-                    >
-                        Customer
-                    </span>
-
-                </div>
-
-
-                <div class="info-row">
-
-                    <span class="label">
-                        Mobile Number
-                    </span>
-
-                    <span
-                        class="value"
-                        id="profileMobile"
-                    >
-                        Not added
-                    </span>
-
-                </div>
-
-
-                <div class="info-row">
-
-                    <span class="label">
-                        Email
-                    </span>
-
-                    <span
-                        class="value"
-                        id="profileEmail"
-                    >
-                        Not added
-                    </span>
-
-                </div>
-
-
-                <div class="info-row">
-
-                    <span class="label">
-                        Address
-                    </span>
-
-                    <span
-                        class="value"
-                        id="profileAddress"
-                    >
-                        Not added
-                    </span>
-
-                </div>
-
-
-                <br>
-
-
-                <button
-                    class="edit-btn"
-                    onclick="openEdit()"
-                >
-                    Edit Profile
-                </button>
-
-            </div>
-
-
-            <div class="info-box">
-
-                <h3>
-                    AtulRide Account
-                </h3>
-
-
-                <div class="info-row">
-
-                    <span class="label">
-                        Account Type
-                    </span>
-
-                    <span class="value">
-                        Customer
-                    </span>
-
-                </div>
-
-
-                <div class="info-row">
-
-                    <span class="label">
-                        Member Since
-                    </span>
-
-                    <span
-                        class="value"
-                        id="memberSince"
-                    >
-                        2026
-                    </span>
-
-                </div>
-
-            </div>
-
-        </section>
-
-
-        <!-- ================= BOOKINGS ================= -->
-
-        <section
-            id="bookings"
-            class="section"
-        >
-
-            <h2 class="section-title">
-                My Bookings
-            </h2>
-
-            <div id="bookingContainer"></div>
-
-        </section>
-
-
-        <!-- ================= PAYMENTS ================= -->
-
-        <section
-            id="payments"
-            class="section"
-        >
-
-            <h2 class="section-title">
-                Payment History
-            </h2>
-
-            <div id="paymentContainer"></div>
-
-        </section>
-
-
-        <!-- ================= EDIT PROFILE ================= -->
-
-        <section
-            id="edit"
-            class="section"
-        >
-
-            <h2 class="section-title">
-                Edit Profile
-            </h2>
-
-
-            <form onsubmit="saveProfile(event)">
-
-                <div class="form-group">
-
-                    <label>
-                        Full Name
-                    </label>
-
-                    <input
-                        type="text"
-                        id="editName"
-                        placeholder="Enter your name"
-                        required
-                    >
-
-                </div>
-
-
-                <div class="form-group">
-
-                    <label>
-                        Mobile Number
-                    </label>
-
-                    <input
-                        type="tel"
-                        id="editMobile"
-                        maxlength="10"
-                        placeholder="Enter mobile number"
-                        required
-                    >
-
-                </div>
-
-
-                <div class="form-group">
-
-                    <label>
-                        Email
-                    </label>
-
-                    <input
-                        type="email"
-                        id="editEmail"
-                        placeholder="Enter email"
-                    >
-
-                </div>
-
-
-                <div class="form-group">
-
-                    <label>
-                        Address
-                    </label>
-
-                    <textarea
-                        id="editAddress"
-                        rows="4"
-                        placeholder="Enter address"
-                    ></textarea>
-
-                </div>
-
-
-                <div class="form-group">
-
-                    <label>
-                        Create Password
-                    </label>
-
-                    <input
-                        type="password"
-                        id="editPassword"
-                        minlength="6"
-                        placeholder="Minimum 6 characters"
-                    >
-
-                </div>
-
-
-                <button
-                    type="submit"
-                    class="save-btn"
-                >
-                    Save Profile
-                </button>
-
-            </form>
-
-        </section>
-
-
-        <!-- ================= PASSWORD ================= -->
-
-        <section
-            id="password"
-            class="section"
-        >
-
-            <h2 class="section-title">
-                Change Password
-            </h2>
-
-
-            <div class="form-group">
-
-                <label>
-                    Current Password
-                </label>
-
-                <input
-                    type="password"
-                    id="currentPassword"
-                >
-
-            </div>
-
-
-            <div class="form-group">
-
-                <label>
-                    New Password
-                </label>
-
-                <input
-                    type="password"
-                    id="newPassword"
-                >
-
-            </div>
-
-
-            <div class="form-group">
-
-                <label>
-                    Confirm New Password
-                </label>
-
-                <input
-                    type="password"
-                    id="confirmPassword"
-                >
-
-            </div>
-
-
-            <button
-                class="save-btn"
-                onclick="changePassword()"
+            <section
+                id="passwordSection"
+                style="display:none;"
             >
-                Update Password
-            </button>
 
-        </section>
+                <h2>Change Password</h2>
+
+                <form id="passwordForm">
+
+                    <div class="form-group">
+
+                        <label for="currentPassword">
+                            Current Password
+                        </label>
+
+                        <input
+                            type="password"
+                            id="currentPassword"
+                            required
+                        >
+
+                    </div>
 
 
-        <!-- ================= SAVED VEHICLES ================= -->
+                    <div class="form-group">
 
-        <section
-            id="saved"
-            class="section"
-        >
+                        <label for="newPassword">
+                            New Password
+                        </label>
 
-            <h2 class="section-title">
-                Saved Vehicles ❤️
-            </h2>
+                        <input
+                            type="password"
+                            id="newPassword"
+                            minlength="6"
+                            required
+                        >
+
+                    </div>
 
 
-            <div class="empty">
+                    <div class="form-group">
 
-                <div class="empty-icon">
-                    🚗
+                        <label for="confirmNewPassword">
+                            Confirm New Password
+                        </label>
+
+                        <input
+                            type="password"
+                            id="confirmNewPassword"
+                            minlength="6"
+                            required
+                        >
+
+                    </div>
+
+
+                    <button
+                        type="submit"
+                        class="primary-btn"
+                    >
+                        Change Password
+                    </button>
+
+                </form>
+
+            </section>
+
+
+            <!-- ================= SAVED ================= -->
+
+            <section
+                id="savedSection"
+                style="display:none;"
+            >
+
+                <h2>Saved Vehicles</h2>
+
+                <div class="saved-card">
+
+                    <h3>
+                        🚗 AtulRide Vehicles
+                    </h3>
+
+                    <p style="margin-top:8px;color:#64748b;">
+                        Your saved vehicles will appear here.
+                    </p>
+
+                    <a
+                        href="vehicles.html"
+                        class="book-now-btn"
+                    >
+                        Browse Vehicles
+                    </a>
+
                 </div>
 
-                <h3>
-                    No Saved Vehicles
-                </h3>
+            </section>
 
-                <p>
-                    Your favourite vehicles will appear here.
-                </p>
+        </main>
 
-            </div>
-
-        </section>
-
-    </main>
+    </div>
 
 </div>
 
@@ -987,907 +1125,1144 @@
 </footer>
 
 
-<!-- ================= JAVASCRIPT ================= -->
-
 <script>
 
-/* =====================================================
-   CUSTOMER DATA
-   ===================================================== */
+    /* =====================================================
+       HELPER
+    ===================================================== */
 
-let customer =
-    JSON.parse(
-        localStorage.getItem("customerData")
-    ) || {
+    function getCustomer() {
 
-        name: "",
-        mobile: "",
-        email: "",
-        address: "",
-        memberSince: "2026"
+        const data =
+            localStorage.getItem("customerData");
 
-    };
+        if (!data) {
+            return null;
+        }
+
+        try {
+            return JSON.parse(data);
+        }
+
+        catch (error) {
+            return null;
+        }
+    }
 
 
-/* =====================================================
-   LOGIN STATUS
-   ===================================================== */
+    function isLoggedIn() {
 
-function isLoggedIn() {
+        return (
+            localStorage.getItem("isLoggedIn")
+            === "true"
+        );
 
-    return (
-        localStorage.getItem("isLoggedIn")
-        === "true"
+    }
+
+
+    /* =====================================================
+       AUTH DISPLAY
+    ===================================================== */
+
+    function showLogin() {
+
+        document.getElementById(
+            "loginBox"
+        ).style.display = "block";
+
+        document.getElementById(
+            "createBox"
+        ).style.display = "none";
+
+    }
+
+
+    function showCreateAccount() {
+
+        document.getElementById(
+            "loginBox"
+        ).style.display = "none";
+
+        document.getElementById(
+            "createBox"
+        ).style.display = "block";
+
+    }
+
+
+    /* =====================================================
+       CREATE ACCOUNT
+    ===================================================== */
+
+    document.getElementById(
+        "createForm"
+    ).addEventListener(
+        "submit",
+        function(event) {
+
+            event.preventDefault();
+
+
+            const name =
+                document.getElementById(
+                    "createName"
+                ).value.trim();
+
+
+            const mobile =
+                document.getElementById(
+                    "createMobile"
+                ).value.trim();
+
+
+            const email =
+                document.getElementById(
+                    "createEmail"
+                ).value.trim();
+
+
+            const password =
+                document.getElementById(
+                    "createPassword"
+                ).value;
+
+
+            const confirmPassword =
+                document.getElementById(
+                    "confirmPassword"
+                ).value;
+
+
+            /* MOBILE */
+
+            if (!/^[0-9]{10}$/.test(mobile)) {
+
+                alert(
+                    "Please enter a valid 10-digit mobile number."
+                );
+
+                return;
+
+            }
+
+
+            /* PASSWORD */
+
+            if (password.length < 6) {
+
+                alert(
+                    "Password must contain at least 6 characters."
+                );
+
+                return;
+
+            }
+
+
+            if (password !== confirmPassword) {
+
+                alert(
+                    "Passwords do not match."
+                );
+
+                return;
+
+            }
+
+
+            /* EXISTING ACCOUNT */
+
+            const existingCustomer =
+                getCustomer();
+
+
+            if (existingCustomer) {
+
+                if (
+                    existingCustomer.mobile
+                    === mobile
+                ) {
+
+                    alert(
+                        "An account with this mobile number already exists. Please login."
+                    );
+
+                    showLogin();
+
+                    return;
+
+                }
+
+            }
+
+
+            /* SAVE */
+
+            const customerData = {
+
+                name: name,
+
+                mobile: mobile,
+
+                email: email
+
+            };
+
+
+            localStorage.setItem(
+                "customerData",
+                JSON.stringify(customerData)
+            );
+
+
+            localStorage.setItem(
+                "customerPassword",
+                password
+            );
+
+
+            localStorage.setItem(
+                "isLoggedIn",
+                "true"
+            );
+
+
+            alert(
+                "Account created successfully!"
+            );
+
+
+            /* SHOW PROFILE */
+
+            loadProfile();
+
+            showProfileArea();
+
+            showSection(
+                "profile",
+                document.querySelector(
+                    ".sidebar-menu button"
+                )
+            );
+
+        }
     );
 
-}
+
+    /* =====================================================
+       LOGIN
+    ===================================================== */
+
+    document.getElementById(
+        "loginForm"
+    ).addEventListener(
+        "submit",
+        function(event) {
+
+            event.preventDefault();
 
 
-/* =====================================================
-   UPDATE LOGIN UI
-   ===================================================== */
-
-function updateLoginUI() {
-
-    const loginMenu =
-        document.getElementById("loginLogoutMenu");
-
-    const sideStatus =
-        document.getElementById("sideStatus");
-
-    const profileMenu =
-        document.getElementById("profileMenu");
+            const mobile =
+                document.getElementById(
+                    "loginMobile"
+                ).value.trim();
 
 
-    if (isLoggedIn()) {
-
-        loginMenu.textContent =
-            "🚪 Logout";
-
-        sideStatus.textContent =
-            "Logged In";
-
-        loadProfile();
-
-        showSection(
-            "profile",
-            profileMenu
-        );
-
-    } else {
-
-        loginMenu.textContent =
-            "🔐 Login";
-
-        sideStatus.textContent =
-            "Login Required";
-
-        showSection(
-            "login",
-            null
-        );
-
-    }
-
-}
+            const password =
+                document.getElementById(
+                    "loginPassword"
+                ).value;
 
 
-/* =====================================================
-   LOGIN
-   ===================================================== */
-
-function loginUser(event) {
-
-    event.preventDefault();
+            const customer =
+                getCustomer();
 
 
-    const mobile =
-        document
-            .getElementById("loginMobile")
-            .value
-            .trim();
+            const savedPassword =
+                localStorage.getItem(
+                    "customerPassword"
+                );
 
 
-    const password =
-        document
-            .getElementById("loginPassword")
-            .value;
+            if (!customer) {
+
+                alert(
+                    "Account not found. Please create an account first."
+                );
+
+                showCreateAccount();
+
+                return;
+
+            }
 
 
-    const savedCustomer =
-        JSON.parse(
-            localStorage.getItem("customerData")
-        );
+            if (
+                customer.mobile !== mobile
+            ) {
+
+                alert(
+                    "Mobile number is incorrect."
+                );
+
+                return;
+
+            }
 
 
-    const savedPassword =
-        localStorage.getItem(
-            "customerPassword"
-        );
+            if (
+                savedPassword !== password
+            ) {
+
+                alert(
+                    "Incorrect password."
+                );
+
+                return;
+
+            }
 
 
-    if (!savedCustomer || !savedCustomer.mobile) {
-
-        alert(
-            "No account found. Please create your profile first."
-        );
-
-        showSection(
-            "edit",
-            null
-        );
-
-        return;
-    }
+            localStorage.setItem(
+                "isLoggedIn",
+                "true"
+            );
 
 
-    if (
-        mobile !== savedCustomer.mobile ||
-        password !== savedPassword
-    ) {
-
-        alert(
-            "Invalid mobile number or password."
-        );
-
-        return;
-    }
+            alert(
+                "Login successful!"
+            );
 
 
-    localStorage.setItem(
-        "isLoggedIn",
-        "true"
+            document.getElementById(
+                "loginForm"
+            ).reset();
+
+
+            loadProfile();
+
+            showProfileArea();
+
+            showSection(
+                "profile",
+                document.querySelector(
+                    ".sidebar-menu button"
+                )
+            );
+
+        }
     );
 
 
-    customer =
-        savedCustomer;
+    /* =====================================================
+       SHOW PROFILE AREA
+    ===================================================== */
 
+    function showProfileArea() {
 
-    alert(
-        "Login successful! Welcome to AtulRide."
-    );
+        document.getElementById(
+            "authContainer"
+        ).style.display = "none";
 
-
-    document.getElementById(
-        "loginMobile"
-    ).value = "";
-
-    document.getElementById(
-        "loginPassword"
-    ).value = "";
-
-
-    updateLoginUI();
-
-}
-
-
-/* =====================================================
-   LOGIN / LOGOUT MENU
-   ===================================================== */
-
-function handleLoginLogout() {
-
-    if (isLoggedIn()) {
-
-        logout();
-
-    } else {
-
-        showSection(
-            "login",
-            null
-        );
+        document.getElementById(
+            "profileContainer"
+        ).style.display = "block";
 
     }
 
-}
+
+    function showAuthArea() {
+
+        document.getElementById(
+            "authContainer"
+        ).style.display = "block";
+
+        document.getElementById(
+            "profileContainer"
+        ).style.display = "none";
+
+    }
 
 
-/* =====================================================
-   LOAD PROFILE
-   ===================================================== */
+    /* =====================================================
+       LOAD PROFILE
+    ===================================================== */
 
-function loadProfile() {
+    function loadProfile() {
 
-    document.getElementById(
-        "profileName"
-    ).textContent =
-        customer.name || "Customer";
+        const customer =
+            getCustomer();
 
 
-    document.getElementById(
-        "profileMobile"
-    ).textContent =
-        customer.mobile || "Not added";
+        if (!customer) {
+            return;
+        }
 
 
-    document.getElementById(
-        "profileEmail"
-    ).textContent =
-        customer.email || "Not added";
+        document.getElementById(
+            "displayName"
+        ).textContent =
+            customer.name || "-";
 
 
-    document.getElementById(
-        "profileAddress"
-    ).textContent =
-        customer.address || "Not added";
+        document.getElementById(
+            "displayMobile"
+        ).textContent =
+            customer.mobile || "-";
 
 
-    document.getElementById(
-        "sideName"
-    ).textContent =
-        customer.name || "Customer";
+        document.getElementById(
+            "displayEmail"
+        ).textContent =
+            customer.email || "-";
 
 
-    document.getElementById(
-        "avatar"
-    ).textContent =
-        (customer.name || "C")
+        document.getElementById(
+            "sidebarName"
+        ).textContent =
+            customer.name || "Customer";
+
+
+        document.getElementById(
+            "sidebarEmail"
+        ).textContent =
+            customer.email || "-";
+
+
+        const firstLetter =
+            (
+                customer.name ||
+                "A"
+            )
             .charAt(0)
             .toUpperCase();
 
 
-    document.getElementById(
-        "memberSince"
-    ).textContent =
-        customer.memberSince || "2026";
+        document.getElementById(
+            "profileAvatar"
+        ).textContent =
+            firstLetter;
 
 
-    document.getElementById(
-        "editName"
-    ).value =
-        customer.name || "";
+        document.getElementById(
+            "editName"
+        ).value =
+            customer.name || "";
 
 
-    document.getElementById(
-        "editMobile"
-    ).value =
-        customer.mobile || "";
+        document.getElementById(
+            "editMobile"
+        ).value =
+            customer.mobile || "";
 
 
-    document.getElementById(
-        "editEmail"
-    ).value =
-        customer.email || "";
+        document.getElementById(
+            "editEmail"
+        ).value =
+            customer.email || "";
 
-
-    document.getElementById(
-        "editAddress"
-    ).value =
-        customer.address || "";
-
-}
-
-
-/* =====================================================
-   SECTION SWITCH
-   ===================================================== */
-
-function showSection(
-    sectionId,
-    element
-) {
-
-    if (
-        sectionId !== "login" &&
-        !isLoggedIn()
-    ) {
-
-        alert(
-            "Please login from your Profile first."
-        );
-
-        sectionId = "login";
-
-        element = null;
-
-    }
-
-
-    document
-        .querySelectorAll(".section")
-        .forEach(section => {
-
-            section.classList.remove(
-                "active"
-            );
-
-        });
-
-
-    document
-        .getElementById(sectionId)
-        .classList.add("active");
-
-
-    document
-        .querySelectorAll(".menu-item")
-        .forEach(item => {
-
-            item.classList.remove(
-                "active"
-            );
-
-        });
-
-
-    if (element) {
-
-        element.classList.add(
-            "active"
-        );
-
-    }
-
-
-    if (sectionId === "bookings") {
 
         loadBookings();
-
-    }
-
-
-    if (sectionId === "payments") {
 
         loadPayments();
 
     }
 
-}
 
+    /* =====================================================
+       SECTIONS
+    ===================================================== */
 
-/* =====================================================
-   OPEN EDIT
-   ===================================================== */
-
-function openEdit() {
-
-    if (!isLoggedIn()) {
-
-        showSection(
-            "login",
-            null
-        );
-
-        return;
-
-    }
-
-
-    showSection(
-        "edit",
-        null
-    );
-
-}
-
-
-/* =====================================================
-   SAVE PROFILE / CREATE ACCOUNT
-   ===================================================== */
-
-function saveProfile(event) {
-
-    event.preventDefault();
-
-
-    const name =
-        document
-            .getElementById("editName")
-            .value
-            .trim();
-
-
-    const mobile =
-        document
-            .getElementById("editMobile")
-            .value
-            .trim();
-
-
-    const email =
-        document
-            .getElementById("editEmail")
-            .value
-            .trim();
-
-
-    const address =
-        document
-            .getElementById("editAddress")
-            .value
-            .trim();
-
-
-    const password =
-        document
-            .getElementById("editPassword")
-            .value;
-
-
-    if (
-        mobile.length !== 10 ||
-        !/^\d{10}$/.test(mobile)
+    function showSection(
+        section,
+        button
     ) {
 
-        alert(
-            "Please enter a valid 10 digit mobile number."
-        );
+        if (!isLoggedIn()) {
 
-        return;
+            showAuthArea();
 
-    }
-
-
-    customer = {
-
-        name: name,
-
-        mobile: mobile,
-
-        email: email,
-
-        address: address,
-
-        memberSince:
-            customer.memberSince || "2026"
-
-    };
-
-
-    localStorage.setItem(
-        "customerData",
-        JSON.stringify(customer)
-    );
-
-
-    if (password) {
-
-        if (password.length < 6) {
-
-            alert(
-                "Password must contain at least 6 characters."
-            );
+            showLogin();
 
             return;
 
         }
 
 
-        localStorage.setItem(
-            "customerPassword",
-            password
+        const sections = [
+            "profile",
+            "bookings",
+            "payments",
+            "edit",
+            "password",
+            "saved"
+        ];
+
+
+        sections.forEach(
+            function(item) {
+
+                const element =
+                    document.getElementById(
+                        item + "Section"
+                    );
+
+                if (element) {
+
+                    element.style.display =
+                        "none";
+
+                }
+
+            }
         );
+
+
+        const selected =
+            document.getElementById(
+                section + "Section"
+            );
+
+
+        if (selected) {
+
+            selected.style.display =
+                "block";
+
+        }
+
+
+        document.querySelectorAll(
+            ".sidebar-menu button"
+        ).forEach(
+            function(btn) {
+
+                btn.classList.remove(
+                    "active"
+                );
+
+            }
+        );
+
+
+        if (button) {
+
+            button.classList.add(
+                "active"
+            );
+
+        }
 
     }
 
 
-    /* FIRST ACCOUNT CREATION */
-
-    if (!isLoggedIn()) {
-
-        localStorage.setItem(
-            "isLoggedIn",
-            "true"
-        );
-
-        alert(
-            "Account created successfully! You are now logged in."
-        );
-
-    } else {
-
-        alert(
-            "Profile updated successfully!"
-        );
-
-    }
-
-
-    document.getElementById(
-        "editPassword"
-    ).value = "";
-
-
-    loadProfile();
-
-
-    updateLoginUI();
-
-}
-
-
-/* =====================================================
-   BOOKINGS
-   ===================================================== */
-
-function loadBookings() {
-
-    const container =
-        document.getElementById(
-            "bookingContainer"
-        );
-
-
-    const booking =
-        JSON.parse(
-            localStorage.getItem(
-                "bookingData"
-            )
-        );
-
-
-    if (!booking) {
-
-        container.innerHTML = `
-
-            <div class="empty">
-
-                <div class="empty-icon">
-                    🚗
-                </div>
-
-                <h3>
-                    No Bookings Yet
-                </h3>
-
-                <p>
-                    Your AtulRide bookings will appear here.
-                </p>
-
-                <br>
-
-                <a
-                    href="booking.html"
-                    class="edit-btn"
-                >
-                    Book a Vehicle
-                </a>
-
-            </div>
-
-        `;
-
-        return;
-
-    }
-
-
-    container.innerHTML = `
-
-        <div class="booking-card">
-
-            <h3>
-                ${booking.vehicle || "Vehicle"}
-            </h3>
-
-            <div class="booking-row">
-                <span>Customer</span>
-                <strong>
-                    ${customer.name || "Customer"}
-                </strong>
-            </div>
-
-            <div class="booking-row">
-                <span>Mobile</span>
-                <strong>
-                    ${customer.mobile || "-"}
-                </strong>
-            </div>
-
-            <div class="booking-row">
-                <span>Pickup Location</span>
-                <strong>
-                    ${booking.pickupLocation || "-"}
-                </strong>
-            </div>
-
-            <div class="booking-row">
-                <span>Rental Type</span>
-                <strong>
-                    ${booking.rentalType || "-"}
-                </strong>
-            </div>
-
-            <div class="booking-row">
-                <span>Pickup</span>
-                <strong>
-                    ${booking.pickupDate || "-"}
-                    ${booking.pickupTime || ""}
-                </strong>
-            </div>
-
-            <div class="booking-row">
-                <span>Return</span>
-                <strong>
-                    ${booking.returnDate || "-"}
-                    ${booking.returnTime || ""}
-                </strong>
-            </div>
-
-            <div class="booking-row">
-                <span>Total Rent</span>
-                <strong>
-                    ₹${Number(
-                        booking.totalRent || 0
-                    ).toLocaleString("en-IN")}
-                </strong>
-            </div>
-
-            <span class="status">
-                ${booking.bookingStatus || "Booking Saved"}
-            </span>
-
-        </div>
-
-    `;
-
-}
-
-
-/* =====================================================
-   PAYMENT HISTORY
-   ===================================================== */
-
-function loadPayments() {
-
-    const container =
-        document.getElementById(
-            "paymentContainer"
-        );
-
-
-    const booking =
-        JSON.parse(
-            localStorage.getItem(
-                "bookingData"
-            )
-        );
-
-
-    const paymentMethod =
-        localStorage.getItem(
-            "paymentMethod"
-        );
-
-
-    const paymentStatus =
-        localStorage.getItem(
-            "paymentStatus"
-        );
-
-
-    if (!booking || !paymentMethod) {
-
-        container.innerHTML = `
-
-            <div class="empty">
-
-                <div class="empty-icon">
-                    💳
-                </div>
-
-                <h3>
-                    No Payment History
-                </h3>
-
-                <p>
-                    Your payment records will appear here.
-                </p>
-
-            </div>
-
-        `;
-
-        return;
-
-    }
-
-
-    container.innerHTML = `
-
-        <div class="payment-card">
-
-            <h3>
-                AtulRide Vehicle Rental
-            </h3>
-
-            <div class="booking-row">
-                <span>Vehicle</span>
-                <strong>
-                    ${booking.vehicle || "-"}
-                </strong>
-            </div>
-
-            <div class="booking-row">
-                <span>Amount</span>
-                <strong>
-                    ₹${Number(
-                        booking.totalRent || 0
-                    ).toLocaleString("en-IN")}
-                </strong>
-            </div>
-
-            <div class="booking-row">
-                <span>Payment Method</span>
-                <strong>
-                    ${paymentMethod}
-                </strong>
-            </div>
-
-            <div class="booking-row">
-                <span>Status</span>
-                <strong class="payment-success">
-                    ${paymentStatus || "Pending"}
-                </strong>
-            </div>
-
-        </div>
-
-    `;
-
-}
-
-
-/* =====================================================
-   CHANGE PASSWORD
-   ===================================================== */
-
-function changePassword() {
-
-    if (!isLoggedIn()) {
-
-        alert(
-            "Please login first."
-        );
+    /* =====================================================
+       EDIT PROFILE
+    ===================================================== */
+
+    function openEditProfile() {
+
+        const buttons =
+            document.querySelectorAll(
+                ".sidebar-menu button"
+            );
 
         showSection(
-            "login",
-            null
+            "edit",
+            buttons[3]
         );
-
-        return;
 
     }
-
-
-    const current =
-        document.getElementById(
-            "currentPassword"
-        ).value;
-
-
-    const newPass =
-        document.getElementById(
-            "newPassword"
-        ).value;
-
-
-    const confirmPass =
-        document.getElementById(
-            "confirmPassword"
-        ).value;
-
-
-    const savedPassword =
-        localStorage.getItem(
-            "customerPassword"
-        );
-
-
-    if (!current || !newPass || !confirmPass) {
-
-        alert(
-            "Please fill all password fields."
-        );
-
-        return;
-
-    }
-
-
-    if (current !== savedPassword) {
-
-        alert(
-            "Current password is incorrect."
-        );
-
-        return;
-
-    }
-
-
-    if (newPass !== confirmPass) {
-
-        alert(
-            "New passwords do not match."
-        );
-
-        return;
-
-    }
-
-
-    if (newPass.length < 6) {
-
-        alert(
-            "Password must contain at least 6 characters."
-        );
-
-        return;
-
-    }
-
-
-    localStorage.setItem(
-        "customerPassword",
-        newPass
-    );
-
-
-    alert(
-        "Password changed successfully!"
-    );
 
 
     document.getElementById(
-        "currentPassword"
-    ).value = "";
+        "editForm"
+    ).addEventListener(
+        "submit",
+        function(event) {
 
+            event.preventDefault();
+
+
+            const name =
+                document.getElementById(
+                    "editName"
+                ).value.trim();
+
+
+            const mobile =
+                document.getElementById(
+                    "editMobile"
+                ).value.trim();
+
+
+            const email =
+                document.getElementById(
+                    "editEmail"
+                ).value.trim();
+
+
+            if (!/^[0-9]{10}$/.test(mobile)) {
+
+                alert(
+                    "Please enter a valid 10-digit mobile number."
+                );
+
+                return;
+
+            }
+
+
+            const customer = {
+
+                name: name,
+
+                mobile: mobile,
+
+                email: email
+
+            };
+
+
+            localStorage.setItem(
+                "customerData",
+                JSON.stringify(customer)
+            );
+
+
+            alert(
+                "Profile updated successfully!"
+            );
+
+
+            loadProfile();
+
+
+            showSection(
+                "profile",
+                document.querySelector(
+                    ".sidebar-menu button"
+                )
+            );
+
+        }
+    );
+
+
+    /* =====================================================
+       CHANGE PASSWORD
+    ===================================================== */
 
     document.getElementById(
-        "newPassword"
-    ).value = "";
+        "passwordForm"
+    ).addEventListener(
+        "submit",
+        function(event) {
+
+            event.preventDefault();
 
 
-    document.getElementById(
-        "confirmPassword"
-    ).value = "";
-
-}
-
-
-/* =====================================================
-   LOGOUT
-   ===================================================== */
-
-function logout() {
-
-    const confirmLogout =
-        confirm(
-            "Are you sure you want to logout?"
-        );
+            const currentPassword =
+                document.getElementById(
+                    "currentPassword"
+                ).value;
 
 
-    if (!confirmLogout) {
+            const newPassword =
+                document.getElementById(
+                    "newPassword"
+                ).value;
 
-        return;
+
+            const confirmPassword =
+                document.getElementById(
+                    "confirmNewPassword"
+                ).value;
+
+
+            const savedPassword =
+                localStorage.getItem(
+                    "customerPassword"
+                );
+
+
+            if (
+                currentPassword !==
+                savedPassword
+            ) {
+
+                alert(
+                    "Current password is incorrect."
+                );
+
+                return;
+
+            }
+
+
+            if (
+                newPassword.length < 6
+            ) {
+
+                alert(
+                    "New password must contain at least 6 characters."
+                );
+
+                return;
+
+            }
+
+
+            if (
+                newPassword !==
+                confirmPassword
+            ) {
+
+                alert(
+                    "New passwords do not match."
+                );
+
+                return;
+
+            }
+
+
+            localStorage.setItem(
+                "customerPassword",
+                newPassword
+            );
+
+
+            document.getElementById(
+                "passwordForm"
+            ).reset();
+
+
+            alert(
+                "Password changed successfully!"
+            );
+
+        }
+    );
+
+
+    /* =====================================================
+       MY BOOKINGS
+    ===================================================== */
+
+    function loadBookings() {
+
+        const container =
+            document.getElementById(
+                "bookingsContainer"
+            );
+
+
+        const bookingData =
+            localStorage.getItem(
+                "bookingData"
+            );
+
+
+        if (!bookingData) {
+
+            container.innerHTML = `
+
+                <div class="no-data">
+
+                    <h3>No Bookings Yet</h3>
+
+                    <p style="margin-top:8px;">
+                        You have not made any vehicle booking yet.
+                    </p>
+
+                    <a
+                        href="booking.html"
+                        class="book-now-btn"
+                    >
+                        Book a Vehicle
+                    </a>
+
+                </div>
+
+            `;
+
+            return;
+
+        }
+
+
+        let booking;
+
+
+        try {
+
+            booking =
+                JSON.parse(bookingData);
+
+        }
+
+        catch (error) {
+
+            container.innerHTML = `
+                <div class="no-data">
+                    Unable to load booking.
+                </div>
+            `;
+
+            return;
+
+        }
+
+
+        const paymentMethod =
+            localStorage.getItem(
+                "paymentMethod"
+            ) || "-";
+
+
+        const paymentStatus =
+            localStorage.getItem(
+                "paymentStatus"
+            ) || "Pending";
+
+
+        container.innerHTML = `
+
+            <div class="booking-card">
+
+                <div class="booking-header">
+
+                    <h3>
+                        ${booking.vehicle || "Vehicle"}
+                    </h3>
+
+                    <span class="status">
+                        ${booking.bookingStatus || "Confirmed"}
+                    </span>
+
+                </div>
+
+
+                <div class="booking-details">
+
+                    <div class="booking-detail">
+
+                        <span>
+                            Pickup Location
+                        </span>
+
+                        <strong>
+                            ${booking.pickupLocation || "-"}
+                        </strong>
+
+                    </div>
+
+
+                    <div class="booking-detail">
+
+                        <span>
+                            Rental Type
+                        </span>
+
+                        <strong>
+                            ${
+                                booking.rentalType === "hourly"
+                                ? "Hourly"
+                                : "Daily"
+                            }
+                        </strong>
+
+                    </div>
+
+
+                    <div class="booking-detail">
+
+                        <span>
+                            Pickup
+                        </span>
+
+                        <strong>
+                            ${
+                                booking.pickupDate || "-"
+                            }
+                            <br>
+                            ${
+                                booking.pickupTime || "-"
+                            }
+                        </strong>
+
+                    </div>
+
+
+                    <div class="booking-detail">
+
+                        <span>
+                            Return
+                        </span>
+
+                        <strong>
+                            ${
+                                booking.returnDate || "-"
+                            }
+                            <br>
+                            ${
+                                booking.returnTime || "-"
+                            }
+                        </strong>
+
+                    </div>
+
+
+                    <div class="booking-detail">
+
+                        <span>
+                            Driving Licence
+                        </span>
+
+                        <strong>
+                            ${
+                                booking.drivingLicence || "-"
+                            }
+                        </strong>
+
+                    </div>
+
+
+                    <div class="booking-detail">
+
+                        <span>
+                            Payment
+                        </span>
+
+                        <strong>
+                            ${paymentMethod}
+                        </strong>
+
+                    </div>
+
+
+                    <div class="booking-detail">
+
+                        <span>
+                            Payment Status
+                        </span>
+
+                        <strong>
+                            ${paymentStatus}
+                        </strong>
+
+                    </div>
+
+
+                    <div class="booking-detail">
+
+                        <span>
+                            Total Amount
+                        </span>
+
+                        <strong>
+                            ₹${
+                                Number(
+                                    booking.totalRent || 0
+                                ).toLocaleString("en-IN")
+                            }
+                        </strong>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        `;
 
     }
 
 
-    localStorage.removeItem(
-        "isLoggedIn"
+    /* =====================================================
+       PAYMENT HISTORY
+    ===================================================== */
+
+    function loadPayments() {
+
+        const container =
+            document.getElementById(
+                "paymentsContainer"
+            );
+
+
+        const bookingData =
+            localStorage.getItem(
+                "bookingData"
+            );
+
+
+        if (!bookingData) {
+
+            container.innerHTML = `
+
+                <div class="no-data">
+
+                    <h3>
+                        No Payment History
+                    </h3>
+
+                    <p style="margin-top:8px;">
+                        Payment records will appear here after booking.
+                    </p>
+
+                </div>
+
+            `;
+
+            return;
+
+        }
+
+
+        let booking;
+
+
+        try {
+
+            booking =
+                JSON.parse(bookingData);
+
+        }
+
+        catch (error) {
+
+            return;
+
+        }
+
+
+        const paymentMethod =
+            localStorage.getItem(
+                "paymentMethod"
+            ) || "-";
+
+
+        const paymentStatus =
+            localStorage.getItem(
+                "paymentStatus"
+            ) || "Pending";
+
+
+        container.innerHTML = `
+
+            <div class="payment-card">
+
+                <h3>
+                    ${booking.vehicle || "Vehicle Rental"}
+                </h3>
+
+                <p style="margin-top:10px;">
+                    Amount:
+                    <strong>
+                        ₹${
+                            Number(
+                                booking.totalRent || 0
+                            ).toLocaleString("en-IN")
+                        }
+                    </strong>
+                </p>
+
+                <p style="margin-top:7px;">
+                    Payment Method:
+                    <strong>
+                        ${paymentMethod}
+                    </strong>
+                </p>
+
+                <span class="payment-status">
+                    ${paymentStatus}
+                </span>
+
+            </div>
+
+        `;
+
+    }
+
+
+    /* =====================================================
+       LOGOUT
+    ===================================================== */
+
+    function logout() {
+
+        localStorage.removeItem(
+            "isLoggedIn"
+        );
+
+
+        alert(
+            "You have been logged out."
+        );
+
+
+        showAuthArea();
+
+        showLogin();
+
+    }
+
+
+    /* =====================================================
+       INITIAL LOAD
+    ===================================================== */
+
+    window.addEventListener(
+        "DOMContentLoaded",
+        function() {
+
+            if (isLoggedIn()) {
+
+                const customer =
+                    getCustomer();
+
+
+                if (customer) {
+
+                    loadProfile();
+
+                    showProfileArea();
+
+                    showSection(
+                        "profile",
+                        document.querySelector(
+                            ".sidebar-menu button"
+                        )
+                    );
+
+                }
+
+                else {
+
+                    localStorage.removeItem(
+                        "isLoggedIn"
+                    );
+
+                    showAuthArea();
+
+                    showLogin();
+
+                }
+
+            }
+
+            else {
+
+                showAuthArea();
+
+                showLogin();
+
+            }
+
+        }
     );
-
-
-    alert(
-        "You have been logged out."
-    );
-
-
-    updateLoginUI();
-
-}
-
-
-/* =====================================================
-   START
-   ===================================================== */
-
-updateLoginUI();
 
 </script>
 
