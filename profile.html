@@ -4,62 +4,64 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>My Profile - AtulRide</title>
+    <title>Profile - AtulRide</title>
 
     <style>
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: Arial, sans-serif;
+            font-family: Arial, Helvetica, sans-serif;
         }
 
         body {
-            background: #f4f7fb;
+            background: #f5f7fb;
             color: #222;
         }
 
         /* ================= NAVBAR ================= */
 
         nav {
+            width: 100%;
             background: #111827;
             color: white;
-            padding: 16px 7%;
+            padding: 15px 6%;
             display: flex;
-            justify-content: space-between;
             align-items: center;
+            justify-content: space-between;
             position: sticky;
             top: 0;
             z-index: 1000;
         }
 
         .logo {
-            font-size: 26px;
+            font-size: 27px;
             font-weight: bold;
-            color: #00d4ff;
+            color: #38bdf8;
         }
 
-        nav ul {
-            list-style: none;
+        .nav-links {
             display: flex;
-            gap: 24px;
+            gap: 22px;
+            list-style: none;
         }
 
-        nav ul li a {
-            color: white;
+        .nav-links a {
             text-decoration: none;
+            color: white;
             font-size: 15px;
             transition: 0.3s;
         }
 
-        nav ul li a:hover {
-            color: #00d4ff;
+        .nav-links a:hover,
+        .nav-links a.active {
+            color: #38bdf8;
         }
 
         /* ================= HERO ================= */
 
         .hero {
-            background: linear-gradient(135deg, #111827, #1e3a8a);
+            background: linear-gradient(135deg, #0f172a, #1e3a8a);
             color: white;
             text-align: center;
             padding: 65px 20px;
@@ -72,353 +74,284 @@
 
         .hero p {
             font-size: 17px;
-            opacity: 0.9;
+            color: #dbeafe;
         }
 
         /* ================= CONTAINER ================= */
 
         .container {
-            width: 92%;
-            max-width: 1150px;
+            width: 90%;
+            max-width: 1100px;
             margin: 40px auto;
         }
 
         /* ================= AUTH ================= */
 
-        .auth-container {
-            max-width: 500px;
-            margin: 40px auto;
+        .auth-wrapper {
+            display: flex;
+            justify-content: center;
         }
 
         .auth-card {
+            width: 100%;
+            max-width: 470px;
             background: white;
-            padding: 35px;
+            padding: 32px;
             border-radius: 18px;
-            box-shadow: 0 8px 25px rgba(0,0,0,0.08);
+            box-shadow: 0 8px 30px rgba(0,0,0,0.08);
         }
 
         .auth-card h2 {
             text-align: center;
-            margin-bottom: 10px;
+            margin-bottom: 8px;
             color: #111827;
         }
 
-        .auth-card .subtitle {
+        .auth-subtitle {
             text-align: center;
-            color: #64748b;
+            color: #6b7280;
             margin-bottom: 25px;
             font-size: 14px;
         }
 
         .form-group {
-            margin-bottom: 18px;
+            margin-bottom: 17px;
         }
 
         .form-group label {
             display: block;
-            font-weight: bold;
-            font-size: 14px;
             margin-bottom: 7px;
+            font-weight: 600;
+            color: #374151;
         }
 
-        .form-group input,
-        .form-group select {
+        .form-group input {
             width: 100%;
             padding: 13px;
             border: 1px solid #d1d5db;
-            border-radius: 8px;
+            border-radius: 9px;
+            font-size: 15px;
             outline: none;
-            font-size: 14px;
         }
 
-        .form-group input:focus,
-        .form-group select:focus {
+        .form-group input:focus {
             border-color: #2563eb;
-            box-shadow: 0 0 0 3px rgba(37,99,235,0.1);
         }
 
-        .auth-btn {
+        .btn {
             width: 100%;
-            padding: 14px;
+            padding: 13px;
             border: none;
             border-radius: 9px;
-            background: linear-gradient(135deg, #2563eb, #00bcd4);
+            background: #2563eb;
             color: white;
             font-size: 16px;
             font-weight: bold;
             cursor: pointer;
-            margin-top: 5px;
+            transition: 0.3s;
         }
 
-        .auth-btn:hover {
-            opacity: 0.92;
-        }
-
-        .switch-text {
-            text-align: center;
-            margin-top: 20px;
-            color: #64748b;
-            font-size: 14px;
-        }
-
-        .switch-text button {
-            border: none;
-            background: none;
-            color: #2563eb;
-            font-weight: bold;
-            cursor: pointer;
-            font-size: 14px;
-        }
-
-        .switch-text button:hover {
-            text-decoration: underline;
-        }
-
-        /* ================= PROFILE LAYOUT ================= */
-
-        .profile-layout {
-            display: grid;
-            grid-template-columns: 260px 1fr;
-            gap: 25px;
-        }
-
-        .sidebar {
-            background: white;
-            border-radius: 16px;
-            padding: 20px;
-            box-shadow: 0 8px 25px rgba(0,0,0,0.07);
-            height: fit-content;
-        }
-
-        .sidebar-profile {
-            text-align: center;
-            padding-bottom: 20px;
-            border-bottom: 1px solid #e5e7eb;
-            margin-bottom: 15px;
-        }
-
-        .profile-avatar {
-            width: 80px;
-            height: 80px;
-            border-radius: 50%;
-            background: linear-gradient(135deg, #2563eb, #00bcd4);
-            color: white;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin: auto;
-            font-size: 30px;
-            font-weight: bold;
-        }
-
-        .sidebar-profile h3 {
-            margin-top: 12px;
-            font-size: 18px;
-        }
-
-        .sidebar-profile p {
-            margin-top: 5px;
-            color: #64748b;
-            font-size: 13px;
-            word-break: break-word;
-        }
-
-        .sidebar-menu button {
-            width: 100%;
-            border: none;
-            background: transparent;
-            padding: 12px;
-            text-align: left;
-            border-radius: 8px;
-            cursor: pointer;
-            font-size: 14px;
-            margin-bottom: 5px;
-            color: #374151;
-        }
-
-        .sidebar-menu button:hover,
-        .sidebar-menu button.active {
-            background: #eff6ff;
-            color: #2563eb;
-        }
-
-        .logout-btn {
-            color: #dc2626 !important;
-        }
-
-        .logout-btn:hover {
-            background: #fef2f2 !important;
-            color: #dc2626 !important;
-        }
-
-        /* ================= CONTENT ================= */
-
-        .content-card {
-            background: white;
-            border-radius: 16px;
-            padding: 30px;
-            box-shadow: 0 8px 25px rgba(0,0,0,0.07);
-        }
-
-        .content-card h2 {
-            color: #111827;
-            margin-bottom: 25px;
-        }
-
-        .profile-grid {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 20px;
-        }
-
-        .profile-item {
-            background: #f8fafc;
-            padding: 18px;
-            border-radius: 10px;
-            border: 1px solid #e5e7eb;
-        }
-
-        .profile-item span {
-            display: block;
-            font-size: 12px;
-            color: #64748b;
-            margin-bottom: 7px;
-        }
-
-        .profile-item strong {
-            font-size: 15px;
-            color: #111827;
-            word-break: break-word;
-        }
-
-        /* ================= BUTTONS ================= */
-
-        .primary-btn {
-            background: #2563eb;
-            color: white;
-            border: none;
-            padding: 12px 20px;
-            border-radius: 8px;
-            cursor: pointer;
-            font-weight: bold;
-            margin-top: 20px;
-        }
-
-        .primary-btn:hover {
+        .btn:hover {
             background: #1d4ed8;
         }
 
-        .secondary-btn {
-            background: #e5e7eb;
-            color: #111827;
-            border: none;
-            padding: 12px 20px;
-            border-radius: 8px;
+        .btn-green {
+            background: #16a34a;
+        }
+
+        .btn-green:hover {
+            background: #15803d;
+        }
+
+        .btn-red {
+            background: #dc2626;
+        }
+
+        .btn-red:hover {
+            background: #b91c1c;
+        }
+
+        .auth-links {
+            text-align: center;
+            margin-top: 18px;
+        }
+
+        .auth-links a {
+            color: #2563eb;
+            text-decoration: none;
+            font-weight: 600;
             cursor: pointer;
-            font-weight: bold;
-            margin-top: 20px;
-            margin-left: 8px;
         }
 
-        .secondary-btn:hover {
-            background: #d1d5db;
+        .auth-links a:hover {
+            text-decoration: underline;
         }
 
-        /* ================= BOOKING CARD ================= */
-
-        .booking-card {
-            border: 1px solid #e5e7eb;
-            border-radius: 12px;
-            padding: 20px;
+        .forgot-link {
+            display: block;
+            text-align: right;
+            margin-top: -7px;
             margin-bottom: 18px;
-            background: #f8fafc;
+            color: #2563eb;
+            font-size: 14px;
+            cursor: pointer;
         }
 
-        .booking-header {
+        .message {
+            display: none;
+            padding: 12px;
+            border-radius: 8px;
+            margin-bottom: 18px;
+            text-align: center;
+            font-size: 14px;
+        }
+
+        .success-message {
+            background: #dcfce7;
+            color: #166534;
+        }
+
+        .error-message {
+            background: #fee2e2;
+            color: #991b1b;
+        }
+
+        /* ================= PROFILE ================= */
+
+        #profileSection {
+            display: none;
+        }
+
+        .profile-header {
+            background: white;
+            border-radius: 18px;
+            padding: 30px;
             display: flex;
-            justify-content: space-between;
-            gap: 15px;
             align-items: center;
+            gap: 25px;
+            box-shadow: 0 8px 30px rgba(0,0,0,0.07);
+            margin-bottom: 25px;
+        }
+
+        .profile-avatar {
+            width: 90px;
+            height: 90px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #2563eb, #38bdf8);
+            color: white;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 35px;
+            font-weight: bold;
+        }
+
+        .profile-info h2 {
+            margin-bottom: 7px;
+            color: #111827;
+        }
+
+        .profile-info p {
+            color: #6b7280;
+            margin: 4px 0;
+        }
+
+        /* ================= DASHBOARD ================= */
+
+        .dashboard-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+        }
+
+        .dashboard-card {
+            background: white;
+            padding: 25px;
+            border-radius: 16px;
+            box-shadow: 0 7px 25px rgba(0,0,0,0.06);
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .dashboard-card:hover {
+            transform: translateY(-4px);
+        }
+
+        .dashboard-card .icon {
+            font-size: 30px;
+            margin-bottom: 12px;
+        }
+
+        .dashboard-card h3 {
+            margin-bottom: 7px;
+            color: #111827;
+        }
+
+        .dashboard-card p {
+            color: #6b7280;
+            font-size: 14px;
+        }
+
+        /* ================= CONTENT BOX ================= */
+
+        .content-box {
+            display: none;
+            background: white;
+            margin-top: 25px;
+            padding: 28px;
+            border-radius: 18px;
+            box-shadow: 0 7px 25px rgba(0,0,0,0.06);
+        }
+
+        .content-box h2 {
+            margin-bottom: 20px;
+            color: #111827;
+        }
+
+        .booking-item {
+            background: #f8fafc;
+            border: 1px solid #e5e7eb;
+            padding: 20px;
+            border-radius: 12px;
             margin-bottom: 15px;
         }
 
-        .booking-header h3 {
+        .booking-item p {
+            margin: 8px 0;
+            color: #374151;
+        }
+
+        .booking-item strong {
             color: #111827;
         }
 
         .status {
-            padding: 6px 12px;
+            display: inline-block;
+            padding: 5px 10px;
             border-radius: 20px;
-            font-size: 12px;
+            font-size: 13px;
             font-weight: bold;
             background: #dcfce7;
             color: #166534;
         }
 
-        .booking-details {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 12px;
-        }
-
-        .booking-detail {
-            font-size: 14px;
-        }
-
-        .booking-detail span {
-            color: #64748b;
-            display: block;
-            font-size: 12px;
-            margin-bottom: 4px;
-        }
-
-        .booking-detail strong {
-            color: #111827;
-        }
-
-        .no-data {
+        .empty {
+            color: #6b7280;
             text-align: center;
-            padding: 40px 20px;
-            color: #64748b;
-        }
-
-        .book-now-btn {
-            display: inline-block;
-            margin-top: 15px;
-            padding: 12px 20px;
-            background: #2563eb;
-            color: white;
-            text-decoration: none;
-            border-radius: 8px;
-            font-weight: bold;
-        }
-
-        /* ================= PAYMENT ================= */
-
-        .payment-card {
-            border: 1px solid #e5e7eb;
-            padding: 18px;
-            border-radius: 10px;
-            margin-bottom: 15px;
-        }
-
-        .payment-status {
-            display: inline-block;
-            padding: 5px 10px;
-            border-radius: 15px;
-            font-size: 12px;
-            background: #fef3c7;
-            color: #92400e;
-            margin-top: 8px;
-        }
-
-        /* ================= SAVED ================= */
-
-        .saved-card {
-            border: 1px solid #e5e7eb;
-            border-radius: 10px;
             padding: 20px;
-            margin-bottom: 15px;
+        }
+
+        /* ================= BUTTON GROUP ================= */
+
+        .button-row {
+            display: flex;
+            gap: 12px;
+            margin-top: 20px;
+        }
+
+        .button-row .btn {
+            width: auto;
+            padding: 11px 20px;
         }
 
         /* ================= FOOTER ================= */
@@ -427,8 +360,8 @@
             background: #111827;
             color: white;
             text-align: center;
-            padding: 25px;
-            margin-top: 50px;
+            padding: 25px 15px;
+            margin-top: 60px;
         }
 
         footer p {
@@ -436,49 +369,33 @@
             font-size: 14px;
         }
 
-        /* ================= RESPONSIVE ================= */
+        /* ================= MOBILE ================= */
 
-        @media (max-width: 850px) {
+        @media (max-width: 800px) {
 
-            nav {
-                flex-direction: column;
-                gap: 15px;
+            .nav-links {
+                display: none;
             }
-
-            nav ul {
-                flex-wrap: wrap;
-                justify-content: center;
-                gap: 15px;
-            }
-
-            .profile-layout {
-                grid-template-columns: 1fr;
-            }
-
-            .sidebar {
-                height: auto;
-            }
-        }
-
-        @media (max-width: 600px) {
 
             .hero h1 {
-                font-size: 30px;
+                font-size: 32px;
             }
 
-            .content-card,
-            .auth-card {
-                padding: 22px;
-            }
-
-            .profile-grid,
-            .booking-details {
+            .dashboard-grid {
                 grid-template-columns: 1fr;
             }
 
-            .booking-header {
+            .profile-header {
                 flex-direction: column;
-                align-items: flex-start;
+                text-align: center;
+            }
+
+            .button-row {
+                flex-direction: column;
+            }
+
+            .button-row .btn {
+                width: 100%;
             }
         }
     </style>
@@ -486,489 +403,377 @@
 
 <body>
 
-<!-- ================= NAVBAR ================= -->
+    <!-- ================= NAVBAR ================= -->
 
-<nav>
+    <nav>
+        <div class="logo">AtulRide</div>
 
-    <div class="logo">
-        AtulRide
-    </div>
+        <ul class="nav-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="vehicles.html">Vehicles</a></li>
+            <li><a href="booking.html">Booking</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="contact.html">Contact</a></li>
+            <li><a href="profile.html" class="active">Profile</a></li>
+        </ul>
+    </nav>
 
-    <ul>
-        <li>
-            <a href="index.html">Home</a>
-        </li>
+    <!-- ================= HERO ================= -->
 
-        <li>
-            <a href="vehicles.html">Vehicles</a>
-        </li>
+    <section class="hero">
+        <h1>My Profile 👤</h1>
+        <p>Login or create your AtulRide account</p>
+    </section>
 
-        <li>
-            <a href="booking.html">Booking</a>
-        </li>
+    <div class="container">
 
-        <li>
-            <a href="about.html">About</a>
-        </li>
+        <!-- ================= LOGIN ================= -->
 
-        <li>
-            <a href="contact.html">Contact</a>
-        </li>
+        <div id="loginSection" class="auth-wrapper">
 
-        <li>
-            <a href="profile.html">Profile</a>
-        </li>
-    </ul>
+            <div class="auth-card">
 
-</nav>
+                <h2>Welcome Back 👋</h2>
 
+                <p class="auth-subtitle">
+                    Login to continue with AtulRide
+                </p>
 
-<!-- ================= HERO ================= -->
+                <div id="loginMessage" class="message"></div>
 
-<section class="hero">
+                <form id="loginForm">
 
-    <h1>My Profile 👤</h1>
+                    <div class="form-group">
+                        <label>Mobile Number</label>
 
-    <p>
-        Manage your AtulRide account and bookings.
-    </p>
+                        <input
+                            type="tel"
+                            id="loginMobile"
+                            placeholder="Enter 10-digit mobile number"
+                            maxlength="10"
+                            required
+                        >
+                    </div>
 
-</section>
+                    <div class="form-group">
+                        <label>Password</label>
 
+                        <input
+                            type="password"
+                            id="loginPassword"
+                            placeholder="Enter password"
+                            required
+                        >
+                    </div>
 
-<!-- ================= AUTH AREA ================= -->
+                    <span
+                        class="forgot-link"
+                        onclick="showForgotPassword()"
+                    >
+                        Forgot Password?
+                    </span>
 
-<div
-    class="auth-container"
-    id="authContainer"
-    style="display:none;"
->
+                    <button type="submit" class="btn">
+                        Login
+                    </button>
 
-    <!-- LOGIN -->
+                </form>
 
-    <div
-        class="auth-card"
-        id="loginBox"
-    >
-
-        <h2>Welcome Back</h2>
-
-        <p class="subtitle">
-            Login to continue with AtulRide.
-        </p>
-
-        <form id="loginForm">
-
-            <div class="form-group">
-
-                <label for="loginMobile">
-                    Mobile Number
-                </label>
-
-                <input
-                    type="tel"
-                    id="loginMobile"
-                    placeholder="Enter mobile number"
-                    maxlength="10"
-                    required
-                >
+                <div class="auth-links">
+                    Don't have an account?
+                    <a onclick="showCreateAccount()">
+                        Create Account
+                    </a>
+                </div>
 
             </div>
-
-
-            <div class="form-group">
-
-                <label for="loginPassword">
-                    Password
-                </label>
-
-                <input
-                    type="password"
-                    id="loginPassword"
-                    placeholder="Enter password"
-                    required
-                >
-
-            </div>
-
-
-            <button
-                type="submit"
-                class="auth-btn"
-            >
-                Login
-            </button>
-
-        </form>
-
-
-        <div class="switch-text">
-
-            New customer?
-
-            <button
-                type="button"
-                onclick="showCreateAccount()"
-            >
-                Create Account
-            </button>
 
         </div>
 
-    </div>
+        <!-- ================= CREATE ACCOUNT ================= -->
 
+        <div id="createAccountSection" class="auth-wrapper" style="display:none;">
 
-    <!-- CREATE ACCOUNT -->
+            <div class="auth-card">
 
-    <div
-        class="auth-card"
-        id="createBox"
-        style="display:none;"
-    >
+                <h2>Create Account 🚗</h2>
 
-        <h2>Create Account</h2>
+                <p class="auth-subtitle">
+                    Create your AtulRide account
+                </p>
 
-        <p class="subtitle">
-            Create your AtulRide customer account.
-        </p>
+                <div id="createMessage" class="message"></div>
 
-        <form id="createForm">
+                <form id="createAccountForm">
 
-            <div class="form-group">
+                    <div class="form-group">
+                        <label>Full Name</label>
 
-                <label for="createName">
-                    Full Name
-                </label>
+                        <input
+                            type="text"
+                            id="createName"
+                            placeholder="Enter your full name"
+                            required
+                        >
+                    </div>
 
-                <input
-                    type="text"
-                    id="createName"
-                    placeholder="Enter your full name"
-                    required
-                >
+                    <div class="form-group">
+                        <label>Mobile Number</label>
 
-            </div>
+                        <input
+                            type="tel"
+                            id="createMobile"
+                            placeholder="Enter 10-digit mobile number"
+                            maxlength="10"
+                            required
+                        >
+                    </div>
 
+                    <div class="form-group">
+                        <label>Email Address</label>
 
-            <div class="form-group">
+                        <input
+                            type="email"
+                            id="createEmail"
+                            placeholder="Enter email address"
+                            required
+                        >
+                    </div>
 
-                <label for="createMobile">
-                    Mobile Number
-                </label>
+                    <div class="form-group">
+                        <label>Password</label>
 
-                <input
-                    type="tel"
-                    id="createMobile"
-                    placeholder="Enter 10-digit mobile number"
-                    maxlength="10"
-                    required
-                >
+                        <input
+                            type="password"
+                            id="createPassword"
+                            placeholder="Minimum 6 characters"
+                            required
+                        >
+                    </div>
 
-            </div>
+                    <div class="form-group">
+                        <label>Confirm Password</label>
 
+                        <input
+                            type="password"
+                            id="confirmPassword"
+                            placeholder="Confirm password"
+                            required
+                        >
+                    </div>
 
-            <div class="form-group">
+                    <button type="submit" class="btn btn-green">
+                        Create Account
+                    </button>
 
-                <label for="createEmail">
-                    Email Address
-                </label>
+                </form>
 
-                <input
-                    type="email"
-                    id="createEmail"
-                    placeholder="Enter email address"
-                    required
-                >
-
-            </div>
-
-
-            <div class="form-group">
-
-                <label for="createPassword">
-                    Password
-                </label>
-
-                <input
-                    type="password"
-                    id="createPassword"
-                    placeholder="Create password"
-                    minlength="6"
-                    required
-                >
-
-            </div>
-
-
-            <div class="form-group">
-
-                <label for="confirmPassword">
-                    Confirm Password
-                </label>
-
-                <input
-                    type="password"
-                    id="confirmPassword"
-                    placeholder="Confirm password"
-                    minlength="6"
-                    required
-                >
+                <div class="auth-links">
+                    Already have an account?
+                    <a onclick="showLogin()">
+                        Login
+                    </a>
+                </div>
 
             </div>
-
-
-            <button
-                type="submit"
-                class="auth-btn"
-            >
-                Create Account
-            </button>
-
-        </form>
-
-
-        <div class="switch-text">
-
-            Already have an account?
-
-            <button
-                type="button"
-                onclick="showLogin()"
-            >
-                Login
-            </button>
 
         </div>
 
-    </div>
+        <!-- ================= FORGOT PASSWORD ================= -->
 
-</div>
+        <div id="forgotPasswordSection" class="auth-wrapper" style="display:none;">
 
+            <div class="auth-card">
 
-<!-- ================= PROFILE AREA ================= -->
+                <h2>Forgot Password 🔐</h2>
 
-<div
-    class="container"
-    id="profileContainer"
-    style="display:none;"
->
+                <p class="auth-subtitle">
+                    Reset your AtulRide account password
+                </p>
 
-    <div class="profile-layout">
+                <div id="forgotMessage" class="message"></div>
 
+                <form id="forgotPasswordForm">
 
-        <!-- SIDEBAR -->
+                    <div class="form-group">
+                        <label>Mobile Number</label>
 
-        <aside class="sidebar">
+                        <input
+                            type="tel"
+                            id="forgotMobile"
+                            placeholder="Enter registered mobile number"
+                            maxlength="10"
+                            required
+                        >
+                    </div>
 
-            <div class="sidebar-profile">
+                    <div class="form-group">
+                        <label>New Password</label>
 
-                <div
-                    class="profile-avatar"
-                    id="profileAvatar"
-                >
+                        <input
+                            type="password"
+                            id="newPassword"
+                            placeholder="Enter new password"
+                            required
+                        >
+                    </div>
+
+                    <div class="form-group">
+                        <label>Confirm New Password</label>
+
+                        <input
+                            type="password"
+                            id="confirmNewPassword"
+                            placeholder="Confirm new password"
+                            required
+                        >
+                    </div>
+
+                    <button type="submit" class="btn">
+                        Reset Password
+                    </button>
+
+                </form>
+
+                <div class="auth-links">
+                    Remember your password?
+                    <a onclick="showLogin()">
+                        Login
+                    </a>
+                </div>
+
+            </div>
+
+        </div>
+
+        <!-- ================= PROFILE SECTION ================= -->
+
+        <section id="profileSection">
+
+            <div class="profile-header">
+
+                <div class="profile-avatar" id="profileAvatar">
                     A
                 </div>
 
-                <h3 id="sidebarName">
-                    Customer
-                </h3>
+                <div class="profile-info">
 
-                <p id="sidebarEmail">
-                    -
-                </p>
+                    <h2 id="profileName">
+                        AtulRide Customer
+                    </h2>
 
-            </div>
+                    <p>
+                        📱 <span id="profileMobile"></span>
+                    </p>
 
-
-            <div class="sidebar-menu">
-
-                <button
-                    class="active"
-                    onclick="showSection('profile', this)"
-                >
-                    👤 My Profile
-                </button>
-
-                <button
-                    onclick="showSection('bookings', this)"
-                >
-                    📋 My Bookings
-                </button>
-
-                <button
-                    onclick="showSection('payments', this)"
-                >
-                    💳 Payment History
-                </button>
-
-                <button
-                    onclick="showSection('edit', this)"
-                >
-                    ✏️ Edit Profile
-                </button>
-
-                <button
-                    onclick="showSection('password', this)"
-                >
-                    🔐 Change Password
-                </button>
-
-                <button
-                    onclick="showSection('saved', this)"
-                >
-                    ❤️ Saved Vehicles
-                </button>
-
-                <button
-                    class="logout-btn"
-                    onclick="logout()"
-                >
-                    🚪 Logout
-                </button>
-
-            </div>
-
-        </aside>
-
-
-        <!-- CONTENT -->
-
-        <main class="content-card">
-
-
-            <!-- ================= PROFILE ================= -->
-
-            <section id="profileSection">
-
-                <h2>My Profile</h2>
-
-                <div class="profile-grid">
-
-                    <div class="profile-item">
-
-                        <span>
-                            Full Name
-                        </span>
-
-                        <strong id="displayName">
-                            -
-                        </strong>
-
-                    </div>
-
-
-                    <div class="profile-item">
-
-                        <span>
-                            Mobile Number
-                        </span>
-
-                        <strong id="displayMobile">
-                            -
-                        </strong>
-
-                    </div>
-
-
-                    <div class="profile-item">
-
-                        <span>
-                            Email Address
-                        </span>
-
-                        <strong id="displayEmail">
-                            -
-                        </strong>
-
-                    </div>
-
-
-                    <div class="profile-item">
-
-                        <span>
-                            Account Status
-                        </span>
-
-                        <strong>
-                            Active
-                        </strong>
-
-                    </div>
+                    <p>
+                        📧 <span id="profileEmail"></span>
+                    </p>
 
                 </div>
 
+            </div>
 
-                <button
-                    class="primary-btn"
-                    onclick="openEditProfile()"
+            <!-- ================= DASHBOARD CARDS ================= -->
+
+            <div class="dashboard-grid">
+
+                <div
+                    class="dashboard-card"
+                    onclick="showContent('bookings')"
                 >
-                    Edit Profile
-                </button>
+                    <div class="icon">📋</div>
+                    <h3>My Bookings</h3>
+                    <p>View your vehicle booking details.</p>
+                </div>
 
-            </section>
+                <div
+                    class="dashboard-card"
+                    onclick="showContent('payments')"
+                >
+                    <div class="icon">💳</div>
+                    <h3>Payment History</h3>
+                    <p>View your recent payment details.</p>
+                </div>
 
+                <div
+                    class="dashboard-card"
+                    onclick="showContent('editProfile')"
+                >
+                    <div class="icon">✏️</div>
+                    <h3>Edit Profile</h3>
+                    <p>Update your account information.</p>
+                </div>
+
+                <div
+                    class="dashboard-card"
+                    onclick="showContent('changePassword')"
+                >
+                    <div class="icon">🔐</div>
+                    <h3>Change Password</h3>
+                    <p>Change your account password.</p>
+                </div>
+
+                <div
+                    class="dashboard-card"
+                    onclick="showContent('savedVehicles')"
+                >
+                    <div class="icon">❤️</div>
+                    <h3>Saved Vehicles</h3>
+                    <p>View your saved vehicle list.</p>
+                </div>
+
+                <div
+                    class="dashboard-card"
+                    onclick="logout()"
+                >
+                    <div class="icon">🚪</div>
+                    <h3>Logout</h3>
+                    <p>Logout from your AtulRide account.</p>
+                </div>
+
+            </div>
 
             <!-- ================= BOOKINGS ================= -->
 
-            <section
-                id="bookingsSection"
-                style="display:none;"
-            >
+            <div id="bookingsContent" class="content-box">
 
-                <h2>My Bookings</h2>
+                <h2>📋 My Bookings</h2>
 
-                <div id="bookingsContainer">
-                </div>
+                <div id="bookingDetails"></div>
 
-            </section>
-
+            </div>
 
             <!-- ================= PAYMENTS ================= -->
 
-            <section
-                id="paymentsSection"
-                style="display:none;"
-            >
+            <div id="paymentsContent" class="content-box">
 
-                <h2>Payment History</h2>
+                <h2>💳 Payment History</h2>
 
-                <div id="paymentsContainer">
-                </div>
+                <div id="paymentDetails"></div>
 
-            </section>
-
+            </div>
 
             <!-- ================= EDIT PROFILE ================= -->
 
-            <section
-                id="editSection"
-                style="display:none;"
-            >
+            <div id="editProfileContent" class="content-box">
 
-                <h2>Edit Profile</h2>
+                <h2>✏️ Edit Profile</h2>
 
-                <form id="editForm">
+                <form id="editProfileForm">
 
                     <div class="form-group">
-
-                        <label for="editName">
-                            Full Name
-                        </label>
+                        <label>Full Name</label>
 
                         <input
                             type="text"
                             id="editName"
                             required
                         >
-
                     </div>
 
-
                     <div class="form-group">
-
-                        <label for="editMobile">
-                            Mobile Number
-                        </label>
+                        <label>Mobile Number</label>
 
                         <input
                             type="tel"
@@ -976,1295 +781,995 @@
                             maxlength="10"
                             required
                         >
-
                     </div>
 
-
                     <div class="form-group">
-
-                        <label for="editEmail">
-                            Email Address
-                        </label>
+                        <label>Email Address</label>
 
                         <input
                             type="email"
                             id="editEmail"
                             required
                         >
-
                     </div>
 
-
-                    <button
-                        type="submit"
-                        class="primary-btn"
-                    >
+                    <button type="submit" class="btn">
                         Save Changes
                     </button>
 
                 </form>
 
-            </section>
+            </div>
 
+            <!-- ================= CHANGE PASSWORD ================= -->
 
-            <!-- ================= PASSWORD ================= -->
+            <div id="changePasswordContent" class="content-box">
 
-            <section
-                id="passwordSection"
-                style="display:none;"
-            >
+                <h2>🔐 Change Password</h2>
 
-                <h2>Change Password</h2>
-
-                <form id="passwordForm">
+                <form id="changePasswordForm">
 
                     <div class="form-group">
-
-                        <label for="currentPassword">
-                            Current Password
-                        </label>
+                        <label>Current Password</label>
 
                         <input
                             type="password"
                             id="currentPassword"
                             required
                         >
-
                     </div>
 
-
                     <div class="form-group">
-
-                        <label for="newPassword">
-                            New Password
-                        </label>
+                        <label>New Password</label>
 
                         <input
                             type="password"
-                            id="newPassword"
-                            minlength="6"
+                            id="changeNewPassword"
                             required
                         >
-
                     </div>
 
-
                     <div class="form-group">
-
-                        <label for="confirmNewPassword">
-                            Confirm New Password
-                        </label>
+                        <label>Confirm New Password</label>
 
                         <input
                             type="password"
-                            id="confirmNewPassword"
-                            minlength="6"
+                            id="changeConfirmPassword"
                             required
                         >
-
                     </div>
 
-
-                    <button
-                        type="submit"
-                        class="primary-btn"
-                    >
+                    <button type="submit" class="btn">
                         Change Password
                     </button>
 
                 </form>
 
-            </section>
+            </div>
 
+            <!-- ================= SAVED VEHICLES ================= -->
 
-            <!-- ================= SAVED ================= -->
+            <div id="savedVehiclesContent" class="content-box">
 
-            <section
-                id="savedSection"
-                style="display:none;"
-            >
+                <h2>❤️ Saved Vehicles</h2>
 
-                <h2>Saved Vehicles</h2>
+                <div class="empty">
+                    No saved vehicles yet.
+                </div>
 
-                <div class="saved-card">
+                <div class="button-row">
 
-                    <h3>
-                        🚗 AtulRide Vehicles
-                    </h3>
-
-                    <p style="margin-top:8px;color:#64748b;">
-                        Your saved vehicles will appear here.
-                    </p>
-
-                    <a
-                        href="vehicles.html"
-                        class="book-now-btn"
+                    <button
+                        class="btn"
+                        onclick="window.location.href='vehicles.html'"
                     >
                         Browse Vehicles
-                    </a>
+                    </button>
 
                 </div>
 
-            </section>
+            </div>
 
-        </main>
+        </section>
 
     </div>
 
-</div>
+    <!-- ================= FOOTER ================= -->
 
+    <footer>
 
-<!-- ================= FOOTER ================= -->
+        <p>
+            © 2026 AtulRide. All Rights Reserved.
+        </p>
 
-<footer>
+        <p>
+            Vehicle Rental & Booking System
+        </p>
 
-    <p>
-        © 2026 AtulRide. All Rights Reserved.
-    </p>
+    </footer>
 
-</footer>
+    <!-- ================= JAVASCRIPT ================= -->
 
+    <script>
 
-<script>
+        /* =========================================
+           PAGE LOAD
+        ========================================= */
 
-    /* =====================================================
-       HELPER
-    ===================================================== */
+        document.addEventListener("DOMContentLoaded", function () {
 
-    function getCustomer() {
+            checkLoginStatus();
 
-        const data =
-            localStorage.getItem("customerData");
+        });
 
-        if (!data) {
-            return null;
-        }
 
-        try {
-            return JSON.parse(data);
-        }
+        /* =========================================
+           CHECK LOGIN
+        ========================================= */
 
-        catch (error) {
-            return null;
-        }
-    }
+        function checkLoginStatus() {
 
+            const isLoggedIn =
+                localStorage.getItem("isLoggedIn") === "true";
 
-    function isLoggedIn() {
+            if (isLoggedIn) {
 
-        return (
-            localStorage.getItem("isLoggedIn")
-            === "true"
-        );
+                showProfile();
 
-    }
-
-
-    /* =====================================================
-       AUTH DISPLAY
-    ===================================================== */
-
-    function showLogin() {
-
-        document.getElementById(
-            "loginBox"
-        ).style.display = "block";
-
-        document.getElementById(
-            "createBox"
-        ).style.display = "none";
-
-    }
-
-
-    function showCreateAccount() {
-
-        document.getElementById(
-            "loginBox"
-        ).style.display = "none";
-
-        document.getElementById(
-            "createBox"
-        ).style.display = "block";
-
-    }
-
-
-    /* =====================================================
-       CREATE ACCOUNT
-    ===================================================== */
-
-    document.getElementById(
-        "createForm"
-    ).addEventListener(
-        "submit",
-        function(event) {
-
-            event.preventDefault();
-
-
-            const name =
-                document.getElementById(
-                    "createName"
-                ).value.trim();
-
-
-            const mobile =
-                document.getElementById(
-                    "createMobile"
-                ).value.trim();
-
-
-            const email =
-                document.getElementById(
-                    "createEmail"
-                ).value.trim();
-
-
-            const password =
-                document.getElementById(
-                    "createPassword"
-                ).value;
-
-
-            const confirmPassword =
-                document.getElementById(
-                    "confirmPassword"
-                ).value;
-
-
-            /* MOBILE */
-
-            if (!/^[0-9]{10}$/.test(mobile)) {
-
-                alert(
-                    "Please enter a valid 10-digit mobile number."
-                );
-
-                return;
-
-            }
-
-
-            /* PASSWORD */
-
-            if (password.length < 6) {
-
-                alert(
-                    "Password must contain at least 6 characters."
-                );
-
-                return;
-
-            }
-
-
-            if (password !== confirmPassword) {
-
-                alert(
-                    "Passwords do not match."
-                );
-
-                return;
-
-            }
-
-
-            /* EXISTING ACCOUNT */
-
-            const existingCustomer =
-                getCustomer();
-
-
-            if (existingCustomer) {
-
-                if (
-                    existingCustomer.mobile
-                    === mobile
-                ) {
-
-                    alert(
-                        "An account with this mobile number already exists. Please login."
-                    );
-
-                    showLogin();
-
-                    return;
-
-                }
-
-            }
-
-
-            /* SAVE */
-
-            const customerData = {
-
-                name: name,
-
-                mobile: mobile,
-
-                email: email
-
-            };
-
-
-            localStorage.setItem(
-                "customerData",
-                JSON.stringify(customerData)
-            );
-
-
-            localStorage.setItem(
-                "customerPassword",
-                password
-            );
-
-
-            localStorage.setItem(
-                "isLoggedIn",
-                "true"
-            );
-
-
-            alert(
-                "Account created successfully!"
-            );
-
-
-            /* SHOW PROFILE */
-
-            loadProfile();
-
-            showProfileArea();
-
-            showSection(
-                "profile",
-                document.querySelector(
-                    ".sidebar-menu button"
-                )
-            );
-
-        }
-    );
-
-
-    /* =====================================================
-       LOGIN
-    ===================================================== */
-
-    document.getElementById(
-        "loginForm"
-    ).addEventListener(
-        "submit",
-        function(event) {
-
-            event.preventDefault();
-
-
-            const mobile =
-                document.getElementById(
-                    "loginMobile"
-                ).value.trim();
-
-
-            const password =
-                document.getElementById(
-                    "loginPassword"
-                ).value;
-
-
-            const customer =
-                getCustomer();
-
-
-            const savedPassword =
-                localStorage.getItem(
-                    "customerPassword"
-                );
-
-
-            if (!customer) {
-
-                alert(
-                    "Account not found. Please create an account first."
-                );
-
-                showCreateAccount();
-
-                return;
-
-            }
-
-
-            if (
-                customer.mobile !== mobile
-            ) {
-
-                alert(
-                    "Mobile number is incorrect."
-                );
-
-                return;
-
-            }
-
-
-            if (
-                savedPassword !== password
-            ) {
-
-                alert(
-                    "Incorrect password."
-                );
-
-                return;
-
-            }
-
-
-            localStorage.setItem(
-                "isLoggedIn",
-                "true"
-            );
-
-
-            alert(
-                "Login successful!"
-            );
-
-
-            document.getElementById(
-                "loginForm"
-            ).reset();
-
-
-            loadProfile();
-
-            showProfileArea();
-
-            showSection(
-                "profile",
-                document.querySelector(
-                    ".sidebar-menu button"
-                )
-            );
-
-        }
-    );
-
-
-    /* =====================================================
-       SHOW PROFILE AREA
-    ===================================================== */
-
-    function showProfileArea() {
-
-        document.getElementById(
-            "authContainer"
-        ).style.display = "none";
-
-        document.getElementById(
-            "profileContainer"
-        ).style.display = "block";
-
-    }
-
-
-    function showAuthArea() {
-
-        document.getElementById(
-            "authContainer"
-        ).style.display = "block";
-
-        document.getElementById(
-            "profileContainer"
-        ).style.display = "none";
-
-    }
-
-
-    /* =====================================================
-       LOAD PROFILE
-    ===================================================== */
-
-    function loadProfile() {
-
-        const customer =
-            getCustomer();
-
-
-        if (!customer) {
-            return;
-        }
-
-
-        document.getElementById(
-            "displayName"
-        ).textContent =
-            customer.name || "-";
-
-
-        document.getElementById(
-            "displayMobile"
-        ).textContent =
-            customer.mobile || "-";
-
-
-        document.getElementById(
-            "displayEmail"
-        ).textContent =
-            customer.email || "-";
-
-
-        document.getElementById(
-            "sidebarName"
-        ).textContent =
-            customer.name || "Customer";
-
-
-        document.getElementById(
-            "sidebarEmail"
-        ).textContent =
-            customer.email || "-";
-
-
-        const firstLetter =
-            (
-                customer.name ||
-                "A"
-            )
-            .charAt(0)
-            .toUpperCase();
-
-
-        document.getElementById(
-            "profileAvatar"
-        ).textContent =
-            firstLetter;
-
-
-        document.getElementById(
-            "editName"
-        ).value =
-            customer.name || "";
-
-
-        document.getElementById(
-            "editMobile"
-        ).value =
-            customer.mobile || "";
-
-
-        document.getElementById(
-            "editEmail"
-        ).value =
-            customer.email || "";
-
-
-        loadBookings();
-
-        loadPayments();
-
-    }
-
-
-    /* =====================================================
-       SECTIONS
-    ===================================================== */
-
-    function showSection(
-        section,
-        button
-    ) {
-
-        if (!isLoggedIn()) {
-
-            showAuthArea();
-
-            showLogin();
-
-            return;
-
-        }
-
-
-        const sections = [
-            "profile",
-            "bookings",
-            "payments",
-            "edit",
-            "password",
-            "saved"
-        ];
-
-
-        sections.forEach(
-            function(item) {
-
-                const element =
-                    document.getElementById(
-                        item + "Section"
-                    );
-
-                if (element) {
-
-                    element.style.display =
-                        "none";
-
-                }
-
-            }
-        );
-
-
-        const selected =
-            document.getElementById(
-                section + "Section"
-            );
-
-
-        if (selected) {
-
-            selected.style.display =
-                "block";
-
-        }
-
-
-        document.querySelectorAll(
-            ".sidebar-menu button"
-        ).forEach(
-            function(btn) {
-
-                btn.classList.remove(
-                    "active"
-                );
-
-            }
-        );
-
-
-        if (button) {
-
-            button.classList.add(
-                "active"
-            );
-
-        }
-
-    }
-
-
-    /* =====================================================
-       EDIT PROFILE
-    ===================================================== */
-
-    function openEditProfile() {
-
-        const buttons =
-            document.querySelectorAll(
-                ".sidebar-menu button"
-            );
-
-        showSection(
-            "edit",
-            buttons[3]
-        );
-
-    }
-
-
-    document.getElementById(
-        "editForm"
-    ).addEventListener(
-        "submit",
-        function(event) {
-
-            event.preventDefault();
-
-
-            const name =
-                document.getElementById(
-                    "editName"
-                ).value.trim();
-
-
-            const mobile =
-                document.getElementById(
-                    "editMobile"
-                ).value.trim();
-
-
-            const email =
-                document.getElementById(
-                    "editEmail"
-                ).value.trim();
-
-
-            if (!/^[0-9]{10}$/.test(mobile)) {
-
-                alert(
-                    "Please enter a valid 10-digit mobile number."
-                );
-
-                return;
-
-            }
-
-
-            const customer = {
-
-                name: name,
-
-                mobile: mobile,
-
-                email: email
-
-            };
-
-
-            localStorage.setItem(
-                "customerData",
-                JSON.stringify(customer)
-            );
-
-
-            alert(
-                "Profile updated successfully!"
-            );
-
-
-            loadProfile();
-
-
-            showSection(
-                "profile",
-                document.querySelector(
-                    ".sidebar-menu button"
-                )
-            );
-
-        }
-    );
-
-
-    /* =====================================================
-       CHANGE PASSWORD
-    ===================================================== */
-
-    document.getElementById(
-        "passwordForm"
-    ).addEventListener(
-        "submit",
-        function(event) {
-
-            event.preventDefault();
-
-
-            const currentPassword =
-                document.getElementById(
-                    "currentPassword"
-                ).value;
-
-
-            const newPassword =
-                document.getElementById(
-                    "newPassword"
-                ).value;
-
-
-            const confirmPassword =
-                document.getElementById(
-                    "confirmNewPassword"
-                ).value;
-
-
-            const savedPassword =
-                localStorage.getItem(
-                    "customerPassword"
-                );
-
-
-            if (
-                currentPassword !==
-                savedPassword
-            ) {
-
-                alert(
-                    "Current password is incorrect."
-                );
-
-                return;
-
-            }
-
-
-            if (
-                newPassword.length < 6
-            ) {
-
-                alert(
-                    "New password must contain at least 6 characters."
-                );
-
-                return;
-
-            }
-
-
-            if (
-                newPassword !==
-                confirmPassword
-            ) {
-
-                alert(
-                    "New passwords do not match."
-                );
-
-                return;
-
-            }
-
-
-            localStorage.setItem(
-                "customerPassword",
-                newPassword
-            );
-
-
-            document.getElementById(
-                "passwordForm"
-            ).reset();
-
-
-            alert(
-                "Password changed successfully!"
-            );
-
-        }
-    );
-
-
-    /* =====================================================
-       MY BOOKINGS
-    ===================================================== */
-
-    function loadBookings() {
-
-        const container =
-            document.getElementById(
-                "bookingsContainer"
-            );
-
-
-        const bookingData =
-            localStorage.getItem(
-                "bookingData"
-            );
-
-
-        if (!bookingData) {
-
-            container.innerHTML = `
-
-                <div class="no-data">
-
-                    <h3>No Bookings Yet</h3>
-
-                    <p style="margin-top:8px;">
-                        You have not made any vehicle booking yet.
-                    </p>
-
-                    <a
-                        href="booking.html"
-                        class="book-now-btn"
-                    >
-                        Book a Vehicle
-                    </a>
-
-                </div>
-
-            `;
-
-            return;
-
-        }
-
-
-        let booking;
-
-
-        try {
-
-            booking =
-                JSON.parse(bookingData);
-
-        }
-
-        catch (error) {
-
-            container.innerHTML = `
-                <div class="no-data">
-                    Unable to load booking.
-                </div>
-            `;
-
-            return;
-
-        }
-
-
-        const paymentMethod =
-            localStorage.getItem(
-                "paymentMethod"
-            ) || "-";
-
-
-        const paymentStatus =
-            localStorage.getItem(
-                "paymentStatus"
-            ) || "Pending";
-
-
-        container.innerHTML = `
-
-            <div class="booking-card">
-
-                <div class="booking-header">
-
-                    <h3>
-                        ${booking.vehicle || "Vehicle"}
-                    </h3>
-
-                    <span class="status">
-                        ${booking.bookingStatus || "Confirmed"}
-                    </span>
-
-                </div>
-
-
-                <div class="booking-details">
-
-                    <div class="booking-detail">
-
-                        <span>
-                            Pickup Location
-                        </span>
-
-                        <strong>
-                            ${booking.pickupLocation || "-"}
-                        </strong>
-
-                    </div>
-
-
-                    <div class="booking-detail">
-
-                        <span>
-                            Rental Type
-                        </span>
-
-                        <strong>
-                            ${
-                                booking.rentalType === "hourly"
-                                ? "Hourly"
-                                : "Daily"
-                            }
-                        </strong>
-
-                    </div>
-
-
-                    <div class="booking-detail">
-
-                        <span>
-                            Pickup
-                        </span>
-
-                        <strong>
-                            ${
-                                booking.pickupDate || "-"
-                            }
-                            <br>
-                            ${
-                                booking.pickupTime || "-"
-                            }
-                        </strong>
-
-                    </div>
-
-
-                    <div class="booking-detail">
-
-                        <span>
-                            Return
-                        </span>
-
-                        <strong>
-                            ${
-                                booking.returnDate || "-"
-                            }
-                            <br>
-                            ${
-                                booking.returnTime || "-"
-                            }
-                        </strong>
-
-                    </div>
-
-
-                    <div class="booking-detail">
-
-                        <span>
-                            Driving Licence
-                        </span>
-
-                        <strong>
-                            ${
-                                booking.drivingLicence || "-"
-                            }
-                        </strong>
-
-                    </div>
-
-
-                    <div class="booking-detail">
-
-                        <span>
-                            Payment
-                        </span>
-
-                        <strong>
-                            ${paymentMethod}
-                        </strong>
-
-                    </div>
-
-
-                    <div class="booking-detail">
-
-                        <span>
-                            Payment Status
-                        </span>
-
-                        <strong>
-                            ${paymentStatus}
-                        </strong>
-
-                    </div>
-
-
-                    <div class="booking-detail">
-
-                        <span>
-                            Total Amount
-                        </span>
-
-                        <strong>
-                            ₹${
-                                Number(
-                                    booking.totalRent || 0
-                                ).toLocaleString("en-IN")
-                            }
-                        </strong>
-
-                    </div>
-
-                </div>
-
-            </div>
-
-        `;
-
-    }
-
-
-    /* =====================================================
-       PAYMENT HISTORY
-    ===================================================== */
-
-    function loadPayments() {
-
-        const container =
-            document.getElementById(
-                "paymentsContainer"
-            );
-
-
-        const bookingData =
-            localStorage.getItem(
-                "bookingData"
-            );
-
-
-        if (!bookingData) {
-
-            container.innerHTML = `
-
-                <div class="no-data">
-
-                    <h3>
-                        No Payment History
-                    </h3>
-
-                    <p style="margin-top:8px;">
-                        Payment records will appear here after booking.
-                    </p>
-
-                </div>
-
-            `;
-
-            return;
-
-        }
-
-
-        let booking;
-
-
-        try {
-
-            booking =
-                JSON.parse(bookingData);
-
-        }
-
-        catch (error) {
-
-            return;
-
-        }
-
-
-        const paymentMethod =
-            localStorage.getItem(
-                "paymentMethod"
-            ) || "-";
-
-
-        const paymentStatus =
-            localStorage.getItem(
-                "paymentStatus"
-            ) || "Pending";
-
-
-        container.innerHTML = `
-
-            <div class="payment-card">
-
-                <h3>
-                    ${booking.vehicle || "Vehicle Rental"}
-                </h3>
-
-                <p style="margin-top:10px;">
-                    Amount:
-                    <strong>
-                        ₹${
-                            Number(
-                                booking.totalRent || 0
-                            ).toLocaleString("en-IN")
-                        }
-                    </strong>
-                </p>
-
-                <p style="margin-top:7px;">
-                    Payment Method:
-                    <strong>
-                        ${paymentMethod}
-                    </strong>
-                </p>
-
-                <span class="payment-status">
-                    ${paymentStatus}
-                </span>
-
-            </div>
-
-        `;
-
-    }
-
-
-    /* =====================================================
-       LOGOUT
-    ===================================================== */
-
-    function logout() {
-
-        localStorage.removeItem(
-            "isLoggedIn"
-        );
-
-
-        alert(
-            "You have been logged out."
-        );
-
-
-        showAuthArea();
-
-        showLogin();
-
-    }
-
-
-    /* =====================================================
-       INITIAL LOAD
-    ===================================================== */
-
-    window.addEventListener(
-        "DOMContentLoaded",
-        function() {
-
-            if (isLoggedIn()) {
-
-                const customer =
-                    getCustomer();
-
-
-                if (customer) {
-
-                    loadProfile();
-
-                    showProfileArea();
-
-                    showSection(
-                        "profile",
-                        document.querySelector(
-                            ".sidebar-menu button"
-                        )
-                    );
-
-                }
-
-                else {
-
-                    localStorage.removeItem(
-                        "isLoggedIn"
-                    );
-
-                    showAuthArea();
-
-                    showLogin();
-
-                }
-
-            }
-
-            else {
-
-                showAuthArea();
+            } else {
 
                 showLogin();
 
             }
 
         }
-    );
 
-</script>
+
+        /* =========================================
+           SHOW LOGIN
+        ========================================= */
+
+        function showLogin() {
+
+            document.getElementById("loginSection").style.display = "flex";
+
+            document.getElementById("createAccountSection").style.display = "none";
+
+            document.getElementById("forgotPasswordSection").style.display = "none";
+
+            document.getElementById("profileSection").style.display = "none";
+
+        }
+
+
+        /* =========================================
+           SHOW CREATE ACCOUNT
+        ========================================= */
+
+        function showCreateAccount() {
+
+            document.getElementById("loginSection").style.display = "none";
+
+            document.getElementById("createAccountSection").style.display = "flex";
+
+            document.getElementById("forgotPasswordSection").style.display = "none";
+
+            document.getElementById("profileSection").style.display = "none";
+
+        }
+
+
+        /* =========================================
+           SHOW FORGOT PASSWORD
+        ========================================= */
+
+        function showForgotPassword() {
+
+            document.getElementById("loginSection").style.display = "none";
+
+            document.getElementById("createAccountSection").style.display = "none";
+
+            document.getElementById("forgotPasswordSection").style.display = "flex";
+
+            document.getElementById("profileSection").style.display = "none";
+
+        }
+
+
+        /* =========================================
+           SHOW PROFILE
+        ========================================= */
+
+        function showProfile() {
+
+            const customerData =
+                JSON.parse(localStorage.getItem("customerData"));
+
+            if (!customerData) {
+
+                localStorage.removeItem("isLoggedIn");
+
+                showLogin();
+
+                return;
+
+            }
+
+            document.getElementById("loginSection").style.display = "none";
+
+            document.getElementById("createAccountSection").style.display = "none";
+
+            document.getElementById("forgotPasswordSection").style.display = "none";
+
+            document.getElementById("profileSection").style.display = "block";
+
+
+            document.getElementById("profileName").textContent =
+                customerData.name;
+
+            document.getElementById("profileMobile").textContent =
+                customerData.mobile;
+
+            document.getElementById("profileEmail").textContent =
+                customerData.email;
+
+
+            const firstLetter =
+                customerData.name.charAt(0).toUpperCase();
+
+            document.getElementById("profileAvatar").textContent =
+                firstLetter;
+
+
+            /* EDIT PROFILE VALUES */
+
+            document.getElementById("editName").value =
+                customerData.name;
+
+            document.getElementById("editMobile").value =
+                customerData.mobile;
+
+            document.getElementById("editEmail").value =
+                customerData.email;
+
+        }
+
+
+        /* =========================================
+           LOGIN
+        ========================================= */
+
+        document
+            .getElementById("loginForm")
+            .addEventListener("submit", function (e) {
+
+                e.preventDefault();
+
+                const mobile =
+                    document.getElementById("loginMobile").value.trim();
+
+                const password =
+                    document.getElementById("loginPassword").value;
+
+
+                if (!/^\d{10}$/.test(mobile)) {
+
+                    showMessage(
+                        "loginMessage",
+                        "Please enter a valid 10-digit mobile number.",
+                        false
+                    );
+
+                    return;
+
+                }
+
+
+                const customerData =
+                    JSON.parse(localStorage.getItem("customerData"));
+
+                const savedPassword =
+                    localStorage.getItem("customerPassword");
+
+
+                if (!customerData || !savedPassword) {
+
+                    showMessage(
+                        "loginMessage",
+                        "Account not found. Please create an account first.",
+                        false
+                    );
+
+                    return;
+
+                }
+
+
+                if (
+                    customerData.mobile !== mobile ||
+                    savedPassword !== password
+                ) {
+
+                    showMessage(
+                        "loginMessage",
+                        "Invalid mobile number or password.",
+                        false
+                    );
+
+                    return;
+
+                }
+
+
+                localStorage.setItem("isLoggedIn", "true");
+
+
+                showMessage(
+                    "loginMessage",
+                    "Login successful!",
+                    true
+                );
+
+
+                setTimeout(function () {
+
+                    showProfile();
+
+                }, 700);
+
+            });
+
+
+        /* =========================================
+           CREATE ACCOUNT
+        ========================================= */
+
+        document
+            .getElementById("createAccountForm")
+            .addEventListener("submit", function (e) {
+
+                e.preventDefault();
+
+                const name =
+                    document.getElementById("createName").value.trim();
+
+                const mobile =
+                    document.getElementById("createMobile").value.trim();
+
+                const email =
+                    document.getElementById("createEmail").value.trim();
+
+                const password =
+                    document.getElementById("createPassword").value;
+
+                const confirmPassword =
+                    document.getElementById("confirmPassword").value;
+
+
+                if (!name) {
+
+                    showMessage(
+                        "createMessage",
+                        "Please enter your full name.",
+                        false
+                    );
+
+                    return;
+
+                }
+
+
+                if (!/^\d{10}$/.test(mobile)) {
+
+                    showMessage(
+                        "createMessage",
+                        "Please enter a valid 10-digit mobile number.",
+                        false
+                    );
+
+                    return;
+
+                }
+
+
+                if (password.length < 6) {
+
+                    showMessage(
+                        "createMessage",
+                        "Password must contain at least 6 characters.",
+                        false
+                    );
+
+                    return;
+
+                }
+
+
+                if (password !== confirmPassword) {
+
+                    showMessage(
+                        "createMessage",
+                        "Passwords do not match.",
+                        false
+                    );
+
+                    return;
+
+                }
+
+
+                const customerData = {
+
+                    name: name,
+                    mobile: mobile,
+                    email: email
+
+                };
+
+
+                localStorage.setItem(
+                    "customerData",
+                    JSON.stringify(customerData)
+                );
+
+                localStorage.setItem(
+                    "customerPassword",
+                    password
+                );
+
+                localStorage.setItem(
+                    "isLoggedIn",
+                    "true"
+                );
+
+
+                showMessage(
+                    "createMessage",
+                    "Account created successfully!",
+                    true
+                );
+
+
+                setTimeout(function () {
+
+                    showProfile();
+
+                }, 800);
+
+            });
+
+
+        /* =========================================
+           FORGOT PASSWORD
+        ========================================= */
+
+        document
+            .getElementById("forgotPasswordForm")
+            .addEventListener("submit", function (e) {
+
+                e.preventDefault();
+
+
+                const mobile =
+                    document.getElementById("forgotMobile").value.trim();
+
+                const newPassword =
+                    document.getElementById("newPassword").value;
+
+                const confirmNewPassword =
+                    document.getElementById("confirmNewPassword").value;
+
+
+                if (!/^\d{10}$/.test(mobile)) {
+
+                    showMessage(
+                        "forgotMessage",
+                        "Please enter a valid 10-digit mobile number.",
+                        false
+                    );
+
+                    return;
+
+                }
+
+
+                const customerData =
+                    JSON.parse(localStorage.getItem("customerData"));
+
+
+                if (!customerData) {
+
+                    showMessage(
+                        "forgotMessage",
+                        "No account found. Please create an account first.",
+                        false
+                    );
+
+                    return;
+
+                }
+
+
+                if (customerData.mobile !== mobile) {
+
+                    showMessage(
+                        "forgotMessage",
+                        "This mobile number is not registered.",
+                        false
+                    );
+
+                    return;
+
+                }
+
+
+                if (newPassword.length < 6) {
+
+                    showMessage(
+                        "forgotMessage",
+                        "New password must contain at least 6 characters.",
+                        false
+                    );
+
+                    return;
+
+                }
+
+
+                if (newPassword !== confirmNewPassword) {
+
+                    showMessage(
+                        "forgotMessage",
+                        "New passwords do not match.",
+                        false
+                    );
+
+                    return;
+
+                }
+
+
+                localStorage.setItem(
+                    "customerPassword",
+                    newPassword
+                );
+
+
+                localStorage.removeItem("isLoggedIn");
+
+
+                showMessage(
+                    "forgotMessage",
+                    "Password reset successfully. Please login.",
+                    true
+                );
+
+
+                setTimeout(function () {
+
+                    document
+                        .getElementById("forgotPasswordForm")
+                        .reset();
+
+                    showLogin();
+
+                }, 1000);
+
+            });
+
+
+        /* =========================================
+           SHOW CONTENT
+        ========================================= */
+
+        function showContent(type) {
+
+            const contents = [
+
+                "bookingsContent",
+                "paymentsContent",
+                "editProfileContent",
+                "changePasswordContent",
+                "savedVehiclesContent"
+
+            ];
+
+
+            contents.forEach(function (id) {
+
+                document.getElementById(id).style.display = "none";
+
+            });
+
+
+            if (type === "bookings") {
+
+                document.getElementById("bookingsContent").style.display = "block";
+
+                loadBookingDetails();
+
+            }
+
+
+            if (type === "payments") {
+
+                document.getElementById("paymentsContent").style.display = "block";
+
+                loadPaymentDetails();
+
+            }
+
+
+            if (type === "editProfile") {
+
+                document.getElementById("editProfileContent").style.display = "block";
+
+            }
+
+
+            if (type === "changePassword") {
+
+                document.getElementById("changePasswordContent").style.display = "block";
+
+            }
+
+
+            if (type === "savedVehicles") {
+
+                document.getElementById("savedVehiclesContent").style.display = "block";
+
+            }
+
+        }
+
+
+        /* =========================================
+           LOAD BOOKING
+        ========================================= */
+
+        function loadBookingDetails() {
+
+            const container =
+                document.getElementById("bookingDetails");
+
+            const bookingData =
+                JSON.parse(localStorage.getItem("bookingData"));
+
+
+            if (!bookingData) {
+
+                container.innerHTML = `
+                    <div class="empty">
+                        No bookings found.
+                        <br><br>
+
+                        <button
+                            class="btn"
+                            onclick="window.location.href='vehicles.html'"
+                            style="max-width:220px;"
+                        >
+                            Book a Vehicle
+                        </button>
+                    </div>
+                `;
+
+                return;
+
+            }
+
+
+            const paymentMethod =
+                localStorage.getItem("paymentMethod") || "Not selected";
+
+            const paymentStatus =
+                localStorage.getItem("paymentStatus") || "Pending";
+
+
+            container.innerHTML = `
+
+                <div class="booking-item">
+
+                    <p>
+                        <strong>Vehicle:</strong>
+                        ${bookingData.vehicle || "N/A"}
+                    </p>
+
+                    <p>
+                        <strong>Pickup Location:</strong>
+                        ${bookingData.pickupLocation || "N/A"}
+                    </p>
+
+                    <p>
+                        <strong>Rental Type:</strong>
+                        ${bookingData.rentalType || "N/A"}
+                    </p>
+
+                    <p>
+                        <strong>Pickup:</strong>
+                        ${bookingData.pickupDate || "N/A"}
+                        ${bookingData.pickupTime || ""}
+                    </p>
+
+                    <p>
+                        <strong>Return:</strong>
+                        ${bookingData.returnDate || "N/A"}
+                        ${bookingData.returnTime || ""}
+                    </p>
+
+                    <p>
+                        <strong>Driving Licence:</strong>
+                        ${bookingData.drivingLicence || "N/A"}
+                    </p>
+
+                    <p>
+                        <strong>Payment Method:</strong>
+                        ${paymentMethod}
+                    </p>
+
+                    <p>
+                        <strong>Payment Status:</strong>
+                        <span class="status">
+                            ${paymentStatus}
+                        </span>
+                    </p>
+
+                    <p>
+                        <strong>Total Amount:</strong>
+                        ₹${bookingData.totalRent || 0}
+                    </p>
+
+                    <p>
+                        <strong>Booking Status:</strong>
+                        <span class="status">
+                            ${bookingData.bookingStatus || "Confirmed"}
+                        </span>
+                    </p>
+
+                </div>
+
+            `;
+
+        }
+
+
+        /* =========================================
+           PAYMENT DETAILS
+        ========================================= */
+
+        function loadPaymentDetails() {
+
+            const container =
+                document.getElementById("paymentDetails");
+
+            const bookingData =
+                JSON.parse(localStorage.getItem("bookingData"));
+
+            const paymentMethod =
+                localStorage.getItem("paymentMethod");
+
+            const paymentStatus =
+                localStorage.getItem("paymentStatus");
+
+
+            if (!bookingData) {
+
+                container.innerHTML = `
+                    <div class="empty">
+                        No payment history available.
+                    </div>
+                `;
+
+                return;
+
+            }
+
+
+            container.innerHTML = `
+
+                <div class="booking-item">
+
+                    <p>
+                        <strong>Vehicle:</strong>
+                        ${bookingData.vehicle || "N/A"}
+                    </p>
+
+                    <p>
+                        <strong>Amount:</strong>
+                        ₹${bookingData.totalRent || 0}
+                    </p>
+
+                    <p>
+                        <strong>Payment Method:</strong>
+                        ${paymentMethod || "N/A"}
+                    </p>
+
+                    <p>
+                        <strong>Payment Status:</strong>
+                        <span class="status">
+                            ${paymentStatus || "Pending"}
+                        </span>
+                    </p>
+
+                </div>
+
+            `;
+
+        }
+
+
+        /* =========================================
+           EDIT PROFILE
+        ========================================= */
+
+        document
+            .getElementById("editProfileForm")
+            .addEventListener("submit", function (e) {
+
+                e.preventDefault();
+
+
+                const name =
+                    document.getElementById("editName").value.trim();
+
+                const mobile =
+                    document.getElementById("editMobile").value.trim();
+
+                const email =
+                    document.getElementById("editEmail").value.trim();
+
+
+                if (!/^\d{10}$/.test(mobile)) {
+
+                    alert("Please enter a valid 10-digit mobile number.");
+
+                    return;
+
+                }
+
+
+                const customerData = {
+
+                    name: name,
+                    mobile: mobile,
+                    email: email
+
+                };
+
+
+                localStorage.setItem(
+                    "customerData",
+                    JSON.stringify(customerData)
+                );
+
+
+                alert("Profile updated successfully!");
+
+                showProfile();
+
+            });
+
+
+        /* =========================================
+           CHANGE PASSWORD
+        ========================================= */
+
+        document
+            .getElementById("changePasswordForm")
+            .addEventListener("submit", function (e) {
+
+                e.preventDefault();
+
+
+                const currentPassword =
+                    document.getElementById("currentPassword").value;
+
+                const newPassword =
+                    document.getElementById("changeNewPassword").value;
+
+                const confirmPassword =
+                    document.getElementById("changeConfirmPassword").value;
+
+
+                const savedPassword =
+                    localStorage.getItem("customerPassword");
+
+
+                if (currentPassword !== savedPassword) {
+
+                    alert("Current password is incorrect.");
+
+                    return;
+
+                }
+
+
+                if (newPassword.length < 6) {
+
+                    alert("New password must contain at least 6 characters.");
+
+                    return;
+
+                }
+
+
+                if (newPassword !== confirmPassword) {
+
+                    alert("New passwords do not match.");
+
+                    return;
+
+                }
+
+
+                localStorage.setItem(
+                    "customerPassword",
+                    newPassword
+                );
+
+
+                document
+                    .getElementById("changePasswordForm")
+                    .reset();
+
+
+                alert("Password changed successfully!");
+
+            });
+
+
+        /* =========================================
+           LOGOUT
+        ========================================= */
+
+        function logout() {
+
+            localStorage.removeItem("isLoggedIn");
+
+            alert("You have been logged out.");
+
+            showLogin();
+
+        }
+
+
+        /* =========================================
+           MESSAGE
+        ========================================= */
+
+        function showMessage(elementId, message, success) {
+
+            const element =
+                document.getElementById(elementId);
+
+            element.textContent = message;
+
+            element.className =
+                "message " +
+                (success
+                    ? "success-message"
+                    : "error-message");
+
+            element.style.display = "block";
+
+        }
+
+
+        /* =========================================
+           MOBILE NUMBER INPUT
+        ========================================= */
+
+        document.querySelectorAll('input[type="tel"]').forEach(function(input) {
+
+            input.addEventListener("input", function() {
+
+                this.value =
+                    this.value.replace(/\D/g, "").slice(0, 10);
+
+            });
+
+        });
+
+    </script>
 
 </body>
 </html>
