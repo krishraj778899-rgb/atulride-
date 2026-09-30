@@ -16,846 +16,590 @@
 
         body {
             background: #f5f7fb;
-            color: #111827;
+            color: #222;
         }
 
-        /* ================= NAVBAR ================= */
-
-        nav {
+        /* NAVBAR */
+        .navbar {
             background: #111827;
+            color: white;
             padding: 15px 7%;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            color: white;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
         }
 
         .logo {
-            font-size: 25px;
+            font-size: 27px;
             font-weight: bold;
             color: #00d4ff;
         }
 
-        nav ul {
+        .nav-links {
             display: flex;
             gap: 22px;
             list-style: none;
         }
 
-        nav ul li a {
+        .nav-links a {
             color: white;
             text-decoration: none;
-            font-size: 14px;
+            font-size: 15px;
         }
 
-        nav ul li a:hover {
+        .nav-links a:hover {
             color: #00d4ff;
         }
 
-
-        /* ================= HERO ================= */
-
+        /* HERO */
         .hero {
-            min-height: 205px;
-
+            min-height: 300px;
             background:
-                linear-gradient(
-                    rgba(5, 15, 35, 0.78),
-                    rgba(5, 15, 35, 0.78)
-                ),
-                url("https://images.unsplash.com/photo-1504215680853-026ed2a45def?auto=format&fit=crop&w=1600&q=80");
-
+                linear-gradient(rgba(0,0,0,.65), rgba(0,0,0,.65)),
+                url("https://images.unsplash.com/photo-1503376780353-7e6692767b70?auto=format&fit=crop&w=1600&q=80");
             background-size: cover;
             background-position: center;
-
-            color: white;
-
             display: flex;
             justify-content: center;
             align-items: center;
-
             text-align: center;
-
+            color: white;
             padding: 40px 20px;
         }
 
-        .hero-content small {
-            color: #38bdf8;
-            font-weight: bold;
-        }
-
         .hero h1 {
-            font-size: 34px;
-            margin: 14px 0;
-        }
-
-        .hero p {
-            font-size: 14px;
-        }
-
-
-        /* ================= MAIN ================= */
-
-        .booking-wrapper {
-            width: 90%;
-            max-width: 1100px;
-
-            margin: 45px auto;
-
-            display: grid;
-
-            grid-template-columns: 250px 1fr;
-
-            gap: 20px;
-
-            align-items: start;
-        }
-
-
-        /* ================= STEPS ================= */
-
-        .steps {
-            background: #111827;
-
-            color: white;
-
-            border-radius: 14px;
-
-            padding: 25px 20px;
-        }
-
-        .steps h2 {
-            font-size: 20px;
+            font-size: 42px;
             margin-bottom: 12px;
         }
 
-        .steps > p {
-            font-size: 11px;
-            line-height: 1.5;
+        .hero p {
+            font-size: 18px;
+        }
 
+        /* MAIN */
+        .booking-section {
+            width: 90%;
+            max-width: 1200px;
+            margin: 50px auto;
+            display: grid;
+            grid-template-columns: 0.8fr 1.2fr;
+            gap: 30px;
+        }
+
+        /* INFO CARD */
+        .info-card {
+            background: white;
+            padding: 30px;
+            border-radius: 18px;
+            box-shadow: 0 10px 30px rgba(0,0,0,.08);
+            height: fit-content;
+        }
+
+        .info-card h2 {
             margin-bottom: 20px;
-
-            color: #e5e7eb;
+            color: #111827;
         }
 
         .step {
             display: flex;
-
-            gap: 12px;
-
-            margin: 17px 0;
+            gap: 15px;
+            margin: 22px 0;
         }
 
         .step-number {
-            min-width: 22px;
-            height: 22px;
-
-            background: #2563eb;
-
+            min-width: 42px;
+            height: 42px;
+            background: #00a8cc;
+            color: white;
             border-radius: 50%;
-
             display: flex;
             align-items: center;
             justify-content: center;
-
-            font-size: 12px;
-
             font-weight: bold;
         }
 
-        .step h4 {
-            font-size: 11px;
-
-            margin-bottom: 4px;
+        .step h3 {
+            margin-bottom: 5px;
+            font-size: 17px;
         }
 
         .step p {
-            font-size: 9px;
-
-            color: #cbd5e1;
+            color: #666;
+            font-size: 14px;
+            line-height: 1.5;
         }
 
+        .showroom-box {
+            margin-top: 25px;
+            padding: 18px;
+            background: #eefaff;
+            border-left: 4px solid #00a8cc;
+            border-radius: 10px;
+        }
 
-        /* ================= FORM CARD ================= */
+        .showroom-box h3 {
+            margin-bottom: 7px;
+            color: #007c99;
+        }
 
+        /* FORM */
         .form-card {
             background: white;
-
-            border: 1px solid #e5e7eb;
-
-            border-radius: 14px;
-
-            padding: 25px;
-
-            box-shadow:
-                0 8px 25px rgba(0,0,0,0.06);
+            padding: 32px;
+            border-radius: 18px;
+            box-shadow: 0 10px 30px rgba(0,0,0,.08);
         }
 
         .form-card h2 {
-            font-size: 22px;
-
-            margin-bottom: 7px;
+            margin-bottom: 25px;
+            color: #111827;
         }
 
-        .form-card > p {
-            font-size: 11px;
-
-            color: #64748b;
-
-            margin-bottom: 20px;
+        .form-group {
+            margin-bottom: 18px;
         }
 
-        .form-grid {
+        .form-row {
             display: grid;
-
             grid-template-columns: 1fr 1fr;
-
             gap: 15px;
         }
 
-
-        /* ================= FIELDS ================= */
-
-        .field {
-            display: flex;
-
-            flex-direction: column;
-        }
-
-        .field.full {
-            grid-column: 1 / -1;
-        }
-
         label {
-            font-size: 11px;
-
-            font-weight: bold;
-
+            display: block;
             margin-bottom: 7px;
-
-            color: #374151;
+            font-weight: 600;
+            color: #333;
         }
 
         input,
         select {
             width: 100%;
-
-            height: 42px;
-
-            border: 1px solid #cbd5e1;
-
-            border-radius: 7px;
-
-            padding: 0 11px;
-
-            background: #f8fafc;
-
+            padding: 13px 14px;
+            border: 1px solid #d1d5db;
+            border-radius: 9px;
             outline: none;
-
-            font-size: 12px;
+            font-size: 15px;
+            background: white;
         }
 
         input:focus,
         select:focus {
-            border-color: #2563eb;
-
-            background: white;
+            border-color: #00a8cc;
+            box-shadow: 0 0 0 3px rgba(0,168,204,.1);
         }
 
-
-        /* ================= LOCATION ================= */
-
-        .location-note {
-            font-size: 9px;
-
-            color: #dc2626;
-
-            margin-top: 6px;
+        select option:disabled {
+            color: #999;
         }
 
-
-        /* ================= RENTAL TYPE ================= */
-
-        .rental-options {
+        .id-row {
             display: grid;
+            grid-template-columns: 180px 1fr;
+            gap: 12px;
+        }
 
-            grid-template-columns: 1fr 1fr;
+        /* AGE */
+        .age-box {
+            background: #f0fdf4;
+            border: 1px solid #bbf7d0;
+            padding: 12px 14px;
+            border-radius: 9px;
+            margin-top: 8px;
+            color: #166534;
+            font-size: 14px;
+            display: none;
+        }
 
+        .age-error {
+            background: #fef2f2;
+            border: 1px solid #fecaca;
+            color: #b91c1c;
+        }
+
+        /* CHECKBOX */
+        .terms-box {
+            margin: 20px 0;
+            padding: 15px;
+            background: #f9fafb;
+            border: 1px solid #e5e7eb;
+            border-radius: 10px;
+        }
+
+        .checkbox-line {
+            display: flex;
+            align-items: flex-start;
             gap: 10px;
         }
 
-        .rental-option {
-            border: 1px solid #cbd5e1;
-
-            border-radius: 8px;
-
-            padding: 14px;
-
-            cursor: pointer;
-
-            display: flex;
-
-            align-items: flex-start;
-
-            gap: 8px;
-        }
-
-        .rental-option:hover {
-            border-color: #2563eb;
-        }
-
-        .rental-option input {
+        .checkbox-line input {
             width: auto;
-
-            height: auto;
-
-            margin-top: 2px;
+            margin-top: 3px;
         }
 
-        .rental-option strong {
-            display: block;
-
-            font-size: 12px;
-
-            margin-bottom: 4px;
+        .checkbox-line label {
+            margin: 0;
+            font-size: 14px;
+            font-weight: normal;
+            line-height: 1.5;
         }
 
-        .rental-option span {
-            font-size: 9px;
-
-            color: #64748b;
-        }
-
-
-        /* ================= SECTION TITLE ================= */
-
-        .section-title {
-            grid-column: 1 / -1;
-
-            margin-top: 8px;
-
-            padding-top: 18px;
-
-            border-top: 1px solid #e5e7eb;
-        }
-
-        .section-title h3 {
-            font-size: 16px;
-
-            color: #1d4ed8;
-        }
-
-        .section-title p {
-            font-size: 10px;
-
-            color: #64748b;
-
-            margin-top: 4px;
-        }
-
-
-        /* ================= SUMMARY ================= */
-
+        /* SUMMARY */
         .summary {
-            grid-column: 1 / -1;
-
-            background: #eff6ff;
-
-            border: 1px solid #bfdbfe;
-
-            border-radius: 10px;
-
-            padding: 18px;
-
-            margin-top: 5px;
+            margin-top: 25px;
+            padding: 20px;
+            background: #111827;
+            color: white;
+            border-radius: 14px;
         }
 
         .summary h3 {
-            color: #1d4ed8;
-
-            margin-bottom: 12px;
-
-            font-size: 16px;
+            margin-bottom: 15px;
         }
 
         .summary-row {
             display: flex;
-
             justify-content: space-between;
-
+            gap: 15px;
             padding: 7px 0;
-
-            font-size: 12px;
-        }
-
-        .summary-row strong {
-            text-align: right;
+            font-size: 15px;
         }
 
         .total-row {
-            border-top: 1px solid #bfdbfe;
-
-            margin-top: 8px;
-
-            padding-top: 13px;
-
-            font-size: 18px;
-
+            border-top: 1px solid #374151;
+            margin-top: 10px;
+            padding-top: 15px;
+            font-size: 21px;
             font-weight: bold;
-
-            color: #111827;
+            color: #00d4ff;
         }
 
-        #rentDisplay {
-            color: #16a34a;
-
-            font-size: 22px;
-        }
-
-
-        /* ================= PAYMENT ================= */
-
-        .payment-box {
-            grid-column: 1 / -1;
-
-            background: #f0fdf4;
-
-            border: 1px solid #bbf7d0;
-
-            border-radius: 10px;
-
-            padding: 18px;
-        }
-
-        .payment-box h3 {
-            color: #15803d;
-
-            font-size: 16px;
-
-            margin-bottom: 8px;
-        }
-
-        .payment-box p {
-            font-size: 10px;
-
-            color: #64748b;
-
-            margin-bottom: 12px;
+        /* PAYMENT */
+        .payment-section {
+            margin-top: 22px;
         }
 
         .payment-options {
             display: grid;
-
-            grid-template-columns:
-                repeat(4, 1fr);
-
-            gap: 8px;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 10px;
         }
 
         .payment-option {
-            border: 1px solid #bbf7d0;
-
-            background: white;
-
-            padding: 12px 7px;
-
-            border-radius: 8px;
-
-            text-align: center;
-
-            cursor: pointer;
-
-            font-size: 11px;
-        }
-
-        .payment-option:hover {
-            border-color: #16a34a;
-
-            background: #f0fdf4;
+            position: relative;
         }
 
         .payment-option input {
-            width: auto;
-
-            height: auto;
-
-            margin-right: 4px;
+            position: absolute;
+            opacity: 0;
         }
 
-
-        /* ================= BUTTON ================= */
-
-        .submit-btn {
-            grid-column: 1 / -1;
-
-            width: 100%;
-
-            border: none;
-
-            background:
-                linear-gradient(
-                    135deg,
-                    #2563eb,
-                    #1d4ed8
-                );
-
-            color: white;
-
-            padding: 14px;
-
-            border-radius: 8px;
-
-            font-weight: bold;
-
-            font-size: 14px;
-
+        .payment-option label {
+            border: 1px solid #d1d5db;
+            padding: 13px 8px;
+            border-radius: 9px;
+            text-align: center;
             cursor: pointer;
+            font-size: 13px;
+            margin: 0;
+            transition: .2s;
+        }
 
-            margin-top: 5px;
+        .payment-option input:checked + label {
+            background: #e6faff;
+            border-color: #00a8cc;
+            color: #007c99;
+            font-weight: bold;
+        }
+
+        /* BUTTON */
+        .submit-btn {
+            width: 100%;
+            border: none;
+            background: linear-gradient(135deg, #00a8cc, #007c99);
+            color: white;
+            padding: 15px;
+            border-radius: 10px;
+            font-size: 17px;
+            font-weight: bold;
+            cursor: pointer;
+            margin-top: 25px;
         }
 
         .submit-btn:hover {
+            opacity: .92;
             transform: translateY(-1px);
         }
 
-
-        /* ================= FOOTER ================= */
-
-        footer {
-            background: #111827;
-
-            color: white;
-
-            text-align: center;
-
-            padding: 25px;
-
-            margin-top: 50px;
-
-            font-size: 13px;
+        /* NOTICE */
+        .privacy-note {
+            margin-top: 12px;
+            font-size: 12px;
+            color: #666;
+            line-height: 1.5;
         }
 
+        /* FOOTER */
+        footer {
+            background: #111827;
+            color: white;
+            text-align: center;
+            padding: 25px;
+            margin-top: 50px;
+        }
 
-        /* ================= MOBILE ================= */
+        footer span {
+            color: #00d4ff;
+        }
 
-        @media(max-width: 800px) {
-
-            nav {
-                flex-direction: column;
-
-                gap: 15px;
-            }
-
-            nav ul {
-                flex-wrap: wrap;
-
-                justify-content: center;
-            }
-
-            .booking-wrapper {
+        /* MOBILE */
+        @media (max-width: 850px) {
+            .booking-section {
                 grid-template-columns: 1fr;
             }
 
-            .form-grid {
+            .nav-links {
+                display: none;
+            }
+        }
+
+        @media (max-width: 600px) {
+            .hero h1 {
+                font-size: 30px;
+            }
+
+            .hero p {
+                font-size: 15px;
+            }
+
+            .form-row {
                 grid-template-columns: 1fr;
             }
 
-            .field.full,
-            .section-title,
-            .summary,
-            .payment-box,
-            .submit-btn {
-                grid-column: auto;
-            }
-
-            .rental-options {
+            .id-row {
                 grid-template-columns: 1fr;
             }
 
             .payment-options {
                 grid-template-columns: 1fr 1fr;
             }
+
+            .form-card,
+            .info-card {
+                padding: 22px;
+            }
         }
     </style>
 </head>
 
-
 <body>
 
+    <!-- NAVBAR -->
+    <nav class="navbar">
+        <div class="logo">AtulRide</div>
 
-<!-- ================= NAVBAR ================= -->
-
-<nav>
-
-    <div class="logo">
-        AtulRide
-    </div>
-
-    <ul>
-
-        <li>
-            <a href="index.html">Home</a>
-        </li>
-
-        <li>
-            <a href="vehicles.html">Vehicles</a>
-        </li>
-
-        <li>
-            <a href="booking.html">Booking</a>
-        </li>
-
-        <li>
-            <a href="about.html">About</a>
-        </li>
-
-        <li>
-            <a href="contact.html">Contact</a>
-        </li>
-
-        <li>
-            <a href="profile.html">Profile</a>
-        </li>
-
-    </ul>
-
-</nav>
+        <ul class="nav-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="vehicles.html">Vehicles</a></li>
+            <li><a href="booking.html">Booking</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="contact.html">Contact</a></li>
+            <li><a href="profile.html">Profile</a></li>
+        </ul>
+    </nav>
 
 
-<!-- ================= HERO ================= -->
-
-<section class="hero">
-
-    <div class="hero-content">
-
-        <small>
-            🚘 ATULRIDE BOOKING
-        </small>
-
-        <h1>
-            Book Your Ride
-        </h1>
-
-        <p>
-            Select your vehicle, rental duration,
-            pickup location and booking details.
-        </p>
-
-    </div>
-
-</section>
+    <!-- HERO -->
+    <section class="hero">
+        <div>
+            <h1>Book Your Ride 🚗</h1>
+            <p>Choose your vehicle, rental duration and pickup details.</p>
+        </div>
+    </section>
 
 
-<!-- ================= BOOKING ================= -->
+    <!-- BOOKING SECTION -->
+    <section class="booking-section">
 
-<section class="booking-wrapper">
+        <!-- LEFT INFORMATION -->
+        <div class="info-card">
 
+            <h2>Easy Booking</h2>
 
-    <!-- LEFT SIDE -->
-
-    <div class="steps">
-
-        <h2>
-            Easy Booking
-        </h2>
-
-        <p>
-            Complete these simple steps
-            to book your vehicle.
-        </p>
-
-
-        <div class="step">
-
-            <div class="step-number">
-                1
+            <div class="step">
+                <div class="step-number">1</div>
+                <div>
+                    <h3>Select Vehicle</h3>
+                    <p>Choose a car, SUV or bike according to your requirement.</p>
+                </div>
             </div>
 
-            <div>
+            <div class="step">
+                <div class="step-number">2</div>
+                <div>
+                    <h3>Choose Duration</h3>
+                    <p>Select hourly or daily rental according to your journey.</p>
+                </div>
+            </div>
 
-                <h4>
-                    Select Vehicle
-                </h4>
+            <div class="step">
+                <div class="step-number">3</div>
+                <div>
+                    <h3>Enter Pickup & Return</h3>
+                    <p>Provide your pickup and return date and time.</p>
+                </div>
+            </div>
 
+            <div class="step">
+                <div class="step-number">4</div>
+                <div>
+                    <h3>Verify Identity</h3>
+                    <p>Provide your DOB and selected identity proof.</p>
+                </div>
+            </div>
+
+            <div class="step">
+                <div class="step-number">5</div>
+                <div>
+                    <h3>Confirm & Pay</h3>
+                    <p>Check your rental amount and continue to payment.</p>
+                </div>
+            </div>
+
+
+            <div class="showroom-box">
+                <h3>📍 Pickup from AtulRide Showroom</h3>
                 <p>
-                    Choose your preferred car,
-                    SUV or bike.
+                    Your booked vehicle will be collected from the
+                    AtulRide showroom in Ranchi, Jharkhand – 834001.
                 </p>
-
             </div>
 
         </div>
 
 
-        <div class="step">
+        <!-- RIGHT FORM -->
+        <div class="form-card">
 
-            <div class="step-number">
-                2
-            </div>
+            <h2>Booking Details</h2>
 
-            <div>
+            <form id="bookingForm">
 
-                <h4>
-                    Choose Rental Type
-                </h4>
+                <!-- CUSTOMER -->
+                <div class="form-row">
 
-                <p>
-                    Select hourly or daily rental.
-                </p>
+                    <div class="form-group">
+                        <label for="name">Full Name *</label>
+                        <input
+                            type="text"
+                            id="name"
+                            placeholder="Enter your full name"
+                            required
+                        >
+                    </div>
 
-            </div>
-
-        </div>
-
-
-        <div class="step">
-
-            <div class="step-number">
-                3
-            </div>
-
-            <div>
-
-                <h4>
-                    Set Date & Time
-                </h4>
-
-                <p>
-                    Enter pickup and return details.
-                </p>
-
-            </div>
-
-        </div>
-
-
-        <div class="step">
-
-            <div class="step-number">
-                4
-            </div>
-
-            <div>
-
-                <h4>
-                    Confirm Booking
-                </h4>
-
-                <p>
-                    Review the total rental amount.
-                </p>
-
-            </div>
-
-        </div>
-
-
-        <div class="step">
-
-            <div class="step-number">
-                5
-            </div>
-
-            <div>
-
-                <h4>
-                    Payment
-                </h4>
-
-                <p>
-                    Continue to the payment page.
-                </p>
-
-            </div>
-
-        </div>
-
-    </div>
-
-
-    <!-- RIGHT FORM -->
-
-    <div class="form-card">
-
-        <h2>
-            Booking Details
-        </h2>
-
-        <p>
-            Enter your information to continue.
-        </p>
-
-
-        <form id="bookingForm">
-
-            <div class="form-grid">
-
-
-                <!-- NAME -->
-
-                <div class="field">
-
-                    <label for="name">
-                        Full Name *
-                    </label>
-
-                    <input
-                        type="text"
-                        id="name"
-                        placeholder="Enter your full name"
-                        required>
+                    <div class="form-group">
+                        <label for="mobile">Mobile Number *</label>
+                        <input
+                            type="tel"
+                            id="mobile"
+                            placeholder="10-digit mobile number"
+                            maxlength="10"
+                            required
+                        >
+                    </div>
 
                 </div>
 
 
-                <!-- MOBILE -->
+                <!-- DOB -->
+                <div class="form-group">
 
-                <div class="field">
-
-                    <label for="mobile">
-                        Mobile Number *
-                    </label>
+                    <label for="dob">Date of Birth *</label>
 
                     <input
-                        type="tel"
-                        id="mobile"
-                        placeholder="Enter 10 digit mobile number"
-                        maxlength="10"
-                        required>
+                        type="date"
+                        id="dob"
+                        required
+                    >
+
+                    <div id="ageBox" class="age-box">
+                        Age: <strong id="ageText"></strong>
+                    </div>
+
+                </div>
+
+
+                <!-- ID PROOF -->
+                <div class="form-group">
+
+                    <label>Identity Proof *</label>
+
+                    <div class="id-row">
+
+                        <select id="idType" required>
+
+                            <option value="">
+                                Select ID Type
+                            </option>
+
+                            <option value="Aadhaar Card">
+                                Aadhaar Card
+                            </option>
+
+                            <option value="PAN Card">
+                                PAN Card
+                            </option>
+
+                        </select>
+
+
+                        <input
+                            type="text"
+                            id="idNumber"
+                            placeholder="Enter ID number"
+                            required
+                        >
+
+                    </div>
+
+                    <p class="privacy-note">
+                        Your ID information should be handled securely.
+                        For this prototype, identity verification is only
+                        used as a booking requirement.
+                    </p>
 
                 </div>
 
 
                 <!-- VEHICLE -->
+                <div class="form-group">
 
-                <div class="field">
+                    <label for="vehicle">Select Vehicle *</label>
 
-                    <label for="vehicle">
-                        Select Vehicle *
-                    </label>
-
-                    <select
-                        id="vehicle"
-                        required>
+                    <select id="vehicle" required>
 
                         <option value="">
-                            -- Select Vehicle --
+                            Select Vehicle
                         </option>
 
                         <option value="Maruti Swift">
-                            Maruti Swift - ₹1,200/day
+                            Maruti Swift — ₹150/hr | ₹1,200/day
                         </option>
 
                         <option value="Hyundai Creta">
-                            Hyundai Creta - ₹2,000/day
+                            Hyundai Creta — ₹250/hr | ₹2,000/day
                         </option>
 
                         <option value="Royal Enfield">
-                            Royal Enfield - ₹900/day
+                            Royal Enfield — ₹100/hr | ₹900/day
                         </option>
 
                         <option value="Honda Activa">
-                            Honda Activa - ₹500/day
+                            Honda Activa — ₹60/hr | ₹500/day
                         </option>
 
                     </select>
@@ -864,19 +608,16 @@
 
 
                 <!-- LOCATION -->
-
-                <div class="field">
+                <div class="form-group">
 
                     <label for="pickupLocation">
                         Pickup Location *
                     </label>
 
-                    <select
-                        id="pickupLocation"
-                        required>
+                    <select id="pickupLocation" required>
 
                         <option value="">
-                            -- Select Location --
+                            Select Pickup Location
                         </option>
 
                         <option value="Main Road">
@@ -901,1034 +642,1102 @@
 
                     </select>
 
-                    <div class="location-note">
-                        🔴 Unavailable locations cannot be selected.
-                    </div>
-
                 </div>
 
 
                 <!-- RENTAL TYPE -->
+                <div class="form-group">
 
-                <div class="field full">
-
-                    <label>
+                    <label for="rentalType">
                         Rental Type *
                     </label>
 
-                    <div class="rental-options">
+                    <select id="rentalType" required>
+
+                        <option value="hourly">
+                            Hourly Rental
+                        </option>
+
+                        <option value="daily">
+                            Daily Rental
+                        </option>
+
+                    </select>
+
+                </div>
 
 
-                        <label class="rental-option">
+                <!-- PICKUP DATE/TIME -->
+                <div class="form-row">
 
-                            <input
-                                type="radio"
-                                name="rentalType"
-                                value="hourly"
-                                checked>
+                    <div class="form-group">
 
-                            <div>
-
-                                <strong>
-                                    Hourly Rental
-                                </strong>
-
-                                <span>
-                                    Flexible short-term rental
-                                </span>
-
-                            </div>
-
+                        <label for="pickupDate">
+                            Pickup Date *
                         </label>
 
+                        <input
+                            type="date"
+                            id="pickupDate"
+                            required
+                        >
 
-                        <label class="rental-option">
+                    </div>
 
-                            <input
-                                type="radio"
-                                name="rentalType"
-                                value="daily">
 
-                            <div>
+                    <div class="form-group">
 
-                                <strong>
-                                    Daily Rental
-                                </strong>
-
-                                <span>
-                                    Full-day rental option
-                                </span>
-
-                            </div>
-
+                        <label for="pickupTime">
+                            Pickup Time *
                         </label>
+
+                        <input
+                            type="time"
+                            id="pickupTime"
+                            required
+                        >
 
                     </div>
 
                 </div>
 
 
-                <!-- PICKUP -->
+                <!-- RETURN DATE/TIME -->
+                <div class="form-row">
 
-                <div class="section-title">
+                    <div class="form-group">
 
-                    <h3>
-                        📍 Pickup Details
-                    </h3>
+                        <label for="returnDate">
+                            Return Date *
+                        </label>
 
-                    <p>
-                        Select when you want
-                        to collect your vehicle.
-                    </p>
+                        <input
+                            type="date"
+                            id="returnDate"
+                            required
+                        >
 
-                </div>
-
-
-                <div class="field">
-
-                    <label for="pickupDate">
-                        Pickup Date *
-                    </label>
-
-                    <input
-                        type="date"
-                        id="pickupDate"
-                        required>
-
-                </div>
+                    </div>
 
 
-                <div class="field">
+                    <div class="form-group">
 
-                    <label for="pickupTime">
-                        Pickup Time *
-                    </label>
+                        <label for="returnTime">
+                            Return Time *
+                        </label>
 
-                    <input
-                        type="time"
-                        id="pickupTime"
-                        required>
+                        <input
+                            type="time"
+                            id="returnTime"
+                            required
+                        >
+
+                    </div>
 
                 </div>
 
 
-                <!-- RETURN -->
+                <!-- 18+ CHECKBOX -->
+                <div class="terms-box">
 
-                <div class="section-title">
+                    <div class="checkbox-line">
 
-                    <h3>
-                        🔄 Return Details
-                    </h3>
+                        <input
+                            type="checkbox"
+                            id="ageConfirm"
+                            required
+                        >
 
-                    <p>
-                        Select when you will return
-                        the vehicle.
-                    </p>
+                        <label for="ageConfirm">
+                            I confirm that I am <strong>18 years or older</strong>
+                            and the information provided by me is correct.
+                        </label>
 
-                </div>
-
-
-                <div class="field">
-
-                    <label for="returnDate">
-                        Return Date *
-                    </label>
-
-                    <input
-                        type="date"
-                        id="returnDate"
-                        required>
-
-                </div>
-
-
-                <div class="field">
-
-                    <label for="returnTime">
-                        Return Time *
-                    </label>
-
-                    <input
-                        type="time"
-                        id="returnTime"
-                        required>
+                    </div>
 
                 </div>
 
 
                 <!-- SUMMARY -->
-
                 <div class="summary">
 
-                    <h3>
-                        💰 Rental Summary
-                    </h3>
-
+                    <h3>Rental Summary</h3>
 
                     <div class="summary-row">
-
-                        <span>
-                            Vehicle
-                        </span>
-
+                        <span>Vehicle</span>
                         <strong id="summaryVehicle">
-                            -
+                            Not Selected
                         </strong>
-
                     </div>
 
-
                     <div class="summary-row">
-
-                        <span>
-                            Rental Type
-                        </span>
-
+                        <span>Rental Type</span>
                         <strong id="summaryType">
                             Hourly
                         </strong>
-
                     </div>
-
 
                     <div class="summary-row">
-
-                        <span>
-                            Rental Duration
-                        </span>
-
-                        <strong id="summaryDuration">
-                            Select date & time
+                        <span>Rental Rate</span>
+                        <strong id="summaryRate">
+                            ₹0
                         </strong>
-
                     </div>
 
-
                     <div class="summary-row total-row">
-
-                        <span>
-                            Total Amount
-                        </span>
-
+                        <span>Total Amount</span>
                         <strong id="rentDisplay">
                             ₹0
                         </strong>
-
                     </div>
 
                 </div>
 
 
                 <!-- PAYMENT -->
+                <div class="payment-section">
 
-                <div class="payment-box">
-
-                    <h3>
-                        💳 Payment Option
-                    </h3>
-
-                    <p>
-                        Select your preferred payment method.
-                    </p>
-
+                    <label>
+                        Payment Method *
+                    </label>
 
                     <div class="payment-options">
 
-
-                        <label class="payment-option">
+                        <div class="payment-option">
 
                             <input
                                 type="radio"
                                 name="paymentMethod"
+                                id="upi"
                                 value="UPI"
-                                checked>
+                                required
+                            >
 
-                            UPI
+                            <label for="upi">
+                                UPI
+                            </label>
 
-                        </label>
-
-
-                        <label class="payment-option">
-
-                            <input
-                                type="radio"
-                                name="paymentMethod"
-                                value="Card">
-
-                            Card
-
-                        </label>
+                        </div>
 
 
-                        <label class="payment-option">
+                        <div class="payment-option">
 
                             <input
                                 type="radio"
                                 name="paymentMethod"
-                                value="Net Banking">
+                                id="card"
+                                value="Card"
+                            >
 
-                            Net Banking
+                            <label for="card">
+                                Card
+                            </label>
 
-                        </label>
+                        </div>
 
 
-                        <label class="payment-option">
+                        <div class="payment-option">
 
                             <input
                                 type="radio"
                                 name="paymentMethod"
-                                value="Cash">
+                                id="netbanking"
+                                value="Net Banking"
+                            >
 
-                            Cash
+                            <label for="netbanking">
+                                Net Banking
+                            </label>
 
-                        </label>
+                        </div>
 
+
+                        <div class="payment-option">
+
+                            <input
+                                type="radio"
+                                name="paymentMethod"
+                                id="cash"
+                                value="Cash"
+                            >
+
+                            <label for="cash">
+                                Cash
+                            </label>
+
+                        </div>
 
                     </div>
 
                 </div>
 
 
-                <!-- HIDDEN TOTAL -->
-
-                <input
-                    type="hidden"
-                    id="totalRent"
-                    value="0">
-
-
                 <!-- SUBMIT -->
-
                 <button
                     type="submit"
-                    class="submit-btn">
-
+                    class="submit-btn"
+                >
                     Continue to Payment →
-
                 </button>
 
-            </div>
+            </form>
 
-        </form>
+        </div>
 
-    </div>
+    </section>
 
-</section>
 
+    <!-- FOOTER -->
+    <footer>
 
-<!-- ================= FOOTER ================= -->
+        <p>
+            © 2026 <span>AtulRide</span> —
+            Vehicle Rental System
+        </p>
 
-<footer>
+    </footer>
 
-    <p>
-        © 2026 AtulRide. All Rights Reserved.
-    </p>
 
-</footer>
+    <script>
 
+        /* ================================
+           VEHICLE RATES
+        ================================= */
 
-<script>
+        const vehicleRates = {
 
-/* =========================================
-   VEHICLE RATES
-========================================= */
+            "Maruti Swift": {
+                hourly: 150,
+                daily: 1200
+            },
 
-const vehicleRates = {
+            "Hyundai Creta": {
+                hourly: 250,
+                daily: 2000
+            },
 
-    "Maruti Swift": {
-        hourly: 150,
-        daily: 1200
-    },
+            "Royal Enfield": {
+                hourly: 100,
+                daily: 900
+            },
 
-    "Hyundai Creta": {
-        hourly: 250,
-        daily: 2000
-    },
-
-    "Royal Enfield": {
-        hourly: 100,
-        daily: 900
-    },
-
-    "Honda Activa": {
-        hourly: 60,
-        daily: 500
-    }
-
-};
-
-
-/* =========================================
-   ELEMENTS
-========================================= */
-
-const vehicleSelect =
-    document.getElementById("vehicle");
-
-const rentalTypeInputs =
-    document.querySelectorAll(
-        'input[name="rentalType"]'
-    );
-
-const pickupDate =
-    document.getElementById("pickupDate");
-
-const pickupTime =
-    document.getElementById("pickupTime");
-
-const returnDate =
-    document.getElementById("returnDate");
-
-const returnTime =
-    document.getElementById("returnTime");
-
-const pickupLocation =
-    document.getElementById("pickupLocation");
-
-const rentDisplay =
-    document.getElementById("rentDisplay");
-
-const totalRent =
-    document.getElementById("totalRent");
-
-const summaryVehicle =
-    document.getElementById("summaryVehicle");
-
-const summaryType =
-    document.getElementById("summaryType");
-
-const summaryDuration =
-    document.getElementById("summaryDuration");
-
-
-/* =========================================
-   TODAY
-========================================= */
-
-const today =
-    new Date().toISOString().split("T")[0];
-
-pickupDate.min = today;
-returnDate.min = today;
-
-
-/* =========================================
-   VEHICLE FROM URL
-========================================= */
-
-const params =
-    new URLSearchParams(
-        window.location.search
-    );
-
-const urlVehicle =
-    params.get("vehicle");
-
-if (
-    urlVehicle &&
-    vehicleRates[urlVehicle]
-) {
-
-    vehicleSelect.value =
-        urlVehicle;
-
-}
-
-
-/* =========================================
-   SAVED LOCATION
-========================================= */
-
-const savedLocation =
-    localStorage.getItem(
-        "selectedLocation"
-    );
-
-if (savedLocation) {
-
-    const option =
-        [...pickupLocation.options]
-        .find(
-            option =>
-                option.value === savedLocation &&
-                !option.disabled
-        );
-
-    if (option) {
-
-        pickupLocation.value =
-            savedLocation;
-
-    }
-
-}
-
-
-/* =========================================
-   CUSTOMER DATA
-========================================= */
-
-const customerData =
-    JSON.parse(
-        localStorage.getItem(
-            "customerData"
-        )
-    ) || {};
-
-
-if (customerData.name) {
-
-    document.getElementById("name").value =
-        customerData.name;
-
-}
-
-
-if (customerData.mobile) {
-
-    document.getElementById("mobile").value =
-        customerData.mobile;
-
-}
-
-
-/* =========================================
-   CALCULATE RENT
-========================================= */
-
-function calculateRent() {
-
-    const vehicle =
-        vehicleSelect.value;
-
-    const rentalType =
-        document.querySelector(
-            'input[name="rentalType"]:checked'
-        ).value;
-
-
-    /* NO VEHICLE */
-
-    if (!vehicle) {
-
-        summaryVehicle.textContent =
-            "-";
-
-        summaryType.textContent =
-            rentalType === "hourly"
-                ? "Hourly"
-                : "Daily";
-
-        summaryDuration.textContent =
-            "Select vehicle";
-
-        rentDisplay.textContent =
-            "₹0";
-
-        totalRent.value =
-            "0";
-
-        return;
-    }
-
-
-    /* VEHICLE */
-
-    summaryVehicle.textContent =
-        vehicle;
-
-
-    /* RENTAL TYPE */
-
-    summaryType.textContent =
-        rentalType === "hourly"
-            ? "Hourly"
-            : "Daily";
-
-
-    /* RATE */
-
-    const rate =
-        rentalType === "hourly"
-            ? vehicleRates[vehicle].hourly
-            : vehicleRates[vehicle].daily;
-
-
-    /* =====================================
-       DATE/TIME NOT SELECTED
-       SHOW BASE RATE
-    ===================================== */
-
-    if (
-        !pickupDate.value ||
-        !pickupTime.value ||
-        !returnDate.value ||
-        !returnTime.value
-    ) {
-
-        if (rentalType === "hourly") {
-
-            summaryDuration.textContent =
-                `₹${rate} / hour`;
-
-        } else {
-
-            summaryDuration.textContent =
-                `₹${rate} / day`;
-
-        }
-
-        rentDisplay.textContent =
-            `₹${rate}`;
-
-        totalRent.value =
-            rate;
-
-        return;
-    }
-
-
-    /* =====================================
-       START
-    ===================================== */
-
-    const start =
-        new Date(
-            `${pickupDate.value}T${pickupTime.value}`
-        );
-
-
-    /* =====================================
-       END
-    ===================================== */
-
-    const end =
-        new Date(
-            `${returnDate.value}T${returnTime.value}`
-        );
-
-
-    /* =====================================
-       INVALID
-    ===================================== */
-
-    if (
-        isNaN(start.getTime()) ||
-        isNaN(end.getTime()) ||
-        end <= start
-    ) {
-
-        summaryDuration.textContent =
-            "Invalid return time";
-
-        rentDisplay.textContent =
-            "₹0";
-
-        totalRent.value =
-            "0";
-
-        return;
-    }
-
-
-    /* =====================================
-       HOURS
-    ===================================== */
-
-    const difference =
-        end.getTime() -
-        start.getTime();
-
-    const hours =
-        difference /
-        (1000 * 60 * 60);
-
-
-    let amount = 0;
-
-
-    /* =====================================
-       HOURLY
-    ===================================== */
-
-    if (
-        rentalType === "hourly"
-    ) {
-
-        const chargeableHours =
-            Math.ceil(hours);
-
-        amount =
-            chargeableHours *
-            vehicleRates[vehicle].hourly;
-
-        summaryDuration.textContent =
-            `${chargeableHours} hour(s)`;
-
-    }
-
-
-    /* =====================================
-       DAILY
-    ===================================== */
-
-    else {
-
-        const days =
-            Math.ceil(
-                hours / 24
-            );
-
-        amount =
-            days *
-            vehicleRates[vehicle].daily;
-
-        summaryDuration.textContent =
-            `${days} day(s)`;
-
-    }
-
-
-    /* =====================================
-       SHOW AMOUNT
-    ===================================== */
-
-    rentDisplay.textContent =
-        `₹${amount.toLocaleString("en-IN")}`;
-
-    totalRent.value =
-        amount;
-
-}
-
-
-/* =========================================
-   VEHICLE CHANGE
-========================================= */
-
-vehicleSelect.addEventListener(
-    "change",
-    calculateRent
-);
-
-
-/* =========================================
-   RENTAL TYPE CHANGE
-========================================= */
-
-rentalTypeInputs.forEach(
-    input => {
-
-        input.addEventListener(
-            "change",
-            calculateRent
-        );
-
-    }
-);
-
-
-/* =========================================
-   PICKUP DATE
-========================================= */
-
-pickupDate.addEventListener(
-    "change",
-    function () {
-
-        returnDate.min =
-            pickupDate.value;
-
-        calculateRent();
-
-    }
-);
-
-
-/* =========================================
-   PICKUP TIME
-========================================= */
-
-pickupTime.addEventListener(
-    "change",
-    calculateRent
-);
-
-
-/* =========================================
-   RETURN DATE
-========================================= */
-
-returnDate.addEventListener(
-    "change",
-    calculateRent
-);
-
-
-/* =========================================
-   RETURN TIME
-========================================= */
-
-returnTime.addEventListener(
-    "change",
-    calculateRent
-);
-
-
-/* =========================================
-   SUBMIT BOOKING
-========================================= */
-
-document
-.getElementById("bookingForm")
-.addEventListener(
-    "submit",
-    function(event) {
-
-        event.preventDefault();
-
-
-        /* CUSTOMER */
-
-        const name =
-            document
-            .getElementById("name")
-            .value
-            .trim();
-
-
-        const mobile =
-            document
-            .getElementById("mobile")
-            .value
-            .trim();
-
-
-        /* VEHICLE */
-
-        const vehicle =
-            vehicleSelect.value;
-
-
-        /* LOCATION */
-
-        const location =
-            pickupLocation.value;
-
-
-        /* RENTAL TYPE */
-
-        const rentalType =
-            document.querySelector(
-                'input[name="rentalType"]:checked'
-            ).value;
-
-
-        /* PAYMENT */
-
-        const paymentMethod =
-            document.querySelector(
-                'input[name="paymentMethod"]:checked'
-            ).value;
-
-
-        /* MOBILE VALIDATION */
-
-        if (
-            !/^[0-9]{10}$/.test(mobile)
-        ) {
-
-            alert(
-                "Please enter a valid 10 digit mobile number."
-            );
-
-            return;
-
-        }
-
-
-        /* VEHICLE */
-
-        if (!vehicle) {
-
-            alert(
-                "Please select a vehicle."
-            );
-
-            return;
-
-        }
-
-
-        /* LOCATION */
-
-        if (!location) {
-
-            alert(
-                "Please select pickup location."
-            );
-
-            return;
-
-        }
-
-
-        /* DATES */
-
-        if (
-            !pickupDate.value ||
-            !pickupTime.value ||
-            !returnDate.value ||
-            !returnTime.value
-        ) {
-
-            alert(
-                "Please select pickup and return date/time."
-            );
-
-            return;
-
-        }
-
-
-        /* CALCULATE */
-
-        calculateRent();
-
-
-        const amount =
-            Number(
-                totalRent.value
-            );
-
-
-        /* AMOUNT VALIDATION */
-
-        if (
-            !amount ||
-            amount <= 0
-        ) {
-
-            alert(
-                "Please select a valid return date and time."
-            );
-
-            return;
-
-        }
-
-
-        /* =====================================
-           BOOKING OBJECT
-        ===================================== */
-
-        const bookingData = {
-
-            name: name,
-
-            mobile: mobile,
-
-            vehicle: vehicle,
-
-            pickupLocation: location,
-
-            rentalType: rentalType,
-
-            pickupDate:
-                pickupDate.value,
-
-            pickupTime:
-                pickupTime.value,
-
-            returnDate:
-                returnDate.value,
-
-            returnTime:
-                returnTime.value,
-
-            totalRent:
-                amount,
-
-            bookingStatus:
-                "Confirmed"
+            "Honda Activa": {
+                hourly: 60,
+                daily: 500
+            }
 
         };
 
 
-        /* =====================================
-           SAVE BOOKING
-        ===================================== */
+        /* ================================
+           ELEMENTS
+        ================================= */
 
-        localStorage.setItem(
-            "bookingData",
-            JSON.stringify(
-                bookingData
-            )
-        );
+        const bookingForm =
+            document.getElementById("bookingForm");
+
+        const nameInput =
+            document.getElementById("name");
+
+        const mobileInput =
+            document.getElementById("mobile");
+
+        const dobInput =
+            document.getElementById("dob");
+
+        const ageBox =
+            document.getElementById("ageBox");
+
+        const ageText =
+            document.getElementById("ageText");
+
+        const idType =
+            document.getElementById("idType");
+
+        const idNumber =
+            document.getElementById("idNumber");
+
+        const vehicle =
+            document.getElementById("vehicle");
+
+        const pickupLocation =
+            document.getElementById("pickupLocation");
+
+        const rentalType =
+            document.getElementById("rentalType");
+
+        const pickupDate =
+            document.getElementById("pickupDate");
+
+        const pickupTime =
+            document.getElementById("pickupTime");
+
+        const returnDate =
+            document.getElementById("returnDate");
+
+        const returnTime =
+            document.getElementById("returnTime");
+
+        const ageConfirm =
+            document.getElementById("ageConfirm");
+
+        const rentDisplay =
+            document.getElementById("rentDisplay");
+
+        const summaryVehicle =
+            document.getElementById("summaryVehicle");
+
+        const summaryType =
+            document.getElementById("summaryType");
+
+        const summaryRate =
+            document.getElementById("summaryRate");
 
 
-        /* =====================================
-           SAVE PAYMENT METHOD
-        ===================================== */
+        /* ================================
+           TODAY DATE
+        ================================= */
 
-        localStorage.setItem(
-            "paymentMethod",
-            paymentMethod
-        );
+        const today =
+            new Date().toISOString().split("T")[0];
 
+        pickupDate.min = today;
+        returnDate.min = today;
 
-        /* =====================================
-           PAYMENT STATUS
-        ===================================== */
-
-        localStorage.setItem(
-            "paymentStatus",
-            "Pending"
-        );
+        dobInput.max = today;
 
 
-        /* =====================================
+        /* ================================
+           MOBILE ONLY NUMBERS
+        ================================= */
+
+        mobileInput.addEventListener("input", function () {
+
+            this.value =
+                this.value.replace(/\D/g, "").slice(0, 10);
+
+        });
+
+
+        /* ================================
+           ID NUMBER
+        ================================= */
+
+        idType.addEventListener("change", function () {
+
+            idNumber.value = "";
+
+            if (this.value === "Aadhaar Card") {
+
+                idNumber.placeholder =
+                    "Enter 12-digit Aadhaar number";
+
+                idNumber.maxLength = 12;
+
+                idNumber.pattern = "\\d{12}";
+
+            }
+
+            else if (this.value === "PAN Card") {
+
+                idNumber.placeholder =
+                    "Enter PAN number";
+
+                idNumber.maxLength = 10;
+
+                idNumber.pattern =
+                    "[A-Za-z]{5}[0-9]{4}[A-Za-z]{1}";
+
+            }
+
+            else {
+
+                idNumber.placeholder =
+                    "Enter ID number";
+
+                idNumber.removeAttribute("pattern");
+
+            }
+
+        });
+
+
+        idNumber.addEventListener("input", function () {
+
+            if (idType.value === "Aadhaar Card") {
+
+                this.value =
+                    this.value.replace(/\D/g, "").slice(0, 12);
+
+            }
+
+            else if (idType.value === "PAN Card") {
+
+                this.value =
+                    this.value.toUpperCase()
+                    .replace(/[^A-Z0-9]/g, "")
+                    .slice(0, 10);
+
+            }
+
+        });
+
+
+        /* ================================
+           AGE CALCULATION
+        ================================= */
+
+        function calculateAge(dateOfBirth) {
+
+            const todayDate = new Date();
+
+            const birthDate = new Date(dateOfBirth);
+
+            let age =
+                todayDate.getFullYear() -
+                birthDate.getFullYear();
+
+            const monthDifference =
+                todayDate.getMonth() -
+                birthDate.getMonth();
+
+            if (
+                monthDifference < 0 ||
+                (
+                    monthDifference === 0 &&
+                    todayDate.getDate() < birthDate.getDate()
+                )
+            ) {
+                age--;
+            }
+
+            return age;
+
+        }
+
+
+        dobInput.addEventListener("change", function () {
+
+            if (!this.value) {
+
+                ageBox.style.display = "none";
+                return;
+
+            }
+
+            const age =
+                calculateAge(this.value);
+
+            ageBox.style.display = "block";
+
+            if (age >= 18) {
+
+                ageText.textContent =
+                    age + " years — Eligible ✓";
+
+                ageBox.classList.remove("age-error");
+
+            }
+
+            else {
+
+                ageText.textContent =
+                    age + " years — Must be 18+";
+
+                ageBox.classList.add("age-error");
+
+            }
+
+        });
+
+
+        /* ================================
+           VEHICLE FROM URL
+        ================================= */
+
+        const urlParams =
+            new URLSearchParams(window.location.search);
+
+        const selectedVehicle =
+            urlParams.get("vehicle");
+
+        if (
+            selectedVehicle &&
+            vehicleRates[selectedVehicle]
+        ) {
+
+            vehicle.value = selectedVehicle;
+
+        }
+
+
+        /* ================================
+           LOCATION FROM LOCAL STORAGE
+        ================================= */
+
+        const savedLocation =
+            localStorage.getItem("selectedLocation");
+
+        if (savedLocation) {
+
+            const option =
+                [...pickupLocation.options]
+                .find(
+                    option =>
+                    option.value === savedLocation &&
+                    !option.disabled
+                );
+
+            if (option) {
+
+                pickupLocation.value =
+                    savedLocation;
+
+            }
+
+        }
+
+
+        /* ================================
            CUSTOMER DATA
-        ===================================== */
+        ================================= */
 
-        localStorage.setItem(
-            "customerData",
-            JSON.stringify({
+        const savedCustomer =
+            JSON.parse(
+                localStorage.getItem("customerData") || "null"
+            );
 
-                name:
-                    name,
+        if (savedCustomer) {
 
-                mobile:
-                    mobile,
+            if (savedCustomer.name) {
+                nameInput.value =
+                    savedCustomer.name;
+            }
 
-                email:
-                    customerData.email || "",
+            if (savedCustomer.mobile) {
+                mobileInput.value =
+                    savedCustomer.mobile;
+            }
 
-                address:
-                    customerData.address || ""
+        }
 
-            })
+
+        /* ================================
+           CALCULATE RENT
+        ================================= */
+
+        function calculateRent() {
+
+            const selected =
+                vehicle.value;
+
+            const type =
+                rentalType.value;
+
+            if (!selected || !vehicleRates[selected]) {
+
+                summaryVehicle.textContent =
+                    "Not Selected";
+
+                summaryRate.textContent =
+                    "₹0";
+
+                rentDisplay.textContent =
+                    "₹0";
+
+                return 0;
+
+            }
+
+
+            const rate =
+                vehicleRates[selected][type];
+
+
+            summaryVehicle.textContent =
+                selected;
+
+            summaryType.textContent =
+                type === "hourly"
+                    ? "Hourly"
+                    : "Daily";
+
+
+            summaryRate.textContent =
+                "₹" + rate;
+
+
+            let total =
+                rate;
+
+
+            if (
+                pickupDate.value &&
+                pickupTime.value &&
+                returnDate.value &&
+                returnTime.value
+            ) {
+
+                const start =
+                    new Date(
+                        pickupDate.value +
+                        "T" +
+                        pickupTime.value
+                    );
+
+                const end =
+                    new Date(
+                        returnDate.value +
+                        "T" +
+                        returnTime.value
+                    );
+
+
+                const difference =
+                    end - start;
+
+
+                if (difference > 0) {
+
+                    const hours =
+                        difference /
+                        (1000 * 60 * 60);
+
+
+                    if (type === "hourly") {
+
+                        total =
+                            Math.ceil(hours) * rate;
+
+                    }
+
+                    else {
+
+                        const days =
+                            Math.ceil(hours / 24);
+
+                        total =
+                            days * rate;
+
+                    }
+
+                }
+
+            }
+
+
+            rentDisplay.textContent =
+                "₹" + total.toLocaleString("en-IN");
+
+
+            return total;
+
+        }
+
+
+        /* ================================
+           UPDATE AMOUNT
+        ================================= */
+
+        vehicle.addEventListener(
+            "change",
+            calculateRent
+        );
+
+        rentalType.addEventListener(
+            "change",
+            calculateRent
+        );
+
+        pickupDate.addEventListener(
+            "change",
+            calculateRent
+        );
+
+        pickupTime.addEventListener(
+            "change",
+            calculateRent
+        );
+
+        returnDate.addEventListener(
+            "change",
+            calculateRent
+        );
+
+        returnTime.addEventListener(
+            "change",
+            calculateRent
         );
 
 
-        /* =====================================
-           GO TO PAYMENT
-        ===================================== */
+        /* ================================
+           RETURN DATE VALIDATION
+        ================================= */
 
-        window.location.href =
-            "payment.html";
+        pickupDate.addEventListener("change", function () {
 
-    }
-);
+            returnDate.min =
+                this.value;
+
+        });
 
 
-/* =========================================
-   INITIAL CALCULATION
-========================================= */
+        /* ================================
+           FORM SUBMIT
+        ================================= */
 
-calculateRent();
+        bookingForm.addEventListener(
+            "submit",
+            function (event) {
 
-</script>
+                event.preventDefault();
+
+
+                /* MOBILE */
+
+                if (
+                    !/^\d{10}$/.test(
+                        mobileInput.value
+                    )
+                ) {
+
+                    alert(
+                        "Please enter a valid 10-digit mobile number."
+                    );
+
+                    mobileInput.focus();
+
+                    return;
+
+                }
+
+
+                /* AGE */
+
+                if (!dobInput.value) {
+
+                    alert(
+                        "Please enter your Date of Birth."
+                    );
+
+                    dobInput.focus();
+
+                    return;
+
+                }
+
+
+                const age =
+                    calculateAge(
+                        dobInput.value
+                    );
+
+
+                if (age < 18) {
+
+                    alert(
+                        "Booking is available only for customers aged 18 or above."
+                    );
+
+                    dobInput.focus();
+
+                    return;
+
+                }
+
+
+                /* ID TYPE */
+
+                if (!idType.value) {
+
+                    alert(
+                        "Please select your identity proof."
+                    );
+
+                    idType.focus();
+
+                    return;
+
+                }
+
+
+                /* ID NUMBER */
+
+                const enteredId =
+                    idNumber.value.trim();
+
+
+                if (
+                    idType.value === "Aadhaar Card" &&
+                    !/^\d{12}$/.test(enteredId)
+                ) {
+
+                    alert(
+                        "Please enter a valid 12-digit Aadhaar number."
+                    );
+
+                    idNumber.focus();
+
+                    return;
+
+                }
+
+
+                if (
+                    idType.value === "PAN Card" &&
+                    !/^[A-Z]{5}[0-9]{4}[A-Z]$/.test(
+                        enteredId.toUpperCase()
+                    )
+                ) {
+
+                    alert(
+                        "Please enter a valid PAN number."
+                    );
+
+                    idNumber.focus();
+
+                    return;
+
+                }
+
+
+                /* 18+ CONFIRMATION */
+
+                if (!ageConfirm.checked) {
+
+                    alert(
+                        "Please confirm that you are 18 years or older."
+                    );
+
+                    ageConfirm.focus();
+
+                    return;
+
+                }
+
+
+                /* VEHICLE */
+
+                if (!vehicle.value) {
+
+                    alert(
+                        "Please select a vehicle."
+                    );
+
+                    vehicle.focus();
+
+                    return;
+
+                }
+
+
+                /* LOCATION */
+
+                if (!pickupLocation.value) {
+
+                    alert(
+                        "Please select a pickup location."
+                    );
+
+                    pickupLocation.focus();
+
+                    return;
+
+                }
+
+
+                /* DATES */
+
+                if (
+                    !pickupDate.value ||
+                    !pickupTime.value ||
+                    !returnDate.value ||
+                    !returnTime.value
+                ) {
+
+                    alert(
+                        "Please select pickup and return date/time."
+                    );
+
+                    return;
+
+                }
+
+
+                const start =
+                    new Date(
+                        pickupDate.value +
+                        "T" +
+                        pickupTime.value
+                    );
+
+                const end =
+                    new Date(
+                        returnDate.value +
+                        "T" +
+                        returnTime.value
+                    );
+
+
+                if (end <= start) {
+
+                    alert(
+                        "Return date/time must be after pickup date/time."
+                    );
+
+                    return;
+
+                }
+
+
+                /* AMOUNT */
+
+                const amount =
+                    calculateRent();
+
+
+                if (amount <= 0) {
+
+                    alert(
+                        "Please check your booking details."
+                    );
+
+                    return;
+
+                }
+
+
+                /* PAYMENT */
+
+                const selectedPayment =
+                    document.querySelector(
+                        'input[name="paymentMethod"]:checked'
+                    );
+
+
+                if (!selectedPayment) {
+
+                    alert(
+                        "Please select a payment method."
+                    );
+
+                    return;
+
+                }
+
+
+                /* CUSTOMER DATA */
+
+                const customerData = {
+
+                    name:
+                        nameInput.value.trim(),
+
+                    mobile:
+                        mobileInput.value.trim(),
+
+                    dob:
+                        dobInput.value,
+
+                    age:
+                        age,
+
+                    idType:
+                        idType.value
+
+                    // ID number intentionally
+                    // not stored in localStorage
+                };
+
+
+                localStorage.setItem(
+                    "customerData",
+                    JSON.stringify(customerData)
+                );
+
+
+                /* BOOKING DATA */
+
+                const bookingData = {
+
+                    name:
+                        nameInput.value.trim(),
+
+                    mobile:
+                        mobileInput.value.trim(),
+
+                    dob:
+                        dobInput.value,
+
+                    age:
+                        age,
+
+                    idType:
+                        idType.value,
+
+                    vehicle:
+                        vehicle.value,
+
+                    pickupLocation:
+                        pickupLocation.value,
+
+                    rentalType:
+                        rentalType.value,
+
+                    pickupDate:
+                        pickupDate.value,
+
+                    pickupTime:
+                        pickupTime.value,
+
+                    returnDate:
+                        returnDate.value,
+
+                    returnTime:
+                        returnTime.value,
+
+                    totalRent:
+                        amount,
+
+                    bookingStatus:
+                        "Confirmed"
+
+                };
+
+
+                localStorage.setItem(
+                    "bookingData",
+                    JSON.stringify(bookingData)
+                );
+
+
+                /* PAYMENT DATA */
+
+                localStorage.setItem(
+                    "paymentMethod",
+                    selectedPayment.value
+                );
+
+                localStorage.setItem(
+                    "paymentStatus",
+                    "Pending"
+                );
+
+
+                /* REDIRECT */
+
+                window.location.href =
+                    "payment.html";
+
+            }
+        );
+
+
+        /* INITIAL CALCULATION */
+
+        calculateRent();
+
+    </script>
 
 </body>
 </html>
