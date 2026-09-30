@@ -1,116 +1,625 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>About Us - krishride</title>
+    <title>About Us - AtulRide</title>
 
-    <link rel="stylesheet" href="style.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+        body {
+            background: #f5f7fb;
+            color: #1f2937;
+        }
+
+        /* ================= NAVBAR ================= */
+
+        nav {
+            width: 100%;
+            background: #111827;
+            padding: 15px 6%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .logo {
+            color: #38bdf8;
+            font-size: 28px;
+            font-weight: bold;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 22px;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            font-size: 15px;
+            transition: 0.3s;
+        }
+
+        .nav-links a:hover,
+        .nav-links a.active {
+            color: #38bdf8;
+        }
+
+        /* ================= HERO ================= */
+
+        .hero {
+            background:
+                linear-gradient(
+                    135deg,
+                    rgba(15, 23, 42, 0.96),
+                    rgba(30, 64, 175, 0.92)
+                );
+
+            color: white;
+            text-align: center;
+            padding: 75px 20px;
+        }
+
+        .hero h1 {
+            font-size: 45px;
+            margin-bottom: 15px;
+        }
+
+        .hero p {
+            max-width: 750px;
+            margin: auto;
+            line-height: 1.7;
+            color: #dbeafe;
+            font-size: 17px;
+        }
+
+        /* ================= CONTAINER ================= */
+
+        .container {
+            width: 90%;
+            max-width: 1150px;
+            margin: 50px auto;
+        }
+
+        /* ================= ABOUT ================= */
+
+        .about-section {
+            background: white;
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.07);
+            margin-bottom: 30px;
+        }
+
+        .about-section h2 {
+            color: #111827;
+            font-size: 30px;
+            margin-bottom: 15px;
+        }
+
+        .about-section h2 span {
+            color: #2563eb;
+        }
+
+        .about-section p {
+            color: #4b5563;
+            line-height: 1.8;
+            font-size: 16px;
+            margin-bottom: 12px;
+        }
+
+        /* ================= CARDS ================= */
+
+        .cards {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 22px;
+            margin-top: 30px;
+        }
+
+        .card {
+            background: white;
+            padding: 28px;
+            border-radius: 18px;
+            text-align: center;
+            box-shadow: 0 7px 25px rgba(0, 0, 0, 0.06);
+            transition: 0.3s;
+        }
+
+        .card:hover {
+            transform: translateY(-6px);
+        }
+
+        .card-icon {
+            font-size: 42px;
+            margin-bottom: 15px;
+        }
+
+        .card h3 {
+            color: #111827;
+            margin-bottom: 10px;
+        }
+
+        .card p {
+            color: #6b7280;
+            line-height: 1.6;
+            font-size: 14px;
+        }
+
+        /* ================= HOW IT WORKS ================= */
+
+        .steps {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+            margin-top: 25px;
+        }
+
+        .step {
+            background: #f8fafc;
+            border: 1px solid #e5e7eb;
+            padding: 25px;
+            border-radius: 15px;
+            text-align: center;
+        }
+
+        .step-number {
+            width: 45px;
+            height: 45px;
+            margin: 0 auto 15px;
+            border-radius: 50%;
+            background: #2563eb;
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 18px;
+        }
+
+        .step h3 {
+            margin-bottom: 8px;
+            color: #111827;
+        }
+
+        .step p {
+            font-size: 14px;
+            color: #6b7280;
+            line-height: 1.5;
+        }
+
+        /* ================= SHOWROOM ================= */
+
+        .showroom {
+            background: linear-gradient(135deg, #eff6ff, #dbeafe);
+            padding: 35px;
+            border-radius: 18px;
+            margin-top: 30px;
+            text-align: center;
+        }
+
+        .showroom h2 {
+            color: #1e3a8a;
+            margin-bottom: 12px;
+        }
+
+        .showroom p {
+            color: #374151;
+            margin-bottom: 7px;
+        }
+
+        .location {
+            font-weight: bold;
+            color: #2563eb;
+        }
+
+        /* ================= CTA ================= */
+
+        .cta {
+            background: linear-gradient(135deg, #2563eb, #1d4ed8);
+            color: white;
+            padding: 45px 25px;
+            border-radius: 20px;
+            text-align: center;
+            margin-top: 35px;
+        }
+
+        .cta h2 {
+            font-size: 30px;
+            margin-bottom: 12px;
+        }
+
+        .cta p {
+            color: #dbeafe;
+            margin-bottom: 22px;
+        }
+
+        .cta a {
+            display: inline-block;
+            background: white;
+            color: #1d4ed8;
+            padding: 13px 25px;
+            border-radius: 9px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: 0.3s;
+        }
+
+        .cta a:hover {
+            background: #e0f2fe;
+        }
+
+        /* ================= FOOTER ================= */
+
+        footer {
+            background: #111827;
+            color: white;
+            text-align: center;
+            padding: 28px 15px;
+            margin-top: 60px;
+        }
+
+        footer p {
+            color: #cbd5e1;
+            font-size: 14px;
+            margin: 5px;
+        }
+
+        /* ================= MOBILE ================= */
+
+        @media (max-width: 850px) {
+
+            .nav-links {
+                display: none;
+            }
+
+            .hero h1 {
+                font-size: 34px;
+            }
+
+            .about-section {
+                padding: 25px;
+            }
+
+            .cards {
+                grid-template-columns: 1fr;
+            }
+
+            .steps {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
 </head>
 
 <body>
 
-    <!-- NAVBAR -->
-    <header>
-        <nav class="navbar">
+    <!-- ================= NAVBAR ================= -->
 
-            <div class="logo">
-                🚗 krishride
-            </div>
+    <nav>
 
-            <ul class="nav-links">
-
-                <li>
-                    <a href="index.html">Home</a>
-                </li>
-
-                <li>
-                    <a href="vehicles.html">Vehicles</a>
-                </li>
-
-                <li>
-                    <a href="booking.html">Booking</a>
-                </li>
-
-                <li>
-                    <a href="about.html" class="active">About</a>
-                </li>
-
-                <li>
-                    <a href="contact.html">Contact</a>
-                </li>
-
-            </ul>
-
-        </nav>
-    </header>
-
-
-    <!-- ABOUT SECTION -->
-    <section class="booking-section">
-
-        <div class="booking-card"
-            style="max-width:900px; margin:40px auto;">
-
-            <h1>🚗 About krishride</h1>
-
-            <p>
-                Welcome to <b>krishride</b>, a simple and convenient
-                vehicle rental platform designed to make your journey
-                easier.
-            </p>
-
-            <p>
-                krishride allows customers to choose from different
-                vehicles, select rental duration, check the rental
-                amount and complete their booking through an easy
-                online process.
-            </p>
-
-
-            <h2>🎯 Our Mission</h2>
-
-            <p>
-                Our mission is to provide a simple, convenient and
-                user-friendly vehicle rental experience.
-            </p>
-
-
-            <h2>🚘 What We Offer</h2>
-
-            <ul>
-                <li>Wide range of vehicles</li>
-                <li>Hourly and full-day rental options</li>
-                <li>Simple online booking</li>
-                <li>Transparent rental calculation</li>
-                <li>Easy payment process</li>
-            </ul>
-
-
-            <h2>⭐ Why Choose krishride?</h2>
-
-            <p>
-                We focus on making vehicle rental easy for customers.
-                From selecting a vehicle to completing a booking,
-                everything is designed to be simple and convenient.
-            </p>
-
+        <div class="logo">
+            AtulRide
         </div>
+
+        <ul class="nav-links">
+
+            <li>
+                <a href="index.html">
+                    Home
+                </a>
+            </li>
+
+            <li>
+                <a href="vehicles.html">
+                    Vehicles
+                </a>
+            </li>
+
+            <li>
+                <a href="booking.html">
+                    Booking
+                </a>
+            </li>
+
+            <li>
+                <a href="about.html" class="active">
+                    About
+                </a>
+            </li>
+
+            <li>
+                <a href="contact.html">
+                    Contact
+                </a>
+            </li>
+
+            <li>
+                <a href="profile.html">
+                    Profile
+                </a>
+            </li>
+
+        </ul>
+
+    </nav>
+
+
+    <!-- ================= HERO ================= -->
+
+    <section class="hero">
+
+        <h1>About AtulRide 🚗</h1>
+
+        <p>
+            Your convenient vehicle rental and booking platform
+            for comfortable and flexible travel.
+        </p>
 
     </section>
 
 
-    <!-- FOOTER -->
+    <!-- ================= MAIN CONTENT ================= -->
+
+    <div class="container">
+
+
+        <!-- ABOUT ATULRIDE -->
+
+        <section class="about-section">
+
+            <h2>
+                About <span>AtulRide</span>
+            </h2>
+
+            <p>
+                AtulRide is a web-based vehicle rental and booking
+                platform designed to make vehicle rental simple,
+                convenient and accessible.
+            </p>
+
+            <p>
+                Customers can explore available vehicles, select
+                their preferred rental type, choose a pickup
+                location, select pickup and return date and time,
+                and calculate the rental amount before confirming
+                their booking.
+            </p>
+
+            <p>
+                AtulRide provides options for cars, SUVs and bikes
+                so that customers can choose a vehicle according
+                to their travel requirements.
+            </p>
+
+        </section>
+
+
+        <!-- ================= FEATURES ================= -->
+
+        <section class="about-section">
+
+            <h2>
+                Why Choose <span>AtulRide?</span>
+            </h2>
+
+            <div class="cards">
+
+                <div class="card">
+
+                    <div class="card-icon">
+                        🚗
+                    </div>
+
+                    <h3>
+                        Wide Range of Vehicles
+                    </h3>
+
+                    <p>
+                        Choose from different cars, SUVs and bikes
+                        according to your requirements.
+                    </p>
+
+                </div>
+
+
+                <div class="card">
+
+                    <div class="card-icon">
+                        💰
+                    </div>
+
+                    <h3>
+                        Flexible Rental
+                    </h3>
+
+                    <p>
+                        Select hourly or daily rental options
+                        according to your travel duration.
+                    </p>
+
+                </div>
+
+
+                <div class="card">
+
+                    <div class="card-icon">
+                        ⚡
+                    </div>
+
+                    <h3>
+                        Easy Booking
+                    </h3>
+
+                    <p>
+                        Select your vehicle, location and rental
+                        duration through a simple booking process.
+                    </p>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- ================= HOW IT WORKS ================= -->
+
+        <section class="about-section">
+
+            <h2>
+                How <span>AtulRide</span> Works
+            </h2>
+
+            <div class="steps">
+
+                <div class="step">
+
+                    <div class="step-number">
+                        1
+                    </div>
+
+                    <h3>
+                        Select Vehicle
+                    </h3>
+
+                    <p>
+                        Browse available vehicles and select
+                        the vehicle you want to rent.
+                    </p>
+
+                </div>
+
+
+                <div class="step">
+
+                    <div class="step-number">
+                        2
+                    </div>
+
+                    <h3>
+                        Choose Duration
+                    </h3>
+
+                    <p>
+                        Select hourly or daily rental according
+                        to your requirement.
+                    </p>
+
+                </div>
+
+
+                <div class="step">
+
+                    <div class="step-number">
+                        3
+                    </div>
+
+                    <h3>
+                        Confirm Booking
+                    </h3>
+
+                    <p>
+                        Select pickup and return details and
+                        provide your driving licence number.
+                    </p>
+
+                </div>
+
+
+                <div class="step">
+
+                    <div class="step-number">
+                        4
+                    </div>
+
+                    <h3>
+                        Pickup Vehicle
+                    </h3>
+
+                    <p>
+                        Visit the selected AtulRide pickup
+                        location and collect your vehicle.
+                    </p>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- ================= SHOWROOM ================= -->
+
+        <section class="showroom">
+
+            <h2>
+                🏢 AtulRide Showroom
+            </h2>
+
+            <p>
+                Vehicle pickup is available through the
+                AtulRide showroom.
+            </p>
+
+            <p class="location">
+                Ranchi, Jharkhand - 834001
+            </p>
+
+            <p>
+                Customers can select an available pickup
+                location while making a booking.
+            </p>
+
+        </section>
+
+
+        <!-- ================= CTA ================= -->
+
+        <section class="cta">
+
+            <h2>
+                Ready to Ride? 🚀
+            </h2>
+
+            <p>
+                Explore our vehicles and book your ride today.
+            </p>
+
+            <a href="vehicles.html">
+                Explore Vehicles
+            </a>
+
+        </section>
+
+    </div>
+
+
+    <!-- ================= FOOTER ================= -->
+
     <footer>
 
         <p>
-            © 2026 krishride. All Rights Reserved.
+            © 2026 AtulRide. All Rights Reserved.
+        </p>
+
+        <p>
+            Vehicle Rental & Booking System
         </p>
 
     </footer>
 
 </body>
-
 </html>
